@@ -1,0 +1,14 @@
+.nav-link {
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.form-control {
+    background-color: white;
+}
+
+.form-control[readonly] {
+    background-color: white;
+    border: none;
+}

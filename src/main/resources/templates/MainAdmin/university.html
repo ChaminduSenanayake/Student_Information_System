@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title>University</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/dist/lib/css/bootstrap/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/dist/lib/css/mainAdmin-style.css}" rel="stylesheet">
+</head>
+
+<body>
+<!-- Navigation bar -->
+<nav th:insert="MainAdmin/navBar :: navbar"></nav>
+<!-- middle section -->
+<div class="container-fluid col mt-5 p-5">
+    <h2 class="font-weight-bold text-center m-3 mb-5">Manage Universities</h2>
+    <table class="table table-bordered text-center">
+        <thead>
+        <tr class="table-secondary">
+            <th class="p-3">University Code</th>
+            <th class="p-3">Name</th>
+            <th class="p-3">Image</th>
+            <th>
+                <button type="button " class="btn btn-success px-4" onclick="openAddNewModal()">Add new
+                </button>
+            </th>
+        </tr>
+        </thead>
+        <tbody id="uniTable">
+
+        </tbody>
+    </table>
+</div>
+
+<!-- add new University Modal -->
+<div class="modal fade" id="addNewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Add New University</h5>
+                <button type="button " class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body mt-2 mx-3">
+                <form id="addNewUniversity">
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">University Code</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="uniCode" id="txtUniCode"
+                                   placeholder="University Code">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">University Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" name="uniName" type="text" id="txtUniversityName"
+                                   placeholder="University Name" required>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">University Image</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="file" name="uniImage" id="imgUni"
+                                   placeholder="University Name" required>
+                        </div>
+                    </div>
+                    <div class=" col-md-12 text-end mt-4">
+                        <button type="submit" class=" btn btn-primary mb-2 px-5">Save</button>
+                        <button name="cancel" class="btn btn-danger mb-2 px-5" data-bs-dismiss="modal"
+                                aria-label="Close">Close
+                        </button>
+                        </br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Update University Modal -->
+<div class="modal fade" id="updateUniversityModal" tabindex="-1 " aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h5 class="modal-title">Update University</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body mt-2 mx-3">
+                <form id="updateUniversity">
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">University Code</label>
+                        <div class="col-sm-9">
+                            <input class="form-control " id="txtEditUniCode" name="uniCode"
+                                   placeholder="University Code" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">University Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" name="uniName" id="txtEditUniversityName"
+                                   placeholder="University Name">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">University Image</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="file" id="imageInput" name="uniImage"
+                                   placeholder="University Image">
+                        </div>
+                    </div>
+                    <div class=" col-md-12 text-end mt-4 ">
+                        <button type="submit" class=" btn btn-primary mb-2 px-5">Update</button>
+                        <button name="cancel" class="btn btn-danger mb-2 px-5" data-bs-dismiss="modal"
+                                aria-label="Close">Close
+                        </button>
+                        </br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Image View modal -->
+<div class="modal fade" id="viewImageModal" tabindex="-1 " aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h5 class="modal-title">University Image</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body mt-2 mx-3">
+                <img id="imgUniModal" class="rounded mx-auto d-block">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
+<script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/dist/lib/controllers/baseURL.js}"></script>
+<script th:src="@{/dist/lib/js/sweetalert.js}"></script>
+<script th:src="@{/dist/lib/controllers/navBar-controller.js}"></script>
+<script th:src="@{/dist/lib/controllers/mainAdmin/university-controller.js}"></script>
+</body>
+
+
+</html>

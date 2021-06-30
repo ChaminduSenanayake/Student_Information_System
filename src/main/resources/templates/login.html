@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/dist/lib/css/bootstrap/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/dist/lib/css/login-style.css}" rel="stylesheet">
+    <script>
+        var uniCode =sessionStorage.getItem("uniCode");
+        if(uniCode==null){
+            //location.href=serverURL;
+        }
+        setTimeout(function (){
+            var opacity=0;
+            var intervalID=0;
+            var element=document.getElementById("sessionExpired");
+            setInterval(function (){
+                opacity = Number(window.getComputedStyle(element).getPropertyValue("opacity"))
+
+                if(opacity>0){
+                    opacity=opacity-0.02;
+                    element.style.opacity=opacity
+                }
+                else{
+                    clearInterval(intervalID);
+                }
+            },10);
+        },5000)
+
+
+    </script>
+</head>
+<body>
+<div class="container-fluid bg-dark py-3" id="title">
+    <h2 class="font-weight-bold text-center m-3">Higher Educational Institutional Student Information System</h2>
+</div>
+<div class="container">
+    <h1 id="loginTitle">LOG IN</h1>
+    <form id="loginForm">
+        <div class="mb-4">
+            <label for="txtUserName" class="form-label">User Name</label>
+            <input type="text" class="form-control" id="txtUserName" name="userName">
+        </div>
+        <div class="mb-4">
+            <label for="txtPassword" class="form-label">Password</label>
+            <input type="text" class="form-control" id="txtPassword" name="password">
+        </div>
+        <div class="text-center" id="btn-group">
+            <button type="button" id="loginBtn" class="btn btn-primary px-5">LOG IN</button>
+            <button type="button" class="btn btn-danger px-5">CANCEL</button>
+        </div>
+        <div class="text-center">
+            <label id="forgottnPassword">Forgotten Password</label>
+        </div>
+    </form>
+</div>
+<div class="text-center">
+    <p id="sessionExpired" class="mt-5 bg-warning text-dark">[[${sessionExpired}]]</p>
+</div>
+<script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
+<script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/dist/lib/controllers/baseURL.js}"></script>
+<script th:src="@{/dist/lib/js/sweetalert.js}" ></script>
+<script th:src="@{/dist/lib/controllers/login-controller.js}"></script>
+</body>
+</html>

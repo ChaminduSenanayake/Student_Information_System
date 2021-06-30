@@ -1,0 +1,48 @@
+#title{
+    color: white;
+    font-weight: bold;
+}
+.container{
+    justify-content: center;
+    max-width: 600px;
+    border-radius:10px;
+    margin-top:60px;
+    padding:60px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+#loginTitle{
+    font-weight: bold;
+    text-align: center;
+    color: gray;
+    margin-bottom: 50px;
+}
+
+label{
+    font-weight: bold;
+    font-size: 12px;
+    color: gray;
+    margin: 10px;
+}
+.btn{
+    border-radius: 15px;
+    font-weight: bold;
+    margin: 10px;
+}
+.form-control{
+    border-radius: 15px;
+}
+#btn-group{
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+#forgottnPassword{
+    color: #0c63e4;
+}
+@media only screen and (max-width: 600px) {
+    .container{
+        padding:20px;
+        max-width: 400px;
+    }
+}
