@@ -98,8 +98,8 @@ $(document).ready(function (){
 });
 
 function openUpdateModal(uniCode) {
-    let updateModal = new bootstrap.Modal(document.getElementById('updateUniversityModal'));
-    $('#updateUniversityModal').on('show.bs.modal', function(event) {
+    let updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
+    $('#updateModal').on('show.bs.modal', function(event) {
         let modal = $(this);
         $.ajax({
             type:"GET",

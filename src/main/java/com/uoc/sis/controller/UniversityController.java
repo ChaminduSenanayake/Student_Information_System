@@ -48,19 +48,6 @@ public class UniversityController {
         return universityService.addUniversity(dto,uniImage);
     }
 
-    @GetMapping("/getAll")
-    public List<UniversityDTO> getAllUniversities(){
-        return universityService.getAllUniversities();
-    }
-
-    @DeleteMapping("/delete/{uniCode}")
-    public boolean deleteUniversity(@PathVariable("uniCode") String uniCode){
-        return universityService.deleteUniversity(uniCode);
-    }
-    @GetMapping("/getUniversity/{uniCode}")
-    public UniversityDTO getUniByCode(@PathVariable("uniCode") String uniCode){
-        return universityService.getUniByCode(uniCode);
-    }
     @PutMapping ("/update")
     public boolean updateUniversity(@RequestParam("uniCode") String uniCode,@RequestParam("uniName") String uniName){
         UniversityDTO dto=new UniversityDTO(uniCode,uniName);
@@ -71,6 +58,22 @@ public class UniversityController {
         UniversityDTO dto=new UniversityDTO(uniCode,uniName);
         return universityService.updateUniversityWithImage(dto,uniImage);
     }
+
+    @DeleteMapping("/delete/{uniCode}")
+    public boolean deleteUniversity(@PathVariable("uniCode") String uniCode){
+        return universityService.deleteUniversity(uniCode);
+    }
+
+    @GetMapping("/getAll")
+    public List<UniversityDTO> getAllUniversities(){
+        return universityService.getAllUniversities();
+    }
+
+    @GetMapping("/getUniversity/{uniCode}")
+    public UniversityDTO getUniByCode(@PathVariable("uniCode") String uniCode){
+        return universityService.getUniByCode(uniCode);
+    }
+
     @GetMapping("/getNewID")
     @ResponseBody
     public String getNewID() {

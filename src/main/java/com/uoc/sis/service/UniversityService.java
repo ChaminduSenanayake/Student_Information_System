@@ -44,14 +44,6 @@ public class UniversityService {
         }
 
     }
-    public List<UniversityDTO> getAllUniversities(){
-        List<University> all = universityRepository.findAll();
-        ArrayList<UniversityDTO> dtos = new ArrayList<>();
-        for (University uni : all) {
-            dtos.add(new UniversityDTO(uni.getUni_code(),uni.getUni_name(),uni.getImage_path(),uni.getImage_name()));
-        }
-        return dtos;
-    }
 
     public boolean updateUniversity(UniversityDTO dto){
         try {
@@ -105,6 +97,15 @@ public class UniversityService {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public List<UniversityDTO> getAllUniversities(){
+        List<University> all = universityRepository.findAll();
+        ArrayList<UniversityDTO> dtos = new ArrayList<>();
+        for (University uni : all) {
+            dtos.add(new UniversityDTO(uni.getUni_code(),uni.getUni_name(),uni.getImage_path(),uni.getImage_name()));
+        }
+        return dtos;
     }
 
     public UniversityDTO getUniByCode(String uniCode){

@@ -20,7 +20,8 @@ public class LoginController {
     private LoginService loginService;
 
     @GetMapping("/")
-    public ModelAndView openPage(){
+    public ModelAndView loadPage(HttpServletRequest request){
+        logOut(request);
         return new ModelAndView("login.html") ;
     }
     @PostMapping("/validate")
