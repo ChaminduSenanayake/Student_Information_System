@@ -17,7 +17,6 @@ function openAddNewModal() {
                 console.log(error);
             }
         })
-
     });
     addNewModal.show();
 }

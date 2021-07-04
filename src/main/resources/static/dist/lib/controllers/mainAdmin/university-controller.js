@@ -4,7 +4,7 @@ $(document).ready(function (){
     getAllUni();
 
     $('#addNewUniversity').submit(function(event) {
-        var formData = new FormData(this);
+        const formData = new FormData(this);
         $.ajax({
             type:"POST",
             enctype: 'multipart/form-data',
