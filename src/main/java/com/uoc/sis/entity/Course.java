@@ -14,7 +14,7 @@ public class Course {
     @JoinColumns(@JoinColumn(name = "faculty_id",referencedColumnName = "faculty_id",insertable = false,updatable = false))
     private Department department;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     private List<Registration> registration_list;
 
     public Course() {

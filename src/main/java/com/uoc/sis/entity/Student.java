@@ -25,7 +25,7 @@ public class Student {
     @JoinColumns(@JoinColumn(name = "uni_code",referencedColumnName = "uni_code",insertable = false,updatable = false))
     private University university;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     private List<Result> result_list;
 
     public Student() {

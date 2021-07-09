@@ -12,6 +12,9 @@ public class Result {
     @JoinColumns(@JoinColumn(name = "exam_id",referencedColumnName = "exam_id",insertable = false,updatable = false))
     private Exam exam;
 
+    @EmbeddedId
+    private Result_pk result_pk;
+
     private String grade;
 
     public Result() {

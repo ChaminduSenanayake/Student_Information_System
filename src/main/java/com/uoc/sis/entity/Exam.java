@@ -14,7 +14,7 @@ public class Exam {
     private String date;
     private String duration;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     private List<Result> result_list;
 
     public Exam() {
