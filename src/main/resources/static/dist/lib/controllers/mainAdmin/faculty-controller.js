@@ -2,7 +2,7 @@ $(document).ready(function () {
     document.getElementById('facultyBtn').style.color = "#4FB3A1";
     getAllFaculties();
 
-    $('#btnAddNew').click(() => {
+    $('#btnAddNew').click(function (){
         let facultyID=$('#txtFacultyID').val();
         let facultyName=$('#txtFacultyName').val();
         let uniCode=$('#selectUniCode').val();
@@ -38,6 +38,45 @@ $(document).ready(function () {
             }
         })
     });
+
+
+
+    $('#btnUpdate').click(function (){
+        let facultyID=$('#txtEditFacultyID').val();
+        let facultyName=$('#txtEditFacultyName').val();
+        let uniCode=$('#txtEditUniCode').val();
+        let uniName=$('#txtEditUniName').val();
+
+        let dataObj=JSON.stringify({
+            "facultyID":facultyID,
+            "facultyName":facultyName,
+            "uniCode":uniCode,
+            "uniName":uniName
+        });
+        $.ajax({
+            type: "PUT",
+            url: baseURL + "faculty/update",
+            data: dataObj,
+            dataType: 'json',
+            contentType:'application/json; charset=utf-8',
+            success: function (responce) {
+                if(responce){
+                    swal("Good job!", "You clicked the button!", "success");
+                    $('#updateModal').on('hidden.bs.modal', function (e) {
+                        let modal=$(this);
+                        modal.find('#txtEditFacultyName').val("");
+                    });
+                    $("#updateModal").modal('hide');
+                    getAllFaculties();
+                }else{
+                    swal("OOps!", "You clicked the button!", "error");
+                }
+            },
+            error:function (error){
+                console.log(error);
+            }
+        })
+    });
 });
 
 
@@ -47,18 +86,23 @@ function openAddNewModal() {
         let modal = $(this);
         let select=modal.find('#selectUniCode');
         let txtUniName=modal.find('#txtUniName');
-        select.length=0;
+
         $.ajax({
             type:"GET",
             url:baseURL+"university/getAll",
             dataType:'json',
             contentType: 'application/json; charset=utf-8',
             success:function (response) {
+                var sel = document.getElementById('selectUniCode');
+                for (i = sel.length - 1; i >= 0; i--) {
+                    sel.remove(i);
+                }
                 for (i in response) {
                     let university = response[i];
                     let uniCode = university['uniCode'];
                     let uniName = university['uniName'];
                     let option = "<option>" + uniCode + "</option>";
+
                     select.append(option);
                     if(i==0){txtUniName.val(uniName)}
                 }
@@ -85,19 +129,21 @@ function openUpdateModal(facultyID) {
     let updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
     $('#updateModal').on('show.bs.modal', function(event) {
         let modal = $(this);
+        let txtUniCode=modal.find('#txtEditUniCode');
+        let txtUniName=modal.find('#txtEditUniName');
         let txtFacultyID=modal.find('#txtEditFacultyID');
         let txtFacultyName=modal.find('#txtEditFacultyName');
-        let txtUniCode=modal.find('#txtEditUniCode');
 
         $.ajax({
             type:"GET",
-            url:baseURL+"faculty/getFaculty"+facultyID,
+            url:baseURL+"faculty/getFaculty/"+facultyID,
             dataType:'json',
             contentType: 'application/json; charset=utf-8',
             success:function (response) {
+                txtUniCode.val(response['uniCode']);
+                txtUniName.val(response['uniName']);
                 txtFacultyID.val(response['facultyID']);
                 txtFacultyName.val([response['facultyName']]);
-                txtUniCode.val(response['uniCode']);
             },error(error) {
                 console.log(error);
             }
