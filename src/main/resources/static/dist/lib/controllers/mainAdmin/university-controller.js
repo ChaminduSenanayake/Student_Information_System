@@ -166,7 +166,7 @@ function deleteUni(uniCode){
                     }
                 });
             } else {
-                swal("Your Student data  is safe!");
+                swal("Your university data  is safe!");
             }
         });
 }

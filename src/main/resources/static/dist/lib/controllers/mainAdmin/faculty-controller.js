@@ -1,5 +1,43 @@
 $(document).ready(function () {
     document.getElementById('facultyBtn').style.color = "#4FB3A1";
+    getAllFaculties();
+
+    $('#btnAddNew').click(() => {
+        let facultyID=$('#txtFacultyID').val();
+        let facultyName=$('#txtFacultyName').val();
+        let uniCode=$('#selectUniCode').val();
+        let uniName=$('#txtUniName').val();
+
+        let dataObj=JSON.stringify({
+            "facultyID":facultyID,
+            "facultyName":facultyName,
+            "uniCode":uniCode,
+            "uniName":uniName
+        });
+        $.ajax({
+            type: "POST",
+            url: baseURL + "faculty/save",
+            data: dataObj,
+            dataType: 'json',
+            contentType:'application/json; charset=utf-8',
+            success: function (responce) {
+                if(responce){
+                    swal("Good job!", "You clicked the button!", "success");
+                    $('#addNewModal').on('hidden.bs.modal', function (e) {
+                        let modal=$(this);
+                        modal.find('#txtFacultyName').val("");
+                    });
+                    $("#addNewModal").modal('hide');
+                    getAllFaculties();
+                }else{
+                    swal("OOps!", "You clicked the button!", "error");
+                }
+            },
+            error:function (error){
+                console.log(error);
+            }
+        })
+    });
 });
 
 
@@ -7,6 +45,28 @@ function openAddNewModal() {
     let addNewModal = new bootstrap.Modal(document.getElementById('addNewModal'));
     $('#addNewModal').on('show.bs.modal', function(event) {
         let modal = $(this);
+        let select=modal.find('#selectUniCode');
+        let txtUniName=modal.find('#txtUniName');
+        select.length=0;
+        $.ajax({
+            type:"GET",
+            url:baseURL+"university/getAll",
+            dataType:'json',
+            contentType: 'application/json; charset=utf-8',
+            success:function (response) {
+                for (i in response) {
+                    let university = response[i];
+                    let uniCode = university['uniCode'];
+                    let uniName = university['uniName'];
+                    let option = "<option>" + uniCode + "</option>";
+                    select.append(option);
+                    if(i==0){txtUniName.val(uniName)}
+                }
+            },error(error) {
+                console.log(error);
+            }
+        })
+
         $.ajax({
             type:"GET",
             url:baseURL+"faculty/getNewID",
@@ -17,10 +77,116 @@ function openAddNewModal() {
                 console.log(error);
             }
         })
-    });
+    })
     addNewModal.show();
 }
 
-function loadUniCodes(){
-    // <option value="3">Three</option>
+function openUpdateModal(facultyID) {
+    let updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
+    $('#updateModal').on('show.bs.modal', function(event) {
+        let modal = $(this);
+        let txtFacultyID=modal.find('#txtEditFacultyID');
+        let txtFacultyName=modal.find('#txtEditFacultyName');
+        let txtUniCode=modal.find('#txtEditUniCode');
+
+        $.ajax({
+            type:"GET",
+            url:baseURL+"faculty/getFaculty"+facultyID,
+            dataType:'json',
+            contentType: 'application/json; charset=utf-8',
+            success:function (response) {
+                txtFacultyID.val(response['facultyID']);
+                txtFacultyName.val([response['facultyName']]);
+                txtUniCode.val(response['uniCode']);
+            },error(error) {
+                console.log(error);
+            }
+        })
+
+    })
+    updateModal.show();
+}
+
+$('#selectUniCode').change(function() {
+    let uniCode=$(this).val();
+    $.ajax({
+        type:"GET",
+        url:baseURL+"university/getUniversity/"+uniCode,
+        dataType:'json',
+        contentType: 'application/json; charset=utf-8',
+        success:function (response){
+            $('#txtEditUniversityName').val(response['uniName'])
+        },
+        error:function (error){
+            console.log(error);
+        }
+    });
+});
+
+
+function deleteFaculty(facultyID){
+    swal({
+        title: "Are you sure?",
+        text: "Faculty will be deleted..!!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    type:"DELETE",
+                    url:baseURL+"faculty/delete/"+facultyID,
+                    dataType:'json',
+                    success:function (response){
+                        if(response){
+                            swal("Poof! Your imaginary file has been deleted!", {icon: "success"});
+                            getAllFaculties();
+                        }else{
+                            swal("Poof! Your imaginary file has not been deleted!", {
+                                icon: "error",
+                            });
+                        }
+                    },
+                    error:function (error){
+                        console.log(error);
+                    }
+                });
+            } else {
+                swal("Your Faculty data  is safe!");
+            }
+        });
+}
+function getAllFaculties(){
+    let tableFaculty=$('#facultyTable');
+    tableFaculty.empty();
+    $.ajax({
+        type:"GET",
+        url:baseURL+"faculty/getAll",
+        dataType:'json',
+        contentType: 'application/json; charset=utf-8',
+        success:function (response){
+            for(i in response){
+                let faculty=response[i];
+                let facultyID=faculty['facultyID'];
+                let facultyName=faculty['facultyName']
+                let uniCode=faculty['uniCode'];
+                let uniName=faculty['uniName'];
+
+                let row="<tr>\n" +
+                    "<td class=\"p-3\">"+uniCode+"</td>\n" +
+                    "<td class=\"p-3\">"+uniName+"</td>\n" +
+                    "<td class=\"p-3\">"+facultyID+"</td>\n" +
+                    "<td class=\"p-3\">"+facultyName+"</td>\n" +
+                    "<div class=\"btn-group\" role=\"group\">\n" +
+                    "<td>\n" +
+                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\""+facultyID+"\" onclick=\"openUpdateModal(this.id)\">Edit</button>\n" +
+                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\""+facultyID+"\" onclick=\"deleteFaculty(this.id)\" name=\"btnDelete\">Delete</button>\n" +
+                    "</div>\n" +
+                    "</td>\n" +
+                    "</tr>";
+                tableFaculty.append(row);
+            }
+        }
+    })
 }

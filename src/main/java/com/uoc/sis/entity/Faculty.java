@@ -10,7 +10,7 @@ public class Faculty {
     private String faculty_id;
     private String faculty_name;
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumns(@JoinColumn(name = "uni_code",referencedColumnName = "uni_code",insertable = false,updatable = false))
+    @JoinColumns(@JoinColumn(name = "uni_code",referencedColumnName = "uni_code"))
     private University university;
 
     public Faculty() {

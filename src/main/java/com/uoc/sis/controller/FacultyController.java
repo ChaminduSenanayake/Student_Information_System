@@ -18,6 +18,7 @@ public class FacultyController {
 
     @Autowired
     private FacultyService facultyService;
+
     @GetMapping("/")
     public ModelAndView loadPage(HttpServletRequest request){
         HttpSession session = request.getSession();
@@ -50,6 +51,7 @@ public class FacultyController {
     public List<FacultyDTO> getAll(){
         return facultyService.getAllFaculties();
     }
+
     @GetMapping("/getFaculty/{facultyID}")
     public FacultyDTO getByID(@PathVariable("facultyID") String facultyID){
         return facultyService.getFacultyByID(facultyID);

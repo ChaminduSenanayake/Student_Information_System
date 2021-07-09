@@ -60,11 +60,13 @@ public class FacultyService {
     }
 
     public List<FacultyDTO> getAllFaculties() {
-        List<Faculty> all = facultyRepository.findAll();
         ArrayList<FacultyDTO> dtos = new ArrayList<>();
+        List<Faculty> all = facultyRepository.findAll();
         for (Faculty fac : all) {
             University university = fac.getUniversity();
-            dtos.add(new FacultyDTO(fac.getFaculty_id(), fac.getFaculty_name(), university.getUni_code()));
+            if(university!=null){
+                dtos.add(new FacultyDTO(fac.getFaculty_id(), fac.getFaculty_name(), university.getUni_code(),university.getUni_name()));
+            }
         }
         return dtos;
     }
@@ -73,7 +75,7 @@ public class FacultyService {
         try {
             Faculty faculty = facultyRepository.getById(facultyID);
             University uni=faculty.getUniversity();
-            return new FacultyDTO(faculty.getFaculty_id(),faculty.getFaculty_name(),uni.getUni_code());
+            return new FacultyDTO(faculty.getFaculty_id(),faculty.getFaculty_name(),uni.getUni_code(),uni.getUni_name());
         } catch (EntityNotFoundException e) {
             e.printStackTrace();
         }
