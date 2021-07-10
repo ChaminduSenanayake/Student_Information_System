@@ -8,7 +8,7 @@ public class Degree {
     private String degree_id;
     private String degree_name;
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumns(@JoinColumn(name = "faculty_id",referencedColumnName = "faculty_id",insertable = false,updatable = false))
+    @JoinColumns(@JoinColumn(name = "faculty_id",referencedColumnName = "faculty_id"))
     private Faculty faculty;
 
     public Degree() {

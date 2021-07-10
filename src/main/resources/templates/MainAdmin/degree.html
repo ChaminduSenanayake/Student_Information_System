@@ -19,32 +19,16 @@
         <thead>
         <tr class="table-secondary">
             <th class="p-3">Faculty ID</th>
+            <th class="p-3">Faculty Name</th>
             <th class="p-3">Degree ID</th>
             <th class="p-3">Degree Name</th>
             <th>
-                <button type="button " class="btn btn-success px-4" data-bs-toggle="modal"
-                        data-bs-target="#addNewModal">Add new
-                </button>
+                <button type="button " class="btn btn-success px-4" onclick="openAddNewModal()">Add new</button>
             </th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <td class="p-3" id="txtFacultyId1">F0001</td>
-            <td class="p-3" id="txtDegreeId1">D0001</td>
-            <td class="p-3" id="txtDegreeName1">Applied Statistics</td>
-            <td>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary rounded px-4 me-3" id="btnEdit"
-                            onclick="openUpdateModal(1)">Edit
-                    </button>
-                    <button type="submit" class="btn btn-danger rounded px-4" id='btnDelete' value="1" name="btnDelete">
-                        Delete
-                    </button>
-                </div>
-            </td>
-            </form>
-        </tr>
+        <tbody id="degreeTable">
+
         </tbody>
     </table>
 </div>
@@ -60,8 +44,16 @@
                 <form>
                     <div class="form-group row mb-3">
                         <label class="col-sm-3 col-form-label">Faculty ID</label>
+                        <div class="col-sm-9" >
+                            <select id="selectFacultyID"  class="form-select" aria-label="Default select example">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Faculty Name</label>
                         <div class="col-sm-9">
-                            <input class="form-control" id="txtFacultyId" placeholder="Faculty ID">
+                            <input class="form-control" id="txtFacultyName" placeholder="Degree ID">
                         </div>
                     </div>
                     <div class="form-group row mb-3 ">
@@ -77,7 +69,7 @@
                         </div>
                     </div>
                     <div class=" col-md-12 text-end mt-4">
-                        <button name="btnAddNew" type="submit" class=" btn btn-primary mb-2 px-5">Save</button>
+                        <button id="btnAddNew" type="button" class=" btn btn-primary mb-2 px-5">Save</button>
                         <button id="cancel" name="cancel" class="btn btn-danger mb-2 px-5" data-bs-dismiss="modal"
                                 aria-label="Close">Close
                         </button>
@@ -89,7 +81,7 @@
     </div>
 </div>
 <!-- Update faculty Modal -->
-<div class="modal fade" id="updateDegreeModal" tabindex="-1 " aria-hidden="true">
+<div class="modal fade" id="updateModal" tabindex="-1 " aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content ">
             <div class="modal-header">
@@ -101,24 +93,30 @@
                     <div class="form-group row mb-3">
                         <label class="col-sm-3 col-form-label">Faculty ID</label>
                         <div class="col-sm-9">
-                            <input class="form-control " id="txtFacultyId" placeholder="Faculty ID" readonly>
+                            <input class="form-control " id="txtEditFacultyId" placeholder="Faculty ID" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Faculty Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEditFacultyName" placeholder="Degree ID">
                         </div>
                     </div>
                     <div class="form-group row mb-3">
                         <label class="col-sm-3 col-form-label">Degree ID</label>
                         <div class="col-sm-9">
-                            <input class="form-control " id="txtDegreeId" placeholder="Degree ID" readonly>
+                            <input class="form-control " id="txtEditDegreeId" placeholder="Degree ID" readonly>
                         </div>
                     </div>
                     <div class="form-group row mb-3">
                         <label class="col-sm-3 col-form-label">Degree Name</label>
                         <div class="col-sm-9">
-                            <input class="form-control" id="txtDegreeName" placeholder="Degree Name">
+                            <input class="form-control" id="txtEditDegreeName" placeholder="Degree Name">
                         </div>
                     </div>
                     <div class=" col-md-12 text-end mt-4 ">
-                        <button name="btnUpdate" type="submit" class=" btn btn-primary mb-2 px-5">Update</button>
-                        <button id="cancel" name="cancel" class="btn btn-danger mb-2 px-5" data-bs-dismiss="modal"
+                        <button id="btnUpdate" type="button" class=" btn btn-primary mb-2 px-5">Update</button>
+                        <button class="btn btn-danger mb-2 px-5" data-bs-dismiss="modal"
                                 aria-label="Close">Close
                         </button>
                         </br>

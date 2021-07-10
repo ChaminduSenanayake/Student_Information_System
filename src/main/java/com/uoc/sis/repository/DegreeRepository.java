@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DegreeRepository extends JpaRepository<Degree,String> {
     @Query(value = "select * from Degree order by degree_id desc limit 1;",nativeQuery = true)
-    Faculty findLastData();
+    Degree findLastData();
 }

@@ -4,11 +4,21 @@ public class DegreeDTO {
     private String degreeID;
     private String degreeName;
     private String facultyID;
+    private String facultyName;
 
-    public DegreeDTO(String degreeID, String degreeName, String facultyID) {
+    public DegreeDTO(String degreeID, String degreeName, String facultyID, String facultyName) {
         this.degreeID = degreeID;
         this.degreeName = degreeName;
         this.facultyID = facultyID;
+        this.facultyName = facultyName;
+    }
+
+    public String getFacultyName() {
+        return facultyName;
+    }
+
+    public void setFacultyName(String facultyName) {
+        this.facultyName = facultyName;
     }
 
     public String getDegreeID() {

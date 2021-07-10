@@ -161,7 +161,7 @@ $('#selectUniCode').change(function() {
         dataType:'json',
         contentType: 'application/json; charset=utf-8',
         success:function (response){
-            $('#txtEditUniversityName').val(response['uniName'])
+            $('#txtUniName').val(response['uniName']);
         },
         error:function (error){
             console.log(error);
@@ -199,7 +199,7 @@ function deleteFaculty(facultyID){
                     }
                 });
             } else {
-                swal("Your Faculty data  is safe!");
+                swal("Your Faculty data is safe!");
             }
         });
 }

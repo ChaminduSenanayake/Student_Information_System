@@ -65,7 +65,10 @@ public class DegreeService {
         List<Degree> all = degreeRepository.findAll();
         ArrayList<DegreeDTO> dtos = new ArrayList<>();
         for (Degree degree : all) {
-            dtos.add(new DegreeDTO(degree.getDegree_id(),degree.getDegree_name(),degree.getFaculty().getFaculty_id()));
+            Faculty fac=degree.getFaculty();
+            if(fac!=null) {
+                dtos.add(new DegreeDTO(degree.getDegree_id(), degree.getDegree_name(), fac.getFaculty_id(), fac.getFaculty_name()));
+            }
         }
         return dtos;
     }
@@ -74,7 +77,8 @@ public class DegreeService {
     public DegreeDTO getDegreeByID(String degreeID) {
         try {
             Degree degree = degreeRepository.getById(degreeID);
-            return new DegreeDTO(degree.getDegree_id(),degree.getDegree_name(),degree.getFaculty().getFaculty_id());
+            Faculty fac=degree.getFaculty();
+            return new DegreeDTO(degree.getDegree_id(),degree.getDegree_name(),fac.getFaculty_id(),fac.getFaculty_name());
         } catch (EntityNotFoundException e) {
             e.printStackTrace();
         }
@@ -84,9 +88,9 @@ public class DegreeService {
     public String getNewID() {
         String prifix = "D";
         try {
-            Faculty fac = degreeRepository.findLastData();
-            if (fac != null) {
-                String lastId = fac.getFaculty_id();
+            Degree degree= degreeRepository.findLastData();
+            if (degree != null) {
+                String lastId = degree.getDegree_id();
                 int id = Integer.parseInt(lastId.split(prifix)[1]);
                 id++;
                 NumberFormat numberFormat = NumberFormat.getIntegerInstance();
