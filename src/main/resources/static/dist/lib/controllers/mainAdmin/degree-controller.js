@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    document.getElementById('universityBtn').style.color = "#4FB3A1";
+    document.getElementById('degreeBtn').style.color = "#4FB3A1";
     getAllDegrees();
 
     $('#btnAddNew').click(function (){
@@ -40,9 +40,9 @@ $(document).ready(function () {
     });
 
     $('#btnUpdate').click(function (){
-        let degreeID=$('#txtEditDegreeId').val();
+        let degreeID=$('#txtEditDegreeID').val();
         let degreeName=$('#txtEditDegreeName').val();
-        let facultyID=$('#selectEditFacultyID').val();
+        let facultyID=$('#txtEditFacultyID').val();
         let facultyName=$('#txtEditFacultyName').val();
 
         let dataObj=JSON.stringify({
@@ -122,24 +122,23 @@ function openAddNewModal() {
     addNewModal.show();
 }
 
-function openUpdateModal(facultyID) {
+function openUpdateModal(degreeID) {
     let updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
     $('#updateModal').on('show.bs.modal', function(event) {
         let modal = $(this);
-
-        let degreeID=modal.find('#txtEditDegreeId').val();
-        let degreeName=modal.find('#txtEditDegreeName').val();
-        let facultyID=modal.find('#selectEditFacultyID').val();
-        let facultyName=modal.find('#txtEditFacultyName').val();
+        let txtDegreeID=modal.find('#txtEditDegreeID');
+        let txtDegreeName=modal.find('#txtEditDegreeName');
+        let txtFacultyID=modal.find('#txtEditFacultyID');
+        let txtFacultyName=modal.find('#txtEditFacultyName');
 
         $.ajax({
             type:"GET",
-            url:baseURL+"faculty/getFaculty/"+facultyID,
+            url:baseURL+"degree/getDegree/"+degreeID,
             dataType:'json',
             contentType: 'application/json; charset=utf-8',
             success:function (response) {
-                txtUniCode.val(response['uniCode']);
-                txtUniName.val(response['uniName']);
+                txtDegreeID.val(response['degreeID']);
+                txtDegreeName.val(response['degreeName']);
                 txtFacultyID.val(response['facultyID']);
                 txtFacultyName.val([response['facultyName']]);
             },error(error) {

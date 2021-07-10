@@ -42,6 +42,7 @@ public class DegreeController {
     }
     @PutMapping ("/update")
     public boolean updateDegree(@RequestBody DegreeDTO dto){
+        System.out.println(dto.getDegreeID()+"====="+dto.getDegreeName()+"==="+dto.getFacultyID()+"====="+dto.getFacultyName());
         return degreeService.updateDegree(dto);
     }
     @DeleteMapping("/delete/{degreeID}")
@@ -52,7 +53,7 @@ public class DegreeController {
     public List<DegreeDTO> getAll(){
         return degreeService.getAll();
     }
-    @GetMapping("/getFaculty/{degreeID}")
+    @GetMapping("/getDegree/{degreeID}")
     public DegreeDTO getByID(@PathVariable("degreeID") String degreeID){
         return degreeService.getDegreeByID(degreeID);
     }
