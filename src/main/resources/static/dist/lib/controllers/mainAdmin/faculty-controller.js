@@ -216,14 +216,12 @@ function getAllFaculties(){
                 let faculty=response[i];
                 let facultyID=faculty['facultyID'];
                 let facultyName=faculty['facultyName']
-                let uniCode=faculty['uniCode'];
                 let uniName=faculty['uniName'];
 
                 let row="<tr>\n" +
-                    "<td class=\"p-3\">"+uniCode+"</td>\n" +
-                    "<td class=\"p-3\">"+uniName+"</td>\n" +
                     "<td class=\"p-3\">"+facultyID+"</td>\n" +
                     "<td class=\"p-3\">"+facultyName+"</td>\n" +
+                    "<td class=\"p-3\">"+uniName+"</td>\n" +
                     "<div class=\"btn-group\" role=\"group\">\n" +
                     "<td>\n" +
                     "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\""+facultyID+"\" onclick=\"openUpdateModal(this.id)\">Edit</button>\n" +

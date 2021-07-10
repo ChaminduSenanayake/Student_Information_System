@@ -82,6 +82,19 @@ public class FacultyService {
         return null;
     }
 
+    public List<FacultyDTO> getAllByUniCode(String uniCode) {
+        System.out.println(uniCode+"--------------ssssss-------------");
+        ArrayList<FacultyDTO> dtos = new ArrayList<>();
+        List<Faculty> all = facultyRepository.getByUniCode(uniCode);
+        for (Faculty fac : all) {
+            University university = fac.getUniversity();
+            if(university!=null){
+                dtos.add(new FacultyDTO(fac.getFaculty_id(), fac.getFaculty_name(), university.getUni_code(),university.getUni_name()));
+            }
+        }
+        return dtos;
+    }
+
     public String getNewID() {
         String prifix = "F";
         try {

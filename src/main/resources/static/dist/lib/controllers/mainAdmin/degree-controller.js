@@ -154,7 +154,7 @@ $('#selectFacultyID').change(function() {
     let facultyID=$(this).val();
     $.ajax({
         type:"GET",
-        url:baseURL+"university/getUniversity/"+facultyID,
+        url:baseURL+"faculty/getFaculty/"+facultyID,
         dataType:'json',
         contentType: 'application/json; charset=utf-8',
         success:function (response){

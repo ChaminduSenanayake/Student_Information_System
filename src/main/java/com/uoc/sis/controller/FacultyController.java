@@ -56,6 +56,10 @@ public class FacultyController {
     public FacultyDTO getByID(@PathVariable("facultyID") String facultyID){
         return facultyService.getFacultyByID(facultyID);
     }
+    @GetMapping("/getAllByUniCode/{uniCode}")
+    public List<FacultyDTO> getByUniCode(@PathVariable("uniCode") String uniCode){
+        return facultyService.getAllByUniCode(uniCode);
+    }
 
     @GetMapping("/getNewID")
     @ResponseBody
