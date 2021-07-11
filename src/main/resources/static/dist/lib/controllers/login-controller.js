@@ -35,8 +35,6 @@ $(document).ready(function () {
             }
         )
     });
-
-
 });
 
 
@@ -48,3 +46,4 @@ txtPassword.keypress(function (){
 txtUserName.keypress(function (){
     txtUserName.css("border-color","gainsboro");
 });
+

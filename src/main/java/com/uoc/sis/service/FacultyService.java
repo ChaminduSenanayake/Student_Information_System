@@ -83,7 +83,6 @@ public class FacultyService {
     }
 
     public List<FacultyDTO> getAllByUniCode(String uniCode) {
-        System.out.println(uniCode+"--------------ssssss-------------");
         ArrayList<FacultyDTO> dtos = new ArrayList<>();
         List<Faculty> all = facultyRepository.getByUniCode(uniCode);
         for (Faculty fac : all) {

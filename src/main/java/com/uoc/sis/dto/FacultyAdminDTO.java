@@ -17,8 +17,9 @@ public class FacultyAdminDTO {
     private String userName;
     private String password;
     private String facultyID;
+    private String facultyName;
 
-    public FacultyAdminDTO(String facultyAdminID, String fName, String lName, String address, int telephone, String email, String userName, String password, String facultyID) {
+    public FacultyAdminDTO(String facultyAdminID, String fName, String lName, String address, int telephone, String email, String userName, String password, String facultyID, String facultyName) {
         this.facultyAdminID = facultyAdminID;
         this.fName = fName;
         this.lName = lName;
@@ -28,6 +29,7 @@ public class FacultyAdminDTO {
         this.userName = userName;
         this.password = password;
         this.facultyID = facultyID;
+        this.facultyName = facultyName;
     }
 
     public String getFacultyAdminID() {
@@ -100,5 +102,13 @@ public class FacultyAdminDTO {
 
     public void setFacultyID(String facultyID) {
         this.facultyID = facultyID;
+    }
+
+    public String getFacultyName() {
+        return facultyName;
+    }
+
+    public void setFacultyName(String facultyName) {
+        this.facultyName = facultyName;
     }
 }

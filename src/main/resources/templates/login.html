@@ -8,9 +8,7 @@
     <link th:href="@{/dist/lib/css/login-style.css}" rel="stylesheet">
     <script>
         var uniCode =sessionStorage.getItem("uniCode");
-        if(uniCode==null){
-            //location.href=serverURL;
-        }
+
         setTimeout(function (){
             var opacity=0;
             var intervalID=0;
@@ -58,6 +56,7 @@
 <div class="text-center">
     <p id="sessionExpired" class="mt-5 bg-warning text-dark">[[${sessionExpired}]]</p>
 </div>
+
 <script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
 <script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/dist/lib/controllers/baseURL.js}"></script>

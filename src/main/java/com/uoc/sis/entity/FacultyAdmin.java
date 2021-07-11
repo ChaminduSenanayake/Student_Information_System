@@ -13,7 +13,7 @@ public class FacultyAdmin {
     private String email;
     private String userName;
     private String password;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumns(@JoinColumn(name = "faculty_id",referencedColumnName = "faculty_id",insertable = false,updatable = false))
     private Faculty faculty;
 
