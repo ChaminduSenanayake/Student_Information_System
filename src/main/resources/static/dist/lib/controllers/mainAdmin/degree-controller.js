@@ -2,6 +2,25 @@ $(document).ready(function () {
     document.getElementById('degreeBtn').style.color = "#4FB3A1";
     getAllDegrees();
 
+    // Table Search
+    $("#search").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#degreeTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+
+        $('#btnSearch').html("<i class=\"fas fa-eraser\"></i>&nbsp&nbspClear");
+        $('#btnSearch').css("background-color","#54948F")
+    });
+
+    $('#btnSearch').click(function (){
+        $('#btnSearch').html("<i class=\"fas fa-search\"></i> Search");
+        $('#btnSearch').css("background-color","#3B9B76");
+        $('#search').val(null);
+        getAllDegrees();
+    })
+
+    // Add new
     $('#btnAddNew').click(function (){
         let degreeID=$('#txtDegreeId').val();
         let degreeName=$('#txtDegreeName').val();
@@ -223,8 +242,8 @@ function getAllDegrees(){
                     "    <td className=\"p-3\">"+degreeName+"</td>\n" +
                     "<div class=\"btn-group\" role=\"group\">\n" +
                     "<td>\n" +
-                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\""+degreeID+"\" onclick=\"openUpdateModal(this.id)\">Edit</button>\n" +
-                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\""+degreeID+"\" onclick=\"deleteDegree(this.id)\">Delete</button>\n" +
+                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\""+degreeID+"\" onclick=\"openUpdateModal(this.id)\"><i class=\"fas fa-edit\"></i> Edit</button>\n" +
+                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\""+degreeID+"\" onclick=\"deleteDegree(this.id)\"><i class=\"fas fa-trash-alt\"></i> Delete</button>\n" +
                     "</div>\n" +
                     "</td>\n" +
                     "</tr>";

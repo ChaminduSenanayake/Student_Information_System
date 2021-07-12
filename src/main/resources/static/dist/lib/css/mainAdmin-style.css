@@ -1,8 +1,32 @@
+@import url('https://pro.fontawesome.com/releases/v5.10.0/css/all.css');
+
+body{
+    /*background-image:url("../images/mainAdmin.jpg");*/
+    background-position: center ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .nav-link {
     font-weight: bold;
     margin-left: 5px;
     margin-right: 5px;
 }
+.page-title{
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+/*.btn-secondary{*/
+/*    background-color: #2FAAC1;*/
+/*}*/
+/*.btn-danger{*/
+/*    background-color:#C24F47;*/
+/*}*/
+/*.btn-success{*/
+/*    background-color: #3B9B76;*/
+/*}*/
 
 .form-control {
     background-color: white;
@@ -11,4 +35,57 @@
 .form-control[readonly] {
     background-color: white;
     border: none;
+}
+
+
+#table-div{
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    min-width: max-content;
+}
+
+/*searchbar Styles*/
+#searchDiv{
+    position: relative;
+    width: 31.25rem;
+    max-width: 90%;
+    margin-bottom: 20px;
+}
+
+#searchDiv input {
+    border: 0;
+    border-radius: 50px;
+    font-size: 1rem;
+    padding: 0.78rem 2rem;
+    width: 100%;
+    border: 1px solid #3B9B76;
+}
+
+#searchDiv button {
+    background-color:  #3B9B76;
+    color: white;
+    position: absolute;
+    right: 0;
+    border: 0;
+    border-radius: 50px;
+    font-size: 1rem;
+    padding: 0.8rem 2rem;
+}
+
+#searchDiv button:hover {
+    background-color: #5AB193;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+input:focus, button:focus {
+    outline: none;
 }

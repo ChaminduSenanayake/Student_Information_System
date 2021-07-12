@@ -1,9 +1,6 @@
 package com.uoc.sis.entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -13,6 +10,9 @@ public class Exam {
     private String exam_name;
     private String date;
     private String duration;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumns(@JoinColumn(name = "course_id",referencedColumnName = "course_id",insertable = false,updatable = false))
+    private Course course;
 
     @OneToMany
     private List<Result> result_list;
@@ -20,18 +20,20 @@ public class Exam {
     public Exam() {
     }
 
-    public Exam(String exam_id, String exam_name, String date, String duration) {
+    public Exam(String exam_id, String exam_name, String date, String duration, Course course) {
         this.exam_id = exam_id;
         this.exam_name = exam_name;
         this.date = date;
         this.duration = duration;
+        this.course = course;
     }
 
-    public Exam(String exam_id, String exam_name, String date, String duration, List<Result> result_list) {
+    public Exam(String exam_id, String exam_name, String date, String duration, Course course, List<Result> result_list) {
         this.exam_id = exam_id;
         this.exam_name = exam_name;
         this.date = date;
         this.duration = duration;
+        this.course = course;
         this.result_list = result_list;
     }
 
@@ -73,5 +75,13 @@ public class Exam {
 
     public void setResult_list(List<Result> result_list) {
         this.result_list = result_list;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }

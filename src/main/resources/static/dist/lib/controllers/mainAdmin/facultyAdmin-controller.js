@@ -2,6 +2,25 @@ $(document).ready(function () {
     document.getElementById('facultyAdminBtn').style.color = "#4FB3A1";
     getAllFacultyAdmins();
 
+    // Table Search
+    $("#search").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#facultyAdminTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+
+        $('#btnSearch').html("<i class=\"fas fa-eraser\"></i>&nbsp&nbspClear");
+        $('#btnSearch').css("background-color","#54948F")
+    });
+
+    $('#btnSearch').click(function (){
+        $('#btnSearch').html("<i class=\"fas fa-search\"></i> Search");
+        $('#btnSearch').css("background-color","#3B9B76");
+        $('#search').val(null);
+        getAllFacultyAdmins()
+    })
+
+    // Add New
     $('#btnAddNew').click(function (){
         let facultyID=$('#selectFacultyID').val();
         let facultyName=$('#txtFacultyName').val();
@@ -366,9 +385,9 @@ function getAllFacultyAdmins(){
                     "<td class=\"p-3\">"+userName+"</td>\n" +
                     "<div class=\"btn-group\" role=\"group\">\n" +
                     "<td>\n" +
-                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\""+facultyAdminID+"\" onclick=\"openViewMoreModal(this.id)\">View More</button>\n" +
-                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\""+facultyAdminID+"\" onclick=\"openUpdateModal(this.id)\">Edit</button>\n" +
-                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\""+facultyAdminID+"\" onclick=\"deleteFacultyAdmin(this.id)\" name=\"btnDelete\">Delete</button>\n" +
+                    "<button type=\"button\" class=\"btn bg-light text-dark border-info rounded px-4 me-3\" id=\""+facultyAdminID+"\" onclick=\"openViewMoreModal(this.id)\"><i class=\"fas fa-clipboard-list\"></i> View More</button>\n" +
+                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\""+facultyAdminID+"\" onclick=\"openUpdateModal(this.id)\"><i class=\"fas fa-edit\"></i> Edit</button>\n" +
+                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\""+facultyAdminID+"\" onclick=\"deleteFacultyAdmin(this.id)\" name=\"btnDelete\"><i class=\"fas fa-trash-alt\"></i> Delete</button>\n" +
                     "</div>\n" +
                     "</td>\n" +
                     "</tr>";

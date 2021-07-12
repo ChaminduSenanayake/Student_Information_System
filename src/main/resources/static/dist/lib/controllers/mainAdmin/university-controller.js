@@ -3,6 +3,25 @@ $(document).ready(function (){
     document.getElementById('universityBtn').style.color="#4FB3A1";
     getAllUni();
 
+    // Table Search
+    $("#search").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#uniTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+
+        $('#btnSearch').html("<i class=\"fas fa-eraser\"></i>&nbsp&nbspClear");
+        $('#btnSearch').css("background-color","#54948F")
+    });
+
+    $('#btnSearch').click(function (){
+        $('#btnSearch').html("<i class=\"fas fa-search\"></i> Search");
+        $('#btnSearch').css("background-color","#3B9B76");
+        $('#search').val(null);
+        getAllUni();
+    })
+
+
     $('#addNewUniversity').submit(function(event) {
         const formData = new FormData(this);
         $.ajax({
@@ -192,8 +211,8 @@ function getAllUni(){
                     "<td><button id=\""+uniImagePath+"\" class=\"btn btn-link\" onclick=\"openImageModal(this.id)\">"+uniImageName+"</button></td>\n" +
                     "<td>\n" +
                     "<div class=\"btn-group\" role=\"group\">\n" +
-                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\""+uniCode+"\" onclick=\"openUpdateModal(this.id)\">Edit</button>\n" +
-                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\""+uniCode+"\" onclick=\"deleteUni(this.id)\" name=\"btnDelete\">Delete</button>\n" +
+                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\""+uniCode+"\" onclick=\"openUpdateModal(this.id)\"><i class=\"fas fa-edit\"></i> Edit</button>\n" +
+                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\""+uniCode+"\" onclick=\"deleteUni(this.id)\" name=\"btnDelete\"><i class=\"fas fa-trash-alt\"></i> Delete</button>\n" +
                     "</div>\n" +
                     "</td>\n" +
                     "</tr>";
@@ -240,3 +259,9 @@ function openImageModal(imagePath) {
 //         }
 //     });
 // });
+
+
+
+
+
+

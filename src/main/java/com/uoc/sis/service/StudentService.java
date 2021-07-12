@@ -3,8 +3,10 @@
 //import com.uoc.sis.dto.DegreeDTO;
 //import com.uoc.sis.entity.Degree;
 //import com.uoc.sis.entity.Faculty;
+//import com.uoc.sis.entity.Student;
 //import com.uoc.sis.repository.DegreeRepository;
 //import com.uoc.sis.repository.FacultyRepository;
+//import com.uoc.sis.repository.StudentRepository;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Service;
 //
@@ -16,12 +18,12 @@
 //@Service
 //public class StudentService {
 //    @Autowired
-//    private  degreeRepository;
+//    private StudentRepository studentRepository;
 //
 //    @Autowired
 //    private FacultyRepository facultyRepository;
 //
-//    public boolean addDegree(DegreeDTO dto) {
+//    public boolean addStudent( dto) {
 //        Faculty faculty = facultyRepository.getById(dto.getFacultyID());
 //        Degree degree=new Degree(dto.getDegreeID(),dto.getDegreeName(),faculty);
 //        degreeRepository.save(degree);
