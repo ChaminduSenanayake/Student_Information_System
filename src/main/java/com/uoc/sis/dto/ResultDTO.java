@@ -2,26 +2,28 @@ package com.uoc.sis.dto;
 
 
 public class ResultDTO {
-    private String studentID;
+    private String registrationNo;
     private String examID;
     private String courceID;
     private String courceName;
+    private String level;
     private String grade;
 
-    public ResultDTO(String studentID, String examID, String courceID, String courceName, String grade) {
-        this.studentID = studentID;
+    public ResultDTO(String registrationNo, String examID, String courceID, String courceName, String level, String grade) {
+        this.registrationNo = registrationNo;
         this.examID = examID;
         this.courceID = courceID;
         this.courceName = courceName;
+        this.level = level;
         this.grade = grade;
     }
 
-    public String getStudentID() {
-        return studentID;
+    public String getRegistrationNo() {
+        return registrationNo;
     }
 
-    public void setStudentID(String studentID) {
-        this.studentID = studentID;
+    public void setRegistrationNo(String registrationNo) {
+        this.registrationNo = registrationNo;
     }
 
     public String getExamID() {
@@ -48,6 +50,14 @@ public class ResultDTO {
         this.courceName = courceName;
     }
 
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
     public String getGrade() {
         return grade;
     }
@@ -56,3 +66,4 @@ public class ResultDTO {
         this.grade = grade;
     }
 }
+
