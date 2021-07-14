@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    document.getElementById('facultyAdminBtn').style.color = "#4FB3A1";
+    document.getElementById('facultyAdminBtn').style.color = "#ffffff";
     getAllFacultyAdmins();
 
     // Table Search
@@ -367,8 +367,11 @@ function getAllFacultyAdmins(){
         contentType: 'application/json; charset=utf-8',
         success:function (response){
             for(i in response){
+
                 let facultyAdmin=response[i];
+
                 let facultyID=facultyAdmin['facultyID'];
+                alert(facultyID);
                 let facultyName=facultyAdmin['facultyName']
                 let facultyAdminID=facultyAdmin['facultyAdminID'];
                 let adminName=facultyAdmin['fName']+" "+facultyAdmin['lName'];

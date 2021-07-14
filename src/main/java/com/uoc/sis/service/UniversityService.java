@@ -117,6 +117,16 @@ public class UniversityService {
         }
        return null;
     }
+    public UniversityDTO getUniByFacultyID(String facultyID){
+        try {
+            University uni=universityRepository.getByFacultyId(facultyID);
+            return new UniversityDTO(uni.getUni_code(),uni.getUni_name(),uni.getImage_path(),uni.getImage_name());
+        }catch (EntityNotFoundException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     public String getNewID(){
         String prifix="U";

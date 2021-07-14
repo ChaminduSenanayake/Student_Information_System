@@ -24,7 +24,6 @@ public class FacultyAdminService {
     private FacultyAdminRepository facultyAdminRepository;
 
     public boolean addFacultyAdmin(FacultyAdminDTO dto) {
-        System.out.println("---------------"+dto.getFacultyID());
         Faculty faculty=facultyRepository.getById(dto.getFacultyID());
         FacultyAdmin admin=new FacultyAdmin(dto.getFacultyAdminID(),dto.getfName(),dto.getlName(),dto.getAddress(),dto.getTelephone(),dto.getEmail(),dto.getUserName(),dto.getPassword(),faculty);
         facultyAdminRepository.save(admin);
@@ -67,9 +66,9 @@ public class FacultyAdminService {
         for (FacultyAdmin fa : all) {
             Faculty faculty=fa.getFaculty();
             if(faculty!=null) {
-                dtos.add(new FacultyAdminDTO(fa.getFacultyAdmin_id(), fa.getF_name(), fa.getL_name(), fa.getAddress(), fa.getTelephone(), fa.getEmail(), fa.getUserName(), null, faculty.getFaculty_id(), faculty.getFaculty_name()));
+                dtos.add(new FacultyAdminDTO(fa.getFacultyAdmin_id(), fa.getF_name(), fa.getL_name(), fa.getAddress(), fa.getTelephone(), fa.getEmail(), fa.getuser_name(), null, faculty.getFaculty_id(), faculty.getFaculty_name()));
             }
-            }
+        }
         return dtos;
     }
 
@@ -77,8 +76,22 @@ public class FacultyAdminService {
         try {
             FacultyAdmin fa = facultyAdminRepository.getById(facultyAdminID);
             Faculty faculty=fa.getFaculty();
-            return new FacultyAdminDTO(fa.getFacultyAdmin_id(),fa.getF_name(),fa.getL_name(),fa.getAddress(),fa.getTelephone(),fa.getEmail(),fa.getUserName(),null,faculty.getFaculty_id(),faculty.getFaculty_name());
+            return new FacultyAdminDTO(fa.getFacultyAdmin_id(),fa.getF_name(),fa.getL_name(),fa.getAddress(),fa.getTelephone(),fa.getEmail(),fa.getuser_name(),null,faculty.getFaculty_id(),faculty.getFaculty_name());
         } catch (EntityNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public FacultyAdminDTO getFacultyAdminByUserName(String userName) {
+        try {
+            System.out.println("-------!!!!!!!-----"+userName);
+            FacultyAdmin fa = facultyAdminRepository.getByUserName(userName);
+            if(fa!=null) {
+                Faculty faculty = fa.getFaculty();
+                return new FacultyAdminDTO(fa.getFacultyAdmin_id(), fa.getF_name(), fa.getL_name(), fa.getAddress(), fa.getTelephone(), fa.getEmail(), fa.getuser_name(), fa.getPassword(), faculty.getFaculty_id(), faculty.getFaculty_name());
+            }
+            } catch (EntityNotFoundException e) {
             e.printStackTrace();
         }
         return null;

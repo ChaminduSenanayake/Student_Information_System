@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    document.getElementById('degreeBtn').style.color = "#4FB3A1";
+    document.getElementById('degreeBtn').style.color = "#ffffff";
     getAllDegrees();
 
     // Table Search
@@ -236,10 +236,10 @@ function getAllDegrees(){
                 let facultyName=degree['facultyName'];
 
                 let row="<tr>\n" +
-                    "    <td className=\"p-3\">"+facultyID+"</td>\n" +
-                    "    <td className=\"p-3\">"+facultyName+"</td>\n" +
-                    "    <td className=\"p-3\">"+degreeID+"</td>\n" +
-                    "    <td className=\"p-3\">"+degreeName+"</td>\n" +
+                    "    <td class=\"p-3\">"+facultyID+"</td>\n" +
+                    "    <td class=\"p-3\">"+facultyName+"</td>\n" +
+                    "    <td class=\"p-3\">"+degreeID+"</td>\n" +
+                    "    <td class=\"p-3\">"+degreeName+"</td>\n" +
                     "<div class=\"btn-group\" role=\"group\">\n" +
                     "<td>\n" +
                     "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\""+degreeID+"\" onclick=\"openUpdateModal(this.id)\"><i class=\"fas fa-edit\"></i> Edit</button>\n" +

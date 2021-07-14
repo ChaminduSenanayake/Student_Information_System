@@ -1,6 +1,6 @@
 
 $(document).ready(function (){
-    document.getElementById('universityBtn').style.color="#4FB3A1";
+    document.getElementById('universityBtn').style.color="#ffffff";
     getAllUni();
 
     // Table Search

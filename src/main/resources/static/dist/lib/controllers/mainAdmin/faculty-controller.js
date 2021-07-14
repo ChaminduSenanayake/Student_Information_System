@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    document.getElementById('facultyBtn').style.color = "#4FB3A1";
+    document.getElementById('facultyBtn').style.color = "#ffffff";
     getAllFaculties();
 
     // Table Search

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityNotFoundException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,8 +39,7 @@ public class ResultService {
             return false;
         }
     }
-
-//    public boolean addResultList(MultipartFile dto) {
+//    public boolean addResultList(List<ResultDTO> dto) {
 //        Exam exam = examRepository.getById(dto.getExamID());
 //        Student student=studentRepository.getById(dto.getRegistrationNo());
 //        Result result =new Result(student,exam,dto.getGrade());
@@ -50,6 +51,8 @@ public class ResultService {
 //            return false;
 //        }
 //    }
+
+
 
     public boolean updateResult(ResultDTO dto) {
         try {

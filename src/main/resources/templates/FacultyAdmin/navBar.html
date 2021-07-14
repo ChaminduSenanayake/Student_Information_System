@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<body>
+<!-- Navigation bar -->
+<nav th:fragment="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand ms-4" id="sidebarToggle" href="#"><img th:src="@{/dist/lib/images/logo.svg}"style="width:150px;" alt="LOGO"></a>
+        <button class="navbar-toggler" type="button " data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse ms-5" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                <li class="nav-item"><a class="nav-link" id="studentBtn" onclick="tabChange('student')">Student</a></li>
+                <li class="nav-item"><a class="nav-link" id="examBtn">Exams</a></li>
+                <li class="nav-item"><a class="nav-link" id="resultBtn">Results</a></li>
+                <li class="nav-item"><a class="nav-link" id="departmentBtn">Department</a></li>
+            </ul>
+            <div class="d-flex">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" id="txtUserName" role="button"
+                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">[[${userName}]]</a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item">Faculty Admin</a>
+                            <a class="dropdown-item">[[${userName}]]</a>
+                            <a class="dropdown-item">Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" onclick="logOut()"><i class="fas fa-sign-out-alt"></i>&nbsp&nbspLog out</a>
+                        </div>
+                    </li>
+                    <li class="nav-item me-2"><img th:src="@{/dist/lib/images/profile.png}" style="width:40px;"alt="LOGO"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

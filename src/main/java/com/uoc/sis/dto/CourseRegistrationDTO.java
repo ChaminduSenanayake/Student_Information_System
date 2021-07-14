@@ -5,27 +5,47 @@ import com.uoc.sis.entity.Student;
 
 
 public class CourseRegistrationDTO {
-    private Student studentID;
-    private Course courseID;
+    private String registrationNo;
+    private String courseID;
+    private String courseName;
+    private String level;
 
-    public CourseRegistrationDTO(Student studentID, Course courseID) {
-        this.studentID = studentID;
+    public CourseRegistrationDTO(String registrationNo, String courseID, String courseName, String level) {
+        this.registrationNo = registrationNo;
         this.courseID = courseID;
+        this.courseName = courseName;
+        this.level = level;
     }
 
-    public Student getStudentID() {
-        return studentID;
+    public String getRegistrationNo() {
+        return registrationNo;
     }
 
-    public void setStudentID(Student studentID) {
-        this.studentID = studentID;
+    public void setRegistrationNo(String registrationNo) {
+        this.registrationNo = registrationNo;
     }
 
-    public Course getCourseID() {
+    public String getCourseID() {
         return courseID;
     }
 
-    public void setCourseID(Course courseID) {
+    public void setCourseID(String courseID) {
         this.courseID = courseID;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
     }
 }

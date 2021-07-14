@@ -1,0 +1,159 @@
+@import url('https://pro.fontawesome.com/releases/v5.10.0/css/all.css');
+
+body{
+    /*background-image:url("../images/mainAdmin.jpg");*/
+    background-position: center ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #eaedf2;
+}
+nav{
+    background-color: #1F2E4E;
+}
+
+.nav-link {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.page-title{
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #1F2E4E;
+}
+/*Top cards*/
+.bg-purple{
+    color:#AEB6BF;
+}
+.bg-red{
+   color: #D6877B;
+}
+.bg-green{
+    color: #69BF82;
+}
+.card{
+    margin-top: 20px;
+}
+.card-hover:hover{
+    cursor: pointer;
+    box-shadow: 0px 12px 30px 0px rgba(0, 0, 0, 0.2);
+    transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+/*.btn-secondary{*/
+/*    background-color: #2FAAC1;*/
+/*}*/
+/*.btn-danger{*/
+/*    background-color:#C24F47;*/
+/*}*/
+/*.btn-success{*/
+/*    background-color: #3B9B76;*/
+/*}*/
+
+/*Modal form controlls*/
+.form-control {
+    background-color: white;
+}
+
+.form-control[readonly] {
+    background-color: white;
+    border: none;
+}
+
+
+
+/*searchbar Styles*/
+.searchCard{
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+.searchDiv{
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.searchDiv input {
+    border: 0;
+    border-radius: 50px;
+    font-size: 1rem;
+    padding: 0.78rem 2rem;
+    width: 100%;
+    border: 1px solid #3B9B76;
+}
+
+.searchDiv button {
+    background-color:  #3B9B76;
+    color: white;
+    position: absolute;
+    right: 0;
+    border: 0;
+    border-radius: 50px;
+    font-size: 1rem;
+    padding: 0.85rem 2rem;
+}
+
+.searchDiv button:hover {
+    background-color: #5AB193;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+input:focus, button:focus {
+    outline: none;
+}
+
+/*Data table*/
+#table-div{
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    min-width: max-content;
+}
+
+/*Sidebar*/
+#wrapper {
+    overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    transition: margin 0.25s ease-out;
+    background-color: #1F2E4E;
+}
+
+#sidebar-wrapper .list-group {
+    width: 14rem;
+    margin-top: 50px;
+    padding-top: 50px;
+    background:transparent;
+}
+.list-group-item {
+    background:transparent;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+#uniImage{
+    width: 10rem;
+    background:transparent;
+}
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+}

@@ -17,10 +17,9 @@ public class Registration {
     public Registration() {
     }
 
-    public Registration(Student student, Course course, Registration_pk registration_pk) {
+    public Registration(Student student, Course course) {
         this.student = student;
         this.course = course;
-        this.registration_pk = registration_pk;
     }
 
     public Student getStudent() {

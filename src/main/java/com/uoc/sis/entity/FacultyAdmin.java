@@ -11,23 +11,23 @@ public class FacultyAdmin {
     private String address;
     private int telephone;
     private String email;
-    private String userName;
+    private String user_name;
     private String password;
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumns(@JoinColumn(name = "faculty_id",referencedColumnName = "faculty_id",insertable = false,updatable = false))
+    @JoinColumns(@JoinColumn(name = "faculty_id",referencedColumnName = "faculty_id"))
     private Faculty faculty;
 
     public FacultyAdmin() {
     }
 
-    public FacultyAdmin(String facultyAdmin_id, String f_name, String l_name, String address, int telephone, String email, String userName, String password, Faculty faculty) {
+    public FacultyAdmin(String facultyAdmin_id, String f_name, String l_name, String address, int telephone, String email, String user_name, String password, Faculty faculty) {
         this.facultyAdmin_id = facultyAdmin_id;
         this.f_name = f_name;
         this.l_name = l_name;
         this.address = address;
         this.telephone = telephone;
         this.email = email;
-        this.userName = userName;
+        this.user_name = user_name;
         this.password = password;
         this.faculty = faculty;
     }
@@ -80,12 +80,12 @@ public class FacultyAdmin {
         this.email = email;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getuser_name() {
+        return user_name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setuser_name(String user_name) {
+        this.user_name = user_name;
     }
 
     public String getPassword() {

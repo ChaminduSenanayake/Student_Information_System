@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title>Faculty</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/dist/lib/css/bootstrap/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/dist/lib/css/facultyAdmin-style.css}" rel="stylesheet">
+</head>
+
+<body>
+<!-- Navigation bar -->
+<nav th:insert="FacultyAdmin/navBar :: navbar"></nav>
+<!-- middle section -->
+<div class="d-flex" id="wrapper">
+    <nav th:insert="FacultyAdmin/sideBar :: sidebar"></nav>
+    <div class="container-fluid col mt-5 p-5">
+        <h2 class="page-title">Students</h2>
+
+        <div class="container-fluid">
+            <div class="row">
+                <!-- column -->
+                <div class="col-lg-4">
+                    <div class="card card-hover ">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="me-4">
+                                    <p>Number Of Students</p>
+                                    <h4 class="mb-0">$3,567.53</h4>
+                                </div>
+                                <div class="chart ms-auto">
+                                    <i class="far fa-users fa-4x bg-purple"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- column -->
+                <div class="col-sm-12 col-lg-4">
+                    <div class="card card-hover">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="me-4">
+                                    <p>Number Of Batches</p>
+                                    <h4 class="mb-0">$3,567.53</h4>
+                                </div>
+                                <div class="chart ms-auto">
+                                    <i class="fas fa-users-class fa-4x bg-red"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- column -->
+                <div class="col-sm-12 col-lg-4">
+                    <div class="card card-hover">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="me-4">
+                                    <p>Add New Student</p>
+                                    <h4 class="mb-0">$3,567.53</h4>
+                                </div>
+                                <div class="chart ms-auto">
+                                    <i class="far fa-plus-octagon fa-4x bg-green"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-4">
+                            <div class="card searchCard">
+                                <div class="card-body">
+                                    <div class="searchDiv">
+                                        <input type="text" id="search" autocomplete="off"
+                                               placeholder="Enter Degree..."/>
+                                        <button id="btnSearch"><i class="fas fa-search"></i>&nbsp&nbspSearch</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-4">
+                            <div class="card searchCard">
+                                <div class="card-body">
+                                    <div class="searchDiv">
+                                        <input type="text" id="search" autocomplete="off"
+                                               placeholder="Enter Degree..."/>
+                                        <button id="btnSearch"><i class="fas fa-search"></i>&nbsp&nbspSearch</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-4">
+                            <div class="card searchCard">
+                                <div class="card-body">
+                                    <div class="searchDiv">
+                                        <input type="text" id="search" autocomplete="off"
+                                               placeholder="Enter Degree..."/>
+                                        <button id="btnSearch"><i class="fas fa-search"></i>&nbsp&nbspSearch</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <!-- Table with no outer spacing -->
+                        <div class="table-responsive">
+                            <table class="table text-center">
+                                <thead>
+                                <tr class="table-head">
+                                    <th class="p-3">Faculty ID</th>
+                                    <th class="p-3">Faculty Name</th>
+                                    <th class="p-3">Degree ID</th>
+                                    <th class="p-3">Degree Name</th>
+                                    <th class="p-3">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody id="degreeTable">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<!-- add new faculty Modal -->
+<div class="modal fade" id="addNewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Add New Faculty</h5>
+                <button type="button " class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body mt-2 mx-3">
+                <form>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">University Code</label>
+                        <div class="col-sm-9">
+                            <select id="selectUniCode" name="selectUniCode" class="form-select"
+                                    aria-label="Default select example">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">University Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtUniName" placeholder="University Code" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">Faculty ID</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtFacultyID" placeholder="Faculty ID">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Faculty Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtFacultyName" placeholder="Faculty Name">
+                        </div>
+                    </div>
+                    <div class=" col-md-12 text-end mt-4">
+                        <button type="button" id="btnAddNew" class=" btn btn-primary mb-2 px-5"><i
+                                class="fas fa-save"></i>&nbsp Save
+                        </button>
+                        <button class="btn btn-danger mb-2 px-5" data-bs-dismiss="modal"
+                                aria-label="Close"><i class="fas fa-window-close"></i>&nbsp Close
+                        </button>
+                        </br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Update faculty Modal -->
+<div class="modal fade" id="updateModal" tabindex="-1 " aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Faculty</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body mt-2 mx-3">
+                <form>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">University Code</label>
+                        <div class="col-sm-9">
+                            <input class="form-control " id="txtEditUniCode" placeholder="University Code" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">University Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEditUniName" placeholder="University Code" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">Faculty Id</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEditFacultyID" placeholder="Faculty ID" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">Faculty Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEditFacultyName" placeholder="Faculty Name">
+                        </div>
+                    </div>
+                    <div class=" col-md-12 text-end mt-4 ">
+                        <button type="button" id="btnUpdate" class=" btn btn-primary mb-2 px-5"><i
+                                class="fas fa-edit"></i>&nbsp Update
+                        </button>
+                        <button id="cancel" class="btn btn-danger mb-2 px-5" data-bs-dismiss="modal"><i
+                                class="fas fa-window-close"></i>&nbsp Close
+                        </button>
+                        </br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
+<script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/dist/lib/controllers/baseURL.js}"></script>
+<script th:src="@{/dist/lib/js/sweetalert.js}"></script>
+<script th:src="@{/dist/lib/controllers/navBar-controller.js}"></script>
+<script th:src="@{/dist/lib/controllers/facultyAdmin/student-controller.js}"></script>
+</body>
+
+</html>

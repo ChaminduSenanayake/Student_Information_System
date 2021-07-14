@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
 <body>
 <!-- Navigation bar -->
-<nav th:fragment="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+<nav th:fragment="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img th:src="@{/dist/lib/images/logo.png}" style="width:150px;" alt="LOGO"></a>
+        <a class="navbar-brand" href="#"><img th:src="@{/dist/lib/images/logo.svg}" style="width:150px;" alt="LOGO"></a>
         <button class="navbar-toggler" type="button " data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,8 +20,8 @@
             </ul>
             <div class="d-flex">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active " onclick="logOut()"><i class="fas fa-sign-out-alt"></i>&nbsp&nbspLog out</a></li>
-                    <li class="nav-item"><a class="nav-link active " href="#">[[${userName}]]</a></li>
+                    <li class="nav-item"><a class="nav-link " onclick="logOut()"><i class="fas fa-sign-out-alt"></i>&nbsp&nbspLog out</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">[[${userName}]]</a></li>
                     <li class="nav-item me-2"><img th:src="@{/dist/lib/images/profile.png}" style="width:40px;" alt="LOGO"></li>
                 </ul>
             </div>

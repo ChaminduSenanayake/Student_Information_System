@@ -50,9 +50,17 @@ public class FacultyAdminController {
     public List<FacultyAdminDTO> getAll(){
         return adminService.getAll();
     }
+
     @GetMapping("/getFacultyAdmin/{facultyAdminID}")
     public FacultyAdminDTO getByID(@PathVariable("facultyAdminID") String facultyAdminID){
         return adminService.getFacultyAdminByID(facultyAdminID);
+    }
+
+    @GetMapping("/getByUserName/{userName}")
+    public FacultyAdminDTO getByUserName(@PathVariable("userName") String userName){
+        FacultyAdminDTO dto=adminService.getFacultyAdminByUserName(userName);
+        dto.setPassword(null);
+        return dto;
     }
 
     @GetMapping("/getNewID")

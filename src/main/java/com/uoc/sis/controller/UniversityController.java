@@ -74,6 +74,11 @@ public class UniversityController {
         return universityService.getUniByCode(uniCode);
     }
 
+    @GetMapping("/getUniversityByFacultyID/{facultyID}")
+    public UniversityDTO getUniByFacultyID(@PathVariable("facultyID") String facultyID){
+        return universityService.getUniByFacultyID(facultyID);
+    }
+
     @GetMapping("/getNewID")
     @ResponseBody
     public String getNewID() {

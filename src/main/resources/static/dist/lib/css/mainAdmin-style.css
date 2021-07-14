@@ -5,8 +5,12 @@ body{
     background-position: center ;
     background-repeat: no-repeat;
     background-size: cover;
-}
+    background-color: #eaedf2;
 
+}
+nav{
+    background-color: #1F2E4E;
+}
 .nav-link {
     font-weight: bold;
     margin-left: 5px;
@@ -37,11 +41,10 @@ body{
     border: none;
 }
 
-
 #table-div{
     background: white;
     padding: 20px;
-    border-radius: 20px;
+    border-radius: 5px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     min-width: max-content;
 }
