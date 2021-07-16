@@ -400,8 +400,11 @@ function getAllFacultyAdmins(){
 }
 
 
+//validation
+
 let email=document.getElementById('txtEmail');
 let telephone=document.getElementById('txtTelephone');
+let firstName=document.getElementById('txtFirstName');
 
 email.addEventListener('input', function(){
     let regexEmail = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -421,3 +424,11 @@ telephone.addEventListener('input', function(){
     }
 });
 
+firstName.addEventListener('input', function(){
+    let regexName = /^[a-zA-Z\s]*$/;
+    if (!regexName.test(firstName.value)) {
+        firstName.setCustomValidity('Invalid Name');
+    }else {
+        firstName.setCustomValidity('');
+    }
+});

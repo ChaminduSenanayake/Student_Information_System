@@ -7,6 +7,9 @@ body{
     background-size: cover;
     background-color: #eaedf2;
 }
+button {
+    cursor: pointer;
+}
 nav{
     background-color: #1F2E4E;
 }
@@ -23,6 +26,7 @@ nav{
     margin-bottom: 10px;
     color: #1F2E4E;
 }
+
 /*Top cards*/
 .bg-red{
     background-color: #D98880;
@@ -48,15 +52,7 @@ nav{
 .card{
     margin-top: 20px;
 }
-/*.btn-secondary{*/
-/*    background-color: #2FAAC1;*/
-/*}*/
-/*.btn-danger{*/
-/*    background-color:#C24F47;*/
-/*}*/
-/*.btn-success{*/
-/*    background-color: #3B9B76;*/
-/*}*/
+
 
 /*Modal form controlls*/
 .form-control {
@@ -111,14 +107,13 @@ nav{
     background-color: #5AB193;
 }
 
-button {
-    cursor: pointer;
-}
-
 input:focus, button:focus {
     outline: none;
 }
 
+#btnSearchExamID,#btnSearchDate,#btnSearchDepartmentID,#btnSearchDepartmentName{
+    padding: 0.85rem 2rem;
+}
 
 /*Sidebar*/
 #wrapper {
@@ -163,4 +158,7 @@ input:focus, button:focus {
         padding: 0.80rem 2rem;
     }
 
+    #btnSearchExamID,#btnSearchDate,#btnSearchDepartmentID,#btnSearchDepartmentName{
+        padding: 0.85rem 2rem;
+    }
 }

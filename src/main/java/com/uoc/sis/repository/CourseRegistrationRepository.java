@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CourseRegistrationRepository extends JpaRepository<Registration,String> {
     @Query(value = "select * from Registration where registration_no=:regNo and course_id=:courseID;",nativeQuery = true)
@@ -15,4 +17,8 @@ public interface CourseRegistrationRepository extends JpaRepository<Registration
 
     @Query(value = "delete from Registration where registration_no=:regNo and course_id=:courseID;",nativeQuery = true)
     Registration deleteRegistration(@Param("regNo")String regNo,@Param("courseID")String courseID);
+
+
+    @Query(value = "select * from Registration where registration_no=:regNo;",nativeQuery = true)
+    List<Registration> getByRegistrationNo(@Param("regNo")String regNo);
 }

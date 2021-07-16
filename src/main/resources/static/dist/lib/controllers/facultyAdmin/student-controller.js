@@ -6,7 +6,6 @@ $(document).ready(function () {
     document.getElementById('studentBtn').style.color = "#ffffff";
     var userName=$(txtUserName).html();
     getFacultyAdmin(userName);
-
 });
 
 

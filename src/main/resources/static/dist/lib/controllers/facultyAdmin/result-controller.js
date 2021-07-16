@@ -3,7 +3,7 @@ var facultyName;
 var uniCode;
 var uniName;
 $(document).ready(function () {
-    document.getElementById('courseBtn').style.color = "#ffffff";
+    document.getElementById('resultBtn').style.color = "#ffffff";
     var userName=$(txtUserName).html();
     getFacultyAdmin(userName);
 });

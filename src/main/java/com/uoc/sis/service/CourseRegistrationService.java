@@ -82,16 +82,18 @@ public class CourseRegistrationService {
 //    }
 //
 //
-//    public CourseDTO getCourseByID(String courseID) {
-//        try {
-//            Course course = courseRepository.getById(courseID);
-//            Department department=course.getDepartment();
-//            return new CourseDTO(course.getCourse_id(),course.getCourse_level(),course.getCourse_name(),course.getSemester(),department.getDepartment_id(),department.getName());
-//        } catch (EntityNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
+    public List<CourseRegistrationDTO> getCoursesByRegNO(String registrationNo) {
+        List<Registration> all = courseRegistrationRepository.getByRegistrationNo(registrationNo);
+        ArrayList<CourseRegistrationDTO> dtos = new ArrayList<>();
+        for (Registration registration : all) {
+            Course course=registration.getCourse();
+            Student student=registration.getStudent();
+            if(course!=null&student!=null) {
+                dtos.add(new CourseRegistrationDTO(student.getRegistration_no(),course.getCourse_id(),course.getCourse_name(),course.getCourse_level()));
+            }
+        }
+        return dtos;
+    }
 
 
 
