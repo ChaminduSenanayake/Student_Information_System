@@ -11,12 +11,13 @@ import com.uoc.sis.repository.CourseRepository;
 import com.uoc.sis.repository.DepartmentRepository;
 import com.uoc.sis.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class CourseRegistrationService {
     @Autowired
     private StudentRepository studentRepository;

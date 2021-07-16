@@ -47,7 +47,7 @@
                 <button type="button " class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body mt-2 mx-3">
-                <form>
+                <form id="addNewFaculty">
                     <div class="form-group row mb-3">
                         <label class="col-sm-3 col-form-label">University Code</label>
                         <div class="col-sm-9">
@@ -72,11 +72,11 @@
                     <div class="form-group row mb-3 ">
                         <label class="col-sm-3 col-form-label">Faculty Name</label>
                         <div class="col-sm-9">
-                            <input class="form-control" id="txtFacultyName" placeholder="Faculty Name">
+                            <input class="form-control" id="txtFacultyName" placeholder="Faculty Name" required>
                         </div>
                     </div>
                     <div class=" col-md-12 text-end mt-4">
-                        <button type="button" id="btnAddNew" class=" btn btn-primary mb-2 px-5"><i
+                        <button type="submit" id="btnAddNew" class=" btn btn-primary mb-2 px-5"><i
                                 class="fas fa-save"></i>&nbsp Save
                         </button>
                         <button class="btn btn-danger mb-2 px-5" data-bs-dismiss="modal"
@@ -99,7 +99,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body mt-2 mx-3">
-                <form>
+                <form id="updateFaculty">
                     <div class="form-group row mb-3">
                         <label class="col-sm-3 col-form-label">University Code</label>
                         <div class="col-sm-9">
@@ -125,7 +125,7 @@
                         </div>
                     </div>
                     <div class=" col-md-12 text-end mt-4 ">
-                        <button type="button" id="btnUpdate" class=" btn btn-primary mb-2 px-5"><i
+                        <button type="submit" id="btnUpdate" class=" btn btn-primary mb-2 px-5"><i
                                 class="fas fa-edit"></i>&nbsp Update
                         </button>
                         <button id="cancel" class="btn btn-danger mb-2 px-5" data-bs-dismiss="modal"><i

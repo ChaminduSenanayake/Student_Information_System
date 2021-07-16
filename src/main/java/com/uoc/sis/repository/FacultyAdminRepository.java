@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FacultyAdminRepository extends JpaRepository<FacultyAdmin,String> {
-    @Query(value = "select * from FacultyAdmin order by faculty_id desc limit 1;",nativeQuery = true)
+    @Query(value = "select * from FacultyAdmin order by facultyAdmin_id desc limit 1;",nativeQuery = true)
     FacultyAdmin findLastData();
 
     @Query(value = "select * from FacultyAdmin where user_name=:userName",nativeQuery = true)

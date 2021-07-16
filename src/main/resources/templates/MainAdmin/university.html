@@ -7,8 +7,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link th:href="@{/dist/lib/css/bootstrap/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/dist/lib/css/mainAdmin-style.css}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/dist/lib/data-tables/datatables.min.css}"/>
 <!--    <link rel="stylesheet" href="" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>-->
+    <style>
+        .table-footer {
+            border-top:1px solid $table-border; padding:0; }
 
+
+        .table-pagination {
+              display:table; border-collapse:collapse;
+              width:156px; float:left;
+              border-right:1px solid $table-border;
+              padding:6px; }
+        .btn-tablepage { display:table-cell; width:33px; padding:$table-padding; }
+
+        .pagination { display:table-cell; text-align:center; list-style:none; margin:0; padding:0; width:90px; }
+        .pagination li { display:inline-table;  border:1px solid #eaeaea; }
+
+        .page {
+            display:block;
+            padding:4px 0; width:22px;
+            text-align:center;
+            text-decoration:none;
+            line-height:12px; font-size:12px;
+            color:#808080;  }
+
+        .pagination .disabled { display:none; }
+        .pagination .active { border-color:#aaa; }
+        .active .page {  background:#aaa; color:#fff; }
+
+
+        /* unused */
+
+    </style>
 </head>
 
 <body>
@@ -23,20 +54,19 @@
             <button id="btnSearch"><i class="fas fa-search"></i>&nbsp&nbspSearch</button>
         </div>
 
-        <table class="table text-center">
+        <table class="table table-responsive text-center">
             <thead>
-            <tr class="table-secondary">
-                <th class="p-3">University Code</th>
-                <th class="p-3">Name</th>
-                <th class="p-3">Image</th>
-                <th>
-                    <button type="button " class="btn btn-success px-4" onclick="openAddNewModal()"><i class="fas fa-plus-circle"></i>&nbsp Add new
-                    </button>
-                </th>
-            </tr>
+                <tr class="table-secondary">
+                    <th class="p-3">University Code</th>
+                    <th class="p-3">Name</th>
+                    <th class="p-3">Image</th>
+                    <th>
+                        <button type="button " class="btn btn-success px-4" onclick="openAddNewModal()"><i class="fas fa-plus-circle"></i>&nbsp Add new
+                        </button>
+                    </th>
+                </tr>
             </thead>
             <tbody id="uniTable">
-
             </tbody>
         </table>
     </div>
@@ -140,7 +170,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body mt-2 mx-3">
-                <img id="imgUniModal" class="rounded mx-auto d-block">
+                <img id="imgUniModal" class="rounded mx-auto d-block mb-3" width="300px">
             </div>
         </div>
     </div>
@@ -152,6 +182,7 @@
 <script th:src="@{/dist/lib/js/sweetalert.js}"></script>
 <script th:src="@{/dist/lib/controllers/navBar-controller.js}"></script>
 <script th:src="@{/dist/lib/controllers/mainAdmin/university-controller.js}"></script>
+
 </body>
 
 

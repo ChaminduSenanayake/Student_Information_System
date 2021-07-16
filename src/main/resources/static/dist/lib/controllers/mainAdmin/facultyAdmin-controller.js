@@ -21,66 +21,68 @@ $(document).ready(function () {
     })
 
     // Add New
-    $('#btnAddNew').click(function (){
-        let facultyID=$('#selectFacultyID').val();
-        let facultyName=$('#txtFacultyName').val();
-        let adminID=$('#txtFacultyAdminID').val();
-        let fName=$('#txtFirstName').val();
-        let lName=$('#txtLastName').val();
-        let address=$('#txtAddress').val();
-        let telephone=$('#txtTelephone').val();
-        let email=$('#txtEmail').val();
-        let userName=$('#txtUserName').val();
-        let password=$('#txtPassword').val();
-        let confirmPassword=$('#txtConfirmPassword').val();
+    $('#addNewFacultyAdmin').submit(function (event) {
+            let facultyID = $('#selectFacultyID').val();
+            let facultyName = $('#txtFacultyName').val();
+            let adminID = $('#txtFacultyAdminID').val();
+            let fName = $('#txtFirstName').val();
+            let lName = $('#txtLastName').val();
+            let address = $('#txtAddress').val();
+            let telephone = $('#txtTelephone').val();
+            let email = $('#txtEmail').val();
+            let userName = $('#txtUserName').val();
+            let password = $('#txtPassword').val();
+            let confirmPassword = $('#txtConfirmPassword').val();
 
-        if(password==confirmPassword){
-            let dataObj=JSON.stringify({
-                "facultyAdminID":adminID,
-                "fName":fName,
-                "lName":lName,
-                "address":address,
-                "telephone":telephone,
-                "email":email,
-                "userName":userName,
-                "password":password,
-                "facultyID":facultyID,
-                "facultyName":facultyName,
-            });
-            $.ajax({
-                type: "POST",
-                url: baseURL + "facultyAdmin/save",
-                data: dataObj,
-                dataType: 'json',
-                contentType:'application/json; charset=utf-8',
-                success: function (responce) {
-                    if(responce){
-                        swal("Good job!", "You clicked the button!", "success");
-                        $('#addNewModal').on('hidden.bs.modal', function (e) {
-                            let modal=$(this);
-                            modal.find('#txtFirstName').val("");
-                            modal.find('#txtLastName').val("");
-                            modal.find('#txtAddress').val("");
-                            modal.find('#txtTelephone').val("");
-                            modal.find('#txtEmail').val("");
-                            modal.find('#txtUserName').val("");
-                        });
-                        $("#addNewModal").modal('hide');
-                        getAllFacultyAdmins();
-                    }else{
-                        swal("OOps!", "You clicked the button!", "error");
+            if (password == confirmPassword) {
+                let dataObj = JSON.stringify({
+                    "facultyAdminID": adminID,
+                    "fName": fName,
+                    "lName": lName,
+                    "address": address,
+                    "telephone": telephone,
+                    "email": email,
+                    "userName": userName,
+                    "password": password,
+                    "facultyID": facultyID,
+                    "facultyName": facultyName,
+                });
+                $.ajax({
+                    type: "POST",
+                    url: baseURL + "facultyAdmin/save",
+                    data: dataObj,
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (responce) {
+                        if (responce) {
+                            swal("Good job!", "You clicked the button!", "success");
+                            $('#addNewModal').on('hidden.bs.modal', function (e) {
+                                let modal = $(this);
+                                modal.find('#txtFirstName').val("");
+                                modal.find('#txtLastName').val("");
+                                modal.find('#txtAddress').val("");
+                                modal.find('#txtTelephone').val("");
+                                modal.find('#txtEmail').val("");
+                                modal.find('#txtUserName').val("");
+                            });
+                            $("#addNewModal").modal('hide');
+                            getAllFacultyAdmins();
+                        } else {
+                            swal("OOps!", "You clicked the button!", "error");
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
                     }
-                },
-                error:function (error){
-                    console.log(error);
-                }
-            })
-        }else{
-            swal("OOps!", "Input Passwords Correctly!", "error");
-        }
+                })
+            } else {
+                swal("OOps!", "Input Passwords Correctly!", "error");
+            }
+        event.preventDefault();
     });
 
-    $('#btnUpdate').click(function (){
+    $('#updateFacultyAdmin').submit(function (event){
+        event.preventDefault();
         let facultyID=$('#txtEditFacultyID').val();
         let facultyName=$('#txtEditFacultyName').val();
         let adminID=$('#txtEditFacultyAdminID').val();
@@ -367,11 +369,8 @@ function getAllFacultyAdmins(){
         contentType: 'application/json; charset=utf-8',
         success:function (response){
             for(i in response){
-
                 let facultyAdmin=response[i];
-
                 let facultyID=facultyAdmin['facultyID'];
-                alert(facultyID);
                 let facultyName=facultyAdmin['facultyName']
                 let facultyAdminID=facultyAdmin['facultyAdminID'];
                 let adminName=facultyAdmin['fName']+" "+facultyAdmin['lName'];
@@ -399,3 +398,26 @@ function getAllFacultyAdmins(){
         }
     })
 }
+
+
+let email=document.getElementById('txtEmail');
+let telephone=document.getElementById('txtTelephone');
+
+email.addEventListener('input', function(){
+    let regexEmail = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    if (!regexEmail.test(email.value)) {
+        email.setCustomValidity('Invalid Email Address');
+    }else {
+        email.setCustomValidity('');
+    }
+});
+
+telephone.addEventListener('input', function(){
+    let regexTelephone = /^[0-9]{10}$/;
+    if (!regexTelephone.test(telephone.value)) {
+        telephone.setCustomValidity('Invalid Telephone Number');
+    }else {
+        telephone.setCustomValidity('');
+    }
+});
+

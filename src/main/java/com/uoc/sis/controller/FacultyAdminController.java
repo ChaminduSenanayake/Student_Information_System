@@ -66,7 +66,9 @@ public class FacultyAdminController {
     @GetMapping("/getNewID")
     @ResponseBody
     public String getNewID() {
-        return adminService.getNewID();
+        String x=adminService.getNewID();
+        System.out.println("-----------"+x);
+        return x;
     }
 
 }

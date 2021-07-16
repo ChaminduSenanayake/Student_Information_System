@@ -21,7 +21,8 @@ $(document).ready(function () {
     })
 
     // Add new
-    $('#btnAddNew').click(function (){
+    $('#addNewDegree').submit(function (event) {
+        event.preventDefault();
         let degreeID=$('#txtDegreeId').val();
         let degreeName=$('#txtDegreeName').val();
         let facultyID=$('#selectFacultyID').val();
@@ -58,7 +59,8 @@ $(document).ready(function () {
         })
     });
 
-    $('#btnUpdate').click(function (){
+    $('#updateDegree').submit(function (event) {
+
         let degreeID=$('#txtEditDegreeID').val();
         let degreeName=$('#txtEditDegreeName').val();
         let facultyID=$('#txtEditFacultyID').val();
@@ -93,6 +95,7 @@ $(document).ready(function () {
                 console.log(error);
             }
         })
+        event.preventDefault();
     });
 });
 

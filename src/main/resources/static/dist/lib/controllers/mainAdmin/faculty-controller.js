@@ -22,7 +22,8 @@ $(document).ready(function () {
 
 
     // Add new
-    $('#btnAddNew').click(function (){
+    $('#addNewFaculty').submit(function (event) {
+        event.preventDefault();
         let facultyID=$('#txtFacultyID').val();
         let facultyName=$('#txtFacultyName').val();
         let uniCode=$('#selectUniCode').val();
@@ -61,7 +62,8 @@ $(document).ready(function () {
 
 
 
-    $('#btnUpdate').click(function (){
+    $('#updateFaculty').submit(function (event) {
+        event.preventDefault();
         let facultyID=$('#txtEditFacultyID').val();
         let facultyName=$('#txtEditFacultyName').val();
         let uniCode=$('#txtEditUniCode').val();

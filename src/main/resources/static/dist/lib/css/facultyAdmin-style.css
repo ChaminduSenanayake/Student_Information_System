@@ -14,6 +14,7 @@ nav{
 .nav-link {
     font-weight: bold;
     margin-right: 5px;
+    cursor: pointer;
 }
 
 .page-title{
@@ -23,22 +24,29 @@ nav{
     color: #1F2E4E;
 }
 /*Top cards*/
-.bg-purple{
-    color:#AEB6BF;
-}
 .bg-red{
-   color: #D6877B;
+    background-color: #D98880;
+    color: white;;
+}
+.bg-blue{
+    background-color: #5499C7;
+    color:white;
 }
 .bg-green{
-    color: #69BF82;
+    background-color: #3B9B76;
+    color: white;
 }
-.card{
-    margin-top: 20px;
+.row .card{
+    border: none;
 }
 .card-hover:hover{
+    transform: scale(1.05);
     cursor: pointer;
     box-shadow: 0px 12px 30px 0px rgba(0, 0, 0, 0.2);
     transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.card{
+    margin-top: 20px;
 }
 /*.btn-secondary{*/
 /*    background-color: #2FAAC1;*/
@@ -70,10 +78,16 @@ nav{
 }
 .searchDiv{
     position: relative;
-    margin-bottom: 20px;
 }
-
-.searchDiv input {
+.searchDiv select {
+    border: 0;
+    border-radius: 50px;
+    font-size: 1rem;
+    padding: 0.78rem 2rem;
+    width: 100%;
+    border: 1px solid #3B9B76;
+}
+.searchDiv input{
     border: 0;
     border-radius: 50px;
     font-size: 1rem;
@@ -101,22 +115,10 @@ button {
     cursor: pointer;
 }
 
-button:active {
-    transform: scale(0.95);
-}
-
 input:focus, button:focus {
     outline: none;
 }
 
-/*Data table*/
-#table-div{
-    background: white;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    min-width: max-content;
-}
 
 /*Sidebar*/
 #wrapper {
@@ -148,6 +150,7 @@ input:focus, button:focus {
     width: 10rem;
     background:transparent;
 }
+
 @media (min-width: 768px) {
     #sidebar-wrapper {
         margin-left: 0;
@@ -156,4 +159,8 @@ input:focus, button:focus {
     body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
         margin-left: -15rem;
     }
+    .searchDiv button {
+        padding: 0.80rem 2rem;
+    }
+
 }
