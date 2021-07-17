@@ -30,7 +30,7 @@
     </script>
 </head>
 <body>
-<div class="container-fluid bg-dark py-3" id="title">
+<div class="container-fluid py-3" id="title">
     <h2 class="font-weight-bold text-center m-3">Higher Educational Institutional Student Information System</h2>
 </div>
 <div class="container">
@@ -38,11 +38,11 @@
     <form id="loginForm">
         <div class="mb-4">
             <label for="txtUserName" class="form-label">User Name</label>
-            <input type="text" class="form-control" id="txtUserName" name="userName">
+            <input type="text" class="form-control" id="txtUserName" name="userName" autocomplete="off">
         </div>
         <div class="mb-4">
             <label for="txtPassword" class="form-label">Password</label>
-            <input type="text" class="form-control" id="txtPassword" name="password">
+            <input type="password" class="form-control" id="txtPassword" name="password" autocomplete="off">
         </div>
         <div class="text-center" id="btn-group">
             <button type="button" id="loginBtn" class="btn btn-primary px-5">LOG IN</button>

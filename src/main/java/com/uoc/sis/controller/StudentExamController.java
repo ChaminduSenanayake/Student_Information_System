@@ -21,7 +21,7 @@ public class StudentExamController {
             HttpSession session = request.getSession();
             Object user = request.getSession().getAttribute("user_session");
             if(session!=null && user!=null){
-                ModelAndView model=new ModelAndView("/Student/result.html");
+                ModelAndView model=new ModelAndView("/Student/exam.html");
                 model.addObject("userName",user.toString());
                 return model;
             }else{

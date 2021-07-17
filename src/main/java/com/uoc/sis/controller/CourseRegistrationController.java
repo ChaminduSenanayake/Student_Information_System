@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/courseRegistration")
+@RequestMapping("/api/v1/studentCourse")
 public class CourseRegistrationController {
     @Autowired
     private CourseRegistrationService registrationService;
@@ -26,7 +26,7 @@ public class CourseRegistrationController {
         HttpSession session = request.getSession();
         Object user = request.getSession().getAttribute("user_session");
         if(session!=null && user!=null){
-            ModelAndView model=new ModelAndView("/Student/courseRegistration.html");
+            ModelAndView model=new ModelAndView("/Student/course.html");
             model.addObject("userName",user.toString());
             return model;
         }else{

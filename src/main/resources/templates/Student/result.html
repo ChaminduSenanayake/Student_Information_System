@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title>Student</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/dist/lib/css/bootstrap/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/dist/lib/css/student-style.css}" rel="stylesheet">
+</head>
+
+<body>
+<!-- Navigation bar -->
+<nav th:insert="Student/navBar :: navbar"></nav>
+<!-- middle section -->
+<div class="d-flex" id="wrapper">
+    <div th:insert="Student/sideBar :: sidebar"></div>
+    <div class="container-fluid mt-5 p-5">
+        <h2 class="page-title"><b>Results</b></h2>
+        <div class="container table-div mb-5">
+            <h5 class="font-weight-bold text-start mb-3 ms-3"><b>Level 1</b></h5>
+            <table class="table text-center">
+                <thead>
+                <tr class="table-secondary">
+                    <th class="p-3">Registration NO</th>
+                    <th class="p-3">Course ID</th>
+                    <th class="p-3">Course Name</th>
+                    <th class="p-3">Exam ID</th>
+                    <th class="p-3">Grade</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="p-3">2017s16212</td>
+                    <td class="p-3">ST 3008</td>
+                    <td class="p-3">Sataitical Modeling</td>
+                    <td class="p-3">STE 3008</td>
+                    <td class="p-3">B+</td>
+
+                </tr>
+                <tr>
+                    <td class="p-3">2017s16212</td>
+                    <td class="p-3">ST 3009</td>
+                    <td class="p-3">Time Series</td>
+                    <td class="p-3">STE 3009</td>
+                    <td class="p-3">A</td>
+
+                </tr>
+                <tr>
+                    <td class="p-3">2017s16212</td>
+                    <td class="p-3">ST 3010</td>
+                    <td class="p-3">Health Statistics</td>
+                    <td class="p-3">STE 3010</td>
+                    <td class="p-3">B</td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-div container mb-2">
+            <h5 class="font-weight-bold text-start mb-3 ms-3"><b>Level 2</b></h5>
+            <table class="table text-center">
+                <thead>
+                <tr class="table-secondary">
+                    <th class="p-3">Registration NO</th>
+                    <th class="p-3">Course ID</th>
+                    <th class="p-3">Course Name</th>
+                    <th class="p-3">Exam ID</th>
+                    <th class="p-3">Grade</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="p-3">2017s16212</td>
+                    <td class="p-3">ST 3008</td>
+                    <td class="p-3">Sataitical Modeling</td>
+                    <td class="p-3">STE 3008</td>
+                    <td class="p-3">B+</td>
+
+                </tr>
+                <tr>
+                    <td class="p-3">2017s16212</td>
+                    <td class="p-3">ST 3009</td>
+                    <td class="p-3">Time Series</td>
+                    <td class="p-3">STE 3009</td>
+                    <td class="p-3">A</td>
+
+                </tr>
+                <tr>
+                    <td class="p-3" id="txtRegistrationNO3">2017s16212</td>
+                    <td class="p-3" id="txtCourseID3">ST 3010</td>
+                    <td class="p-3" id="txtCourseName3">Health Statistics</td>
+                    <td class="p-3" id="txtExamID3">STE 3010</td>
+                    <td class="p-3" id="txtGrade3">B</td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
+<script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/dist/lib/controllers/baseURL.js}"></script>
+<script th:src="@{/dist/lib/js/sweetalert.js}"></script>
+<script th:src="@{/dist/lib/controllers/navBar-controller.js}"></script>
+<script th:src="@{/dist/lib/controllers/student/result-controller.js}"></script>
+</body>
+
+</html>

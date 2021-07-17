@@ -1,7 +1,14 @@
-
+body{
+    /*!*background-image:url("../images/mainAdmin.jpg");*!*/
+    /*background-position: center ;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+    background-color: #eaedf2;
+}
 #title{
     color: white;
     font-weight: bold;
+    background-color: #1F2E4E;
 }
 
 .card{

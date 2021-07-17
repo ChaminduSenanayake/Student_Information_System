@@ -1,13 +1,14 @@
 @import url('https://pro.fontawesome.com/releases/v5.10.0/css/all.css');
 
 body{
-    /*background-image:url("../images/mainAdmin.jpg");*/
-    background-position: center ;
-    background-repeat: no-repeat;
-    background-size: cover;
+    /*!*background-image:url("../images/mainAdmin.jpg");*!*/
+    /*background-position: center ;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
     background-color: #eaedf2;
 
 }
+
 nav{
     background-color: #1F2E4E;
 }
@@ -19,7 +20,8 @@ nav{
 .page-title{
     text-align: center;
     font-weight: bold;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+    color: #1F2E4E;
 }
 
 /*.btn-secondary{*/

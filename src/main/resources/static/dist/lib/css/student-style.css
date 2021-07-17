@@ -23,35 +23,10 @@ nav{
 .page-title{
     text-align: center;
     font-weight: bold;
-    margin-bottom: 20px;
     color: #1F2E4E;
+    margin-bottom: 20px;
 }
 
-/*Top cards*/
-.bg-red{
-    background-color: #D98880;
-    color: white;;
-}
-.bg-blue{
-    background-color: #5499C7;
-    color:white;
-}
-.bg-green{
-    background-color: #3B9B76;
-    color: white;
-}
-.row .card{
-    border: none;
-}
-.card-hover:hover{
-    transform: scale(1.05);
-    cursor: pointer;
-    box-shadow: 0px 12px 30px 0px rgba(0, 0, 0, 0.2);
-    transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
-}
-.card{
-    margin-top: 20px;
-}
 
 
 /*Modal form controlls*/
@@ -64,56 +39,17 @@ nav{
     border: none;
 }
 
-
-
-/*searchbar Styles*/
-.searchCard{
-    border: none;
-    padding: 0;
-    margin: 0;
-}
-.searchDiv{
-    position: relative;
-}
-.searchDiv select {
-    border: 0;
-    border-radius: 50px;
-    font-size: 1rem;
-    padding: 0.78rem 2rem;
-    width: 100%;
-    border: 1px solid #3B9B76;
-}
-.searchDiv input{
-    border: 0;
-    border-radius: 50px;
-    font-size: 1rem;
-    padding: 0.78rem 2rem;
-    width: 100%;
-    border: 1px solid #3B9B76;
+.table-div{
+    padding: 0px;
+    background-color: white;
+    padding-top:20px ;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 12px 30px 0px rgba(0, 0, 0, 0.2);
 }
 
-.searchDiv button {
-    background-color:  #3B9B76;
-    color: white;
-    position: absolute;
-    right: 0;
-    border: 0;
-    border-radius: 50px;
-    font-size: 1rem;
-    padding: 0.85rem 2rem;
-}
 
-.searchDiv button:hover {
-    background-color: #5AB193;
-}
 
-input:focus, button:focus {
-    outline: none;
-}
-
-#btnSearchExamID,#btnSearchDate,#btnSearchDepartmentID,#btnSearchDepartmentName{
-    padding: 0.85rem 2rem;
-}
 
 /*Sidebar*/
 #wrapper {
@@ -121,7 +57,7 @@ input:focus, button:focus {
 }
 
 #sidebar-wrapper {
-    min-height: 100vh;
+    min-height: 120vh;
     margin-left: -15rem;
     transition: margin 0.25s ease-out;
     background-color: #1F2E4E;
@@ -141,7 +77,7 @@ input:focus, button:focus {
     border: none;
 }
 
-#uniImage{
+#studentImage{
     width: 10rem;
     background:transparent;
 }

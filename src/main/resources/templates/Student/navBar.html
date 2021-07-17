@@ -13,11 +13,10 @@
         </button>
         <div class="collapse navbar-collapse ms-5" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-                <li class="nav-item"><a class="nav-link" id="studentBtn" onclick="tabChange('student')">Student</a></li>
-                <li class="nav-item"><a class="nav-link" id="courseBtn" onclick="tabChange('course')">Course</a></li>
-                <li class="nav-item"><a class="nav-link" id="examBtn" onclick="tabChange('exam')">Exams</a></li>
-                <li class="nav-item"><a class="nav-link" id="resultBtn" onclick="tabChange('result')">Results</a></li>
-                <li class="nav-item"><a class="nav-link" id="departmentBtn" onclick="tabChange('department')">Department</a></li>
+                <li class="nav-item"><a class="nav-link" id="profileBtn" onclick="tabChange('studentProfile')">My Profile</a></li>
+                <li class="nav-item"><a class="nav-link" id="courseBtn" onclick="tabChange('studentCourse')">Course</a></li>
+                <li class="nav-item"><a class="nav-link" id="examBtn" onclick="tabChange('studentExam')">Exams</a></li>
+                <li class="nav-item"><a class="nav-link" id="resultBtn" onclick="tabChange('studentResult')">Results</a></li>
             </ul>
             <div class="d-flex">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -25,7 +24,7 @@
                         <a class="nav-link active dropdown-toggle" id="txtUserName" role="button"
                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">[[${userName}]]</a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item">Faculty Admin</a>
+                            <a class="dropdown-item">Student</a>
                             <a class="dropdown-item">[[${userName}]]</a>
                             <a class="dropdown-item"><i class="fas fa-user-cog"></i>&nbsp&nbspSettings</a>
                             <div class="dropdown-divider"></div>

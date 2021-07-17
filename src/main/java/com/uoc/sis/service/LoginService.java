@@ -23,14 +23,22 @@ public class LoginService {
                 .path("/student/")
                 .toUriString();
 
+        String studentUrl = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/api/v1/")
+                .path("/studentProfile/")
+                .toUriString();
+
         String userName=loginDTO.getUserName();
         System.out.println("---------------"+userName);
         String userType = "Admin";
-        if(!userName.equals("Admin")){
+        if(userName.equals("Admin")){
+            userType="Admin";
+        }else if(userName.equals("Student")){
+            userType="stu";
+        }else{
 //            ((userName.split("@"))[0].split("."))[0]
-            userType="fac";
+                userType="fac";
         }
-        System.out.println("---------------"+userType);
         switch (userType) {
             case "Admin":
                 if (loginDTO.getUserName().equals("Admin") && loginDTO.getPassword().equals("1234")) {
@@ -47,6 +55,16 @@ public class LoginService {
                 if (dto!=null && loginDTO.getPassword().equals(dto.getPassword())) {
                     loginDTO.setUrl(facultyAdminUrl);
                 } else if (dto!=null &&  !loginDTO.getPassword().equals(dto.getPassword())) {
+                    loginDTO.setPassword(null);
+                } else {
+                    loginDTO.setUserName(null);
+                    loginDTO.setPassword(null);
+                }
+                return loginDTO;
+            case "stu":
+                if (loginDTO.getUserName().equals("Student") && loginDTO.getPassword().equals("1234")) {
+                    loginDTO.setUrl(studentUrl);
+                } else if (loginDTO.getUserName().equals("Student") && !loginDTO.getPassword().equals("1234")) {
                     loginDTO.setPassword(null);
                 } else {
                     loginDTO.setUserName(null);

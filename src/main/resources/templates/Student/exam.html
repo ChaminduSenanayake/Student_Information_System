@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title>Student</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/dist/lib/css/bootstrap/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/dist/lib/css/student-style.css}" rel="stylesheet">
+</head>
+
+<body>
+<!-- Navigation bar -->
+<nav th:insert="Student/navBar :: navbar"></nav>
+<!-- middle section -->
+<div class="d-flex" id="wrapper">
+    <div th:insert="Student/sideBar :: sidebar"></div>
+    <div class="container-fluid mt-5 p-5">
+        <h2 class="page-title"><b>My Exams</b></h2>
+
+        <div class="table-div container">
+            <table class="table text-center">
+                <th class="p-3">Course ID</th>
+                <th class="p-3">Course Name</th>
+                <th class="p-3">Exam ID</th>
+                <th class="p-3">Date</th>
+                <th class="p-3">Duration</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="p-3">ST 3008</td>
+                <td class="p-3">Statistical Modeling</td>
+                <td class="p-3">STE 3008</td>
+                <td class="p-3">2021-06-23</td>
+                <td class="p-3">1pm - 3pm</td>
+            </tr>
+            <tr>
+                <td class="p-3">ST 3008</td>
+                <td class="p-3">Statistical Modeling</td>
+                <td class="p-3">STE 3008</td>
+                <td class="p-3">2021-06-23</td>
+                <td class="p-3">1pm - 3pm</td>
+            </tr>
+            <tr>
+                <td class="p-3">ST 3008</td>
+                <td class="p-3">Statistical Modeling</td>
+                <td class="p-3">STE 3008</td>
+                <td class="p-3">2021-06-23</td>
+                <td class="p-3">1pm - 3pm</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
+<script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/dist/lib/controllers/baseURL.js}"></script>
+<script th:src="@{/dist/lib/js/sweetalert.js}"></script>
+<script th:src="@{/dist/lib/controllers/navBar-controller.js}"></script>
+<script th:src="@{/dist/lib/controllers/student/exam-controller.js}"></script>
+</body>
+
+</html>

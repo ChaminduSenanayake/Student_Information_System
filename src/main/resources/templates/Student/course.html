@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title>Student</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/dist/lib/css/bootstrap/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/dist/lib/css/student-style.css}" rel="stylesheet">
+</head>
+
+<body>
+<!-- Navigation bar -->
+<nav th:insert="Student/navBar :: navbar"></nav>
+<!-- middle section -->
+<div class="d-flex" id="wrapper">
+    <div th:insert="Student/sideBar :: sidebar"></div>
+    <div class="container-fluid mt-5 p-5">
+        <h2 class="page-title"><b>Course Registration</b></h2>
+        <form>
+            <div class="form-group row mb-3">
+                <label class="col-sm-2 col-form-label">Course ID</label>
+                <div class="col-sm-10">
+                    <select class="form-select" id="txtCourseID">
+                        <option value="1 ">ST 3008</option>
+                        <option value="2 ">ST 3009</option>
+                        <option value="3 ">ST 3010</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row mb-3">
+                <label class="col-sm-2 col-form-label">Course Name</label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="txtCourseName" placeholder="Course Name" readonly>
+                </div>
+            </div>
+            <div class="form-group row mb-3 ">
+                <label class="col-sm-2 col-form-label">Course Level</label>
+                <div class="col-sm-10 ">
+                    <input class="form-control" id="txtCourseLevel" placeholder="Course Level" readonly>
+                </div>
+            </div>
+            <div class="form-group row mb-3 ">
+                <label class="col-sm-2 col-form-label">Semester</label>
+                <div class="col-sm-10 ">
+                    <input class="form-control" id="txtSemester" placeholder="Semester" readonly>
+                </div>
+            </div>
+            <div class="form-group row mb-3 ">
+                <label class="col-sm-2 col-form-label">Number Of Credits</label>
+                <div class="col-sm-10 ">
+                    <input class="form-control" id="txtCredits" placeholder="Number Of Credits" readonly>
+                </div>
+            </div>
+            <div class=" col-md-12 text-end ">
+                <button name="btnAddNew" type="submit" class=" btn btn-primary mb-5 px-5">Add</button>
+                <button id="cancel" name="cancel" class="btn btn-danger mb-5 px-5" data-bs-dismiss="modal"
+                        aria-label="Close">Close</button></br>
+            </div>
+        </form>
+
+
+        <div class="table-div container">
+            <h5 class="font-weight-bold text-start mb-3 ms-3"><b>My Courses</b></h5>
+            <table class="table text-center">
+                <thead>
+                <tr class="table-secondary">
+                    <th class="p-3">Course ID</th>
+                    <th class="p-3">Course Name</th>
+                    <th class="p-3">Course Level</th>
+                    <th class="p-3">Semester</th>
+                    <th class="p-3">Number of Credits</th>
+                    <th class="p-3">Change</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="p-3" id="txtCourseCode1">ST 3008</td>
+                    <td class="p-3" id="txtCourseName1">Statistical Modeling</td>
+                    <td class="p-3" id="txtCourseLevel1">Level 1</td>
+                    <td class="p-3" id="txtSemester1">Semester 2</td>
+                    <td class="p-3" id="txtCredits1">3</td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-danger rounded px-4" id='btnDelete' value="1"
+                                    name="btnDelete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </td>
+                    </form>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
+<script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/dist/lib/controllers/baseURL.js}"></script>
+<script th:src="@{/dist/lib/js/sweetalert.js}"></script>
+<script th:src="@{/dist/lib/controllers/navBar-controller.js}"></script>
+<script th:src="@{/dist/lib/controllers/student/course-controller.js}"></script>
+</body>
+
+</html>
