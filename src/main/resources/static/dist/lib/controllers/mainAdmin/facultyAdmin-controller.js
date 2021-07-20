@@ -405,6 +405,8 @@ function getAllFacultyAdmins(){
 let email=document.getElementById('txtEmail');
 let telephone=document.getElementById('txtTelephone');
 let firstName=document.getElementById('txtFirstName');
+let lastName=document.getElementById('txtLastName');
+let password=document.getElementById('txtPassword');
 
 email.addEventListener('input', function(){
     let regexEmail = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -432,3 +434,138 @@ firstName.addEventListener('input', function(){
         firstName.setCustomValidity('');
     }
 });
+
+lastName.addEventListener('input', function(){
+    let regexName = /^[a-zA-Z\s]*$/;
+    if (!regexName.test(firstName.value)) {
+        firstName.setCustomValidity('Invalid Name');
+    }else {
+        firstName.setCustomValidity('');
+    }
+});
+
+
+password.addEventListener('input', function(){
+    let regex = /^[A-Za-z]\w{7,14}$/;
+    if (!regex.test(password.value)) {
+        password.setCustomValidity('Invalid password');
+    }else {
+        password.setCustomValidity('');
+    }
+});
+
+// let degreeId=document.getElementById('txtDegreeId');
+//
+// degreeId.addEventListener('input', function(){
+//     let regex = /^[a-zA-Z ]{2,5}$/;
+//     if (!regex.test(degreeId.value)) {
+//         degreeId.setCustomValidity('Invalid Degree Id');
+//     }else {
+//         degreeId.setCustomValidity('');
+//     }
+// });
+
+
+// let degreeName=document.getElementById('txtDegreeName');
+//
+// degreeName.addEventListener('input', function(){
+//     let regex = /^[a-zA-Z ]{2,30}$/;
+//     if (!regex.test(degreeName.value)) {
+//         degreeName.setCustomValidity('Invalid Degree Name');
+//     }else {
+//         degreeName.setCustomValidity('');
+//     }
+// });
+
+// let facultyId=document.getElementById('txtFacultyId');
+//
+// facultyId.addEventListener('input', function(){
+//     let regex = /^[a-zA-Z ]{2,5}$/;
+//     if (!regex.test(facultyId.value)) {
+//         facultyId.setCustomValidity('Invalid faculty Id');
+//     }else {
+//         facultyId.setCustomValidity('');
+//     }
+// });
+//
+// let facultyName=document.getElementById('txtFacultyName');
+//
+// facultyName.addEventListener('input', function(){
+//     let regex = /^[a-zA-Z ]{2,30}$/;
+//     if (!regex.test(facultyName.value)) {
+//         facultyName.setCustomValidity('Invalid faculty Name');
+//     }else {
+//         facultyName.setCustomValidity('');
+//     }
+// });
+//
+// let universityName=document.getElementById('txtUniversityName');
+//
+// universityName.addEventListener('input', function(){
+//     let regex = /^[a-zA-Z ]{2,30}$/;
+//     if (!regex.test(universityName.value)) {
+//         universityName.setCustomValidity('Invalid university Name');
+//     }else {
+//         universityName.setCustomValidity('');
+//     }
+// });
+
+// let universityCode=document.getElementById('txtUniversityCode');
+//
+// universityCode.addEventListener('input', function(){
+//     let regex = /^[a-zA-Z ]{2,5}$/;
+//     if (!regex.test(universityCode.value)) {
+//         universityCode.setCustomValidity('Invalid university Code');
+//     }else {
+//         universityCode.setCustomValidity('');
+//     }
+// });
+
+
+// let courseId=document.getElementById('txtCourseId');
+//
+// courseId.addEventListener('input', function(){
+//     let regex = /^[a-zA-Z ]{2,5}$/;
+//     if (!regex.test(courseId.value)) {
+//         courseId.setCustomValidity('Invalid Course Id');
+//     }else {
+//         courseId.setCustomValidity('');
+//     }
+// });
+
+// let courseName=document.getElementById('txtCourseName');
+//
+// courseName.addEventListener('input', function(){
+//     let regex = /^[a-zA-Z ]{2,30}$/;
+//     if (!regex.test(courseName.value)) {
+//         courseName.setCustomValidity('Invalid Course Name');
+//     }else {
+//         courseName.setCustomValidity('');
+//     }
+// });
+
+
+// let examId=document.getElementById('txtExamId');
+//
+// examId.addEventListener('input', function(){
+//     let regex = /^[a-zA-Z ]{2,5}$/;
+//     if (!regex.test(examId.value)) {
+//         examId.setCustomValidity('Invalid Exam Id');
+//     }else {
+//         examId.setCustomValidity('');
+//     }
+// });
+
+// let studentName=document.getElementById('txtStudentName');
+//
+// studentName.addEventListener('input', function(){
+//     let regex = /^[a-zA-Z ]{2,30}$/;
+//     if (!regex.test(studentName.value)) {
+//         studentName.setCustomValidity('Invalid Student Name');
+//     }else {
+//         studentName.setCustomValidity('');
+//     }
+// });
+
+
+

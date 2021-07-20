@@ -38,8 +38,10 @@ public class DegreeController {
 
     @PostMapping("/save")
     public boolean addDegree(@RequestBody DegreeDTO dto){
+
         return degreeService.addDegree(dto);
     }
+
     @PutMapping ("/update")
     public boolean updateDegree(@RequestBody DegreeDTO dto){
         System.out.println(dto.getDegreeID()+"====="+dto.getDegreeName()+"==="+dto.getFacultyID()+"====="+dto.getFacultyName());

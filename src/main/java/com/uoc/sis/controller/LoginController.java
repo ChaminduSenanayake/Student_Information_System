@@ -36,6 +36,6 @@ public class LoginController {
     public ModelAndView logOut(HttpServletRequest request) {
         //invalidate the session , this will clear the data from configured database (Mysql/redis/hazelcast)
         request.getSession().invalidate();
-        return new ModelAndView("index.html");
+        return new ModelAndView("uni-selector.html");
     }
 }
