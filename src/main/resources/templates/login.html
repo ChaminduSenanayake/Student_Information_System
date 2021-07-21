@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link th:href="@{/dist/lib/css/bootstrap/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/dist/lib/css/homepage-style.css}" rel="stylesheet">
     <link th:href="@{/dist/lib/css/login-style.css}" rel="stylesheet">
+    <link th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i}" rel="stylesheet">
     <script>
         var uniCode =sessionStorage.getItem("uniCode");
 
@@ -25,15 +27,17 @@
                 }
             },10);
         },5000)
-
-
     </script>
 </head>
 <body>
-<div class="container-fluid py-3" id="title">
-    <h2 class="font-weight-bold text-center m-3">Higher Educational Institutional Student Information System</h2>
-</div>
-<div class="container">
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+        <h1 class="logo me-auto"><img th:src="@{/dist/lib/images/logo.svg}" alt="LOGO"></h1>
+        <a onclick="openHomeWindow()" href="#" class="get-started-btn">Back to Home</a>
+    </div>
+</header>
+
+<div class="container middlebox">
     <h1 id="loginTitle">LOG IN</h1>
     <form id="loginForm">
         <div class="mb-4">

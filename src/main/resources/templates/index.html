@@ -1,34 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Mentor Bootstrap Template - Index</title>
+  <title>Home</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/img/favicon.png" rel="icon">
-  <link href="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link th:href="@{/dist/lib/images/homepage/favicon.png}" rel="icon">
+  <link th:href="@{/dist/lib/images/homepage/apple-touch-icon.png}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i}"
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link th:href="@{/dist/lib/css/bootstrap/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{/dist/lib/css/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/css/style.css" rel="stylesheet">
+  <link th:href="@{/dist/lib/css/homepage-style.css}" rel="stylesheet">
 
 </head>
 
@@ -38,45 +34,44 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html">HEISIS</a></h1>
+      <h1 class="logo me-auto"><img th:src="@{/dist/lib/images/logo.svg}" alt="LOGO"></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!--<a href="uni-selector.html" class="logo me-auto"><img src="assets/img/logo.jpg" style="width:150px; height: 100px;" alt="LOGO" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
-      
+
         <ul>
-          <li><a class="active" href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="Institutes.html">Institutes</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a class="active" onclick="openWindow('home')" href="#">Home</a></li>
+          <li><a onclick="openWindow('about')" href="#">About</a></li>
+          <li><a onclick="openWindow('institutes')" href="#" >Institutes</a></li>
+          <li><a onclick="openWindow('contact')" href="#">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="courses.html" class="get-started-btn">Login</a>
+      <a onclick="openLoginWindow()" href="#" class="get-started-btn">Login</a>
 
     </div>
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex justify-content-center align-items-center">
-    <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+    <div class="container position-relative">
       <h1>Higher Education Institutional <br>Student Information System</h1>
       <h2>Learning Today<br>Leading Tomorrow</h2>
-      <a href="courses.html" class="btn-get-started">Login</a>
+      <a onclick="openLoginWindow()" class="btn-get-started">Login</a>
     </div>
   </section><!-- End Hero -->
 
   <main id="main">
-
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/img/Home%202.jpg" class="img-fluid" alt=""><br><br>
-            <img src="assets/img/Home 3.jpg" class="img-fluid" alt="">
+            <img th:href="@{/dist/lib/images/homepage/Home%202.jpg}" class="img-fluid" alt=""><br><br>
+            <img th:href="@{/dist/lib/images/homepage/Home 3.jpg}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
             <h3 class="fst-italic"> Developing fast and reliable centralized students' database.</h3>
@@ -208,14 +203,15 @@
       class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
+  <script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/dist/lib/js/homepage/purecounter.js}"></script>
 
   <!-- Template Main JS File -->
-  <script src="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/js/main.js"></script>
+  <script th:src="@{/dist/lib/js/homepage/main.js}"></script>
+  <script th:src="@{/dist/lib/controllers/baseURL.js}"></script>
+  <script th:src="@{/dist/lib/controllers/homepage-controller.js}"></script>
 
 </body>
 

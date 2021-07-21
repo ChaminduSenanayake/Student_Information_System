@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i}" rel="stylesheet">
+</head>
 <body>
 <!-- Navigation bar -->
 <nav th:fragment="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img th:src="@{/dist/lib/images/logo.svg}" style="width:150px;" alt="LOGO"></a>
+        <a class="navbar-brand" href="#"><img th:src="@{/dist/lib/images/logo.svg}" style="width:120px;" alt="LOGO"></a>
         <button class="navbar-toggler" type="button " data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

@@ -17,10 +17,11 @@ function loadUni() {
                     let uniCode = university['uniCode'];
                     let uniName = university['uniName'];
                     let imagePath = university['imagePath'];
+
                     let card = " <div id=\"" + uniCode + "\" onclick=\"openLoginWindow(this.id)\" class=\"col-sm-3 py-2\">\n" +
                         "            <div class=\"card card-body h-200\">\n" +
                         "                <img class=\"rounded mx-auto d-block\" id=\"img_" + uniCode + "\">\n" +
-                        "                <p>" + uniName + "</p>\n" +
+                        "                <h4>" + uniName + "</h4>\n" +
                         "            </div>\n" +
                         "        </div>";
                     cardset.append(card);
@@ -32,7 +33,14 @@ function loadUni() {
     });
 }
 
-function openLoginWindow(uniCode) {
-    sessionStorage.setItem("uniCode",uniCode);
+
+
+
+function openWindow(tabName) {
+    location.href= baseURL+"homepage/"+tabName;
+    return false;
+}
+function openLoginWindow() {
     location.href= baseURL+"login/";
+    return false;
 }

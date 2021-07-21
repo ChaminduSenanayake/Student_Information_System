@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="3874" height="938" viewBox="0 0 3874 938">
+<svg xmlns="http://www.w3.org/2000/svg" width="4097" height="974" viewBox="0 0 4097 974">
   <defs>
     <style>
       .cls-1 {
         font-size: 123.042px;
         fill: #fff;
-        text-anchor: middle;
-        font-family: Audiowide;
+        font-family: Poppins;
+        font-weight: 600;
       }
     </style>
   </defs>
-  <text id="HEISIS" class="cls-1" transform="translate(1927.799 892.817) scale(7.518 9.841)"><tspan x="0">HEISIS</tspan></text>
+  <text id="HEISIS" class="cls-1" transform="matrix(9.671, 0, 0, 9.671, -19, 903.817)">HEISIS</text>
 </svg>

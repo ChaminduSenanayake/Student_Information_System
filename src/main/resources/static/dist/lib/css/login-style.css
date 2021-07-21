@@ -5,17 +5,16 @@ body{
     background-size: cover;
     background-color: #eaedf2;
 }
-#title{
-    color: white;
-    font-weight: bold;
-    background-color: #1F2E4E;
+
+#header .logo img {
+    max-height: 40px;
 }
-.container{
+.middlebox{
     background-color: white;
     justify-content: center;
     max-width: 600px;
     border-radius:10px;
-    margin-top:60px;
+    margin-top:160px;
     padding:60px;
     padding-top: 30px;
     padding-bottom: 30px;
@@ -27,7 +26,6 @@ body{
     color: gray;
     margin-bottom: 50px;
 }
-
 label{
     font-weight: bold;
     font-size: 12px;
@@ -41,6 +39,7 @@ label{
 }
 .form-control{
     border-radius: 15px;
+    border-color: #5fcf80 ;
 }
 #btn-group{
     margin-top: 30px;
@@ -50,8 +49,9 @@ label{
     color: #0c63e4;
 }
 @media only screen and (max-width: 600px) {
-    .container{
+    .middlebox{
         padding:20px;
         max-width: 400px;
     }
 }
+

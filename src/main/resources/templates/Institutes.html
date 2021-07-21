@@ -1,32 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymleaf.org">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Courses - Mentor Bootstrap Template</title>
+  <title>Courses</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/img/favicon.png" rel="icon">
-  <link href="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link th:href="@{/dist/lib/images/homepage/favicon.png}" rel="icon">
+  <link th:href="@{/dist/lib/images/homepage/apple-touch-icon.png}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i}" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link th:href="@{/dist/lib/css/bootstrap/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{/dist/lib/css/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/css/style.css" rel="stylesheet">
+  <link th:href="@{/dist/lib/css/homepage-style.css}" rel="stylesheet">
 
 </head>
 
@@ -36,21 +31,22 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html">HEISIS</a></h1>
+      <h1 class="logo me-auto"><img th:src="@{/dist/lib/images/logo.svg}" alt="LOGO"></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="uni-selector.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
+
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a class="active" href="courses.html">Institutes</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a onclick="openWindow('home')" href="#">Home</a></li>
+          <li><a onclick="openWindow('about')" href="#">About</a></li>
+          <li><a class="active" onclick="openWindow('institutes')" href="#" >Institutes</a></li>
+          <li><a onclick="openWindow('contact')" href="#">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="courses.html" class="get-started-btn">Login</a>
+      <a onclick="openLoginWindow()" href="#" class="get-started-btn">Login</a>
 
     </div>
   </header><!-- End Header -->
@@ -67,108 +63,10 @@
     </div><!-- End Breadcrumbs -->
 
     <!-- ======= Institute Section ======= -->
-    <section id="courses" class="courses">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row" data-aos="zoom-in" data-aos-delay="100">
-
-          <div class="col-lg-3 col-md-4 d-flex align-items-stretch">
-            <div class="course-item">
-              <img src="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/img/uoc-logo.png" class="img-fluid align-items-center" alt="..." style="width:200px; height: 200px;">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>University Of Colombo</h4>
-                </div>
-                <p>94 K.M. Mawatha,<br> Colombo 00700</p>
-              </div>
-            </div>
-          </div> <!-- End UOM-->
-
-          <div class="col-lg-3 col-md-4 d-flex align-items-stretch">
-            <div class="course-item">
-              <img src="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/img/Mora_logo.png" class="img-fluid align-items-center" alt="..." style="width:200px; height: 200px;" >
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>University Of Moratuwa</h4>
-                </div>
-                <p>Bandaranayake Mawatha,<br> Moratuwa 10400</p>
-              </div>
-            </div>
-          </div> <!-- End UOM-->
-
-          <div class="col-lg-3 col-md-4 d-flex align-items-stretch">
-            <div class="course-item">
-              <img src="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/img/Kelaniya.png" class="img-fluid align-items-center" alt="..." style="width:200px; height: 200px;" >
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>University Of Kelaniya</h4>
-                </div>
-                <p>Cuniversity Kandy Road,<br>Kelaniya 11600</p>
-              </div>
-            </div>
-          </div> <!-- End UOk-->
-
-          <div class="col-lg-3 col-md-4 d-flex align-items-stretch">
-            <div class="course-item">
-              <img src="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/img/japura_logo.png" class="img-fluid align-items-center" alt="..." style="width:200px; height: 200px;">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>University Of Sri J'pura</h4>
-                </div>
-                <p>Ganogodavila,<br>Nugegoda</p>
-              </div>
-            </div>
-          </div> <!-- End UOJ-->
-            
-
-          <div class="col-lg-3 col-md-4 d-flex align-items-stretch">
-            <div class="course-item">
-              <img src="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/img/pera.png" class="img-fluid align-items-center" alt="..." style="width:200px; height: 200px;">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>University Of Peradeniya</h4>
-                </div>
-                <p>Kandy Road<br> Peradeniya</p>
-              </div>
-            </div>
-          </div> <!-- End UOP-->
-
-          <div class="col-lg-3 col-md-4 d-flex align-items-stretch">
-            <div class="course-item">
-              <img src="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/img/ruhuna.jpg" class="img-fluid align-items-center" alt="..." style="width:200px; height: 200px;">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>University Of Ruhuna</h4>
-                </div>
-                <p>Galle Road<br> Matara</p>
-              </div>
-            </div>
-          </div> <!-- End UOR-->
-
-          <div class="col-lg-3 col-md-4 d-flex align-items-stretch">
-            <div class="course-item">
-              <img src="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/img/vta.png" class="img-fluid align-items-center" alt="..." style="width:200px; height: 200px;">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Vocational Training Authority</h4>
-                </div>
-                <p>354/2, Elvitigala Mawatha,<br> Colombo</p>
-              </div>
-            </div>
-          </div> <!-- End VTA-->
-
-          <div class="col-lg-3 col-md-4 d-flex align-items-stretch">
-            <div class="course-item">
-              <img src="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/img/sliit.jpg" class="img-fluid align-items-center" alt="..." style="width:200px; height: 200px;">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>SLIIT</h4>
-                </div>
-                <p>New Kandy Rd<br> Malabe 10115</p>
-              </div>
-            </div>
-          </div> <!-- End SLIIT-->
-        </div>
+    <section id="institutes" class="institutes">
+      <div class="container" >
+          <div class="row" id="cardset">
+          </div>
       </div>
     </section><!-- End Institutes -->
 
@@ -232,15 +130,15 @@
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
+  <script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/dist/lib/js/homepage/purecounter.js}"></script>
 
   <!-- Template Main JS File -->
-  <script src="../../../../../../Desktop/New%20folder%20(3)/HOME/assets/js/main.js"></script>
+  <script th:src="@{/dist/lib/js/homepage/main.js}"></script>
+  <script th:src="@{/dist/lib/controllers/baseURL.js}"></script>
+  <script th:src="@{/dist/lib/controllers/homepage-controller.js}"></script>
 
 </body>
 

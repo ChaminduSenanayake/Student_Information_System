@@ -47,3 +47,7 @@ txtUserName.keypress(function (){
     txtUserName.css("border-color","gainsboro");
 });
 
+function openHomeWindow() {
+    location.href= baseURL+"homepage/home";
+    return false;
+}
