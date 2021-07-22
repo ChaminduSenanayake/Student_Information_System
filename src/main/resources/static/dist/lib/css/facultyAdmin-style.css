@@ -155,7 +155,7 @@ input:focus, button:focus {
         margin-left: -15rem;
     }
     .searchDiv button {
-        padding: 0.80rem 2rem;
+        padding: 0.85rem 2rem;
     }
 
     #btnSearchExamID,#btnSearchDate,#btnSearchDepartmentID,#btnSearchDepartmentName{

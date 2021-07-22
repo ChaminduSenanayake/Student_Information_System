@@ -6,6 +6,44 @@ $(document).ready(function () {
     document.getElementById('studentBtn').style.color = "#ffffff";
     var userName=$(txtUserName).html();
     getFacultyAdmin(userName);
+
+    // DatePicker
+    $(".date").datepicker({
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years",
+    });
+    var d = new Date();
+    let txtYear=$('#txtYear');
+    txtYear.val(d.getFullYear());
+
+    $("#studentTable tr").filter(function() {
+        date.toggle(date.text().toLowerCase().indexOf(value) > -1)
+    });
+
+
+    // Table Search year
+    $("#txtYear").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#studentTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+        if(value==""){
+            getAllStudents();
+        }
+    });
+
+    $('#btnSearch').click(function (){
+        $('#btnSearch').html("<i class=\"fas fa-search\"></i> Search");
+        $('#btnSearch').css("background-color","#3B9B76");
+        $('#search').val(null);
+        getAllFaculties();
+    })
+
+
+
+
+
 });
 
 
@@ -37,44 +75,64 @@ function getFacultyAdmin(userName) {
 
 function openAddNewModal() {
     let addNewModal = new bootstrap.Modal(document.getElementById('addNewModal'));
-    $('#addNewModal').on('show.bs.modal', function(event) {
-        let modal = $(this);
-        $.ajax({
-            type:"GET",
-            url:baseURL+"faculty/getAll",
-            dataType:'json',
-            contentType: 'application/json; charset=utf-8',
-            success:function (response) {
-                var sel = document.getElementById('selectFacultyID');
-                for (i = sel.length - 1; i >= 0; i--) {
-                    sel.remove(i);
-                }
-                for (i in response) {
-                    let faculty = response[i];
-                    let facultyID = faculty['facultyID'];
-                    let facultyName = faculty['facultyName'];
-                    let option = "<option>" + facultyID + "</option>";
+    let year=$('#txtYear').val();
+    if(year==""){
+        swal("OOps!", "Select year before add student!", "error");
+    }else{
+        $('#addNewModal').on('show.bs.modal', function(event) {
+            let modal = $(this);
 
-                    select.append(option);
-                    if(i==0){txtFacName.val(facultyName)}
-                }
-            },error(error) {
-                console.log(error);
-            }
-        })
+            $.ajax({
+                type:"GET",
+                url:baseURL+"degree/getAll",
+                dataType:'json',
+                contentType: 'application/json; charset=utf-8',
+                success:function (response) {
+                    let sel = document.getElementById('selectDegreeID');
+                    let select=$('#selectDegreeID');
+                    for (i = sel.length - 1; i >= 0; i--) {
+                        sel.remove(i);
+                    }
+                    for (i in response) {
+                        let degree = response[i];
+                        let degreeID = degree['degreeID'];
+                        let degreeName = degree['degreeName'];
+                        let option = "<option>" + degreeID + "</option>";
 
-        $.ajax({
-            type:"GET",
-            url:baseURL+"degree/getNewID",
-            success:function (response){
-                modal.find('#txtDegreeID').val(response);
-            },
-            error:function (error){
-                console.log(error);
-            }
+                        select.append(option);
+                        if(i==0){$('#txtDegreeName').val(degreeName)}
+                    }
+                },error(error) {
+                    console.log(error);
+                }
+            })
+
+            $.ajax({
+                type:"GET",
+                url:baseURL+"student/getNewIndex/"+uniCode,
+                success:function (response){
+                    modal.find('#txtIndexNo').val(response);
+                },
+                error:function (error){
+                    console.log(error);
+                }
+            })
+
+            $.ajax({
+                type:"GET",
+                url:baseURL+"student/getNewRegistrationNo/"+year,
+                success:function (response){
+                    modal.find('#txtRegistrationNo').val(response);
+                },
+                error:function (error){
+                    console.log(error);
+                }
+            })
+
         })
-    })
-    addNewModal.show();
+        addNewModal.show();
+    }
+
 }
 
 window.addEventListener('DOMContentLoaded', event => {
@@ -93,3 +151,22 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+
+$('#selectDegreeID').change(function() {
+    let degreeID = $(this).val();
+    $.ajax({
+        type: "GET",
+        url: baseURL + "degree/getDegree/" + degreeID,
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        success: function (response) {
+            $('#txtDegreeName').val(response['degreeName']);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+});
+
+
+

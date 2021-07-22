@@ -1,6 +1,7 @@
 package com.uoc.sis.controller;
 
 import com.uoc.sis.dto.FacultyDTO;
+import com.uoc.sis.dto.StudentDTO;
 import com.uoc.sis.entity.Student;
 import com.uoc.sis.service.FacultyService;
 import com.uoc.sis.service.StudentService;
@@ -34,35 +35,36 @@ public class StudentController {
 
     }
 //
-//    @PostMapping("/save")
-//    public boolean addFaculty(@RequestBody FacultyDTO facultyDTO){
-//        return facultyService.addFaculty(facultyDTO);
-//    }
-//    @PutMapping ("/update")
-//    public boolean updateFaculty(@RequestBody FacultyDTO facultyDTO){
-//        return facultyService.updateFaculty(facultyDTO);
-//    }
-//    @DeleteMapping("/delete/{facultyID}")
-//    public boolean deleteFaculty(@PathVariable("facultyID") String facultyID){
-//        return facultyService.deleteFaculty(facultyID);
-//    }
-//    @GetMapping("/getAll")
-//    public List<FacultyDTO> getAll(){
-//        return facultyService.getAllFaculties();
-//    }
+    @PostMapping("/save")
+    public boolean addStudent(@RequestBody StudentDTO studentDTO){
+        return studentService.addStudent(studentDTO);
+    }
+    @PutMapping ("/update")
+    public boolean updateStudent(@RequestBody StudentDTO studentDTO){
+        return studentService.updateStudent(studentDTO);
+    }
+    @DeleteMapping("/delete/{registrationNo}")
+    public boolean deleteFaculty(@PathVariable("registrationNo") String registrationNo){
+        return studentService.deleteStudent(registrationNo);
+    }
+    @GetMapping("/getAll")
+    public List<StudentDTO> getAll(){
+        return studentService.getAll();
+    }
 //
-//    @GetMapping("/getFaculty/{facultyID}")
-//    public FacultyDTO getByID(@PathVariable("facultyID") String facultyID){
-//        return facultyService.getFacultyByID(facultyID);
-//    }
-//    @GetMapping("/getAllByUniCode/{uniCode}")
-//    public List<FacultyDTO> getByUniCode(@PathVariable("uniCode") String uniCode){
-//        return facultyService.getAllByUniCode(uniCode);
-//    }
-//
-//    @GetMapping("/getNewID")
-//    @ResponseBody
-//    public String getNewID() {
-//        return facultyService.getNewID();
-//    }
+    @GetMapping("/getStudent/{registrationNo}")
+    public StudentDTO getByID(@PathVariable("registrationNo") String registrationNo){
+        return studentService.getStudentByRegNo(registrationNo);
+    }
+
+    @GetMapping("/getNewRegistrationNo/{year}")
+    @ResponseBody
+    public String getNewRegNo(@PathVariable("year") String year) {
+        return studentService.getNewRegistrationNo(year);
+    }
+    @GetMapping("/getNewIndex/{uniCode}")
+    @ResponseBody
+    public String getNewIndex(@PathVariable("uniCode") String uniCode) {
+        return studentService.getNewIndexNo(uniCode);
+    }
 }

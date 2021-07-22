@@ -16,6 +16,8 @@ public class Student {
     private String telephone;
     private String gender;
     private String level;
+    private String parent_name;
+    private int parent_tel_no;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumns(@JoinColumn(name = "degree_id",referencedColumnName = "degree_id",insertable = false,updatable = false))
@@ -31,7 +33,7 @@ public class Student {
     public Student() {
     }
 
-    public Student(String registration_no, String index_no, String f_name, String m_name, String l_name, String address, String email, String telephone, String gender, String level, Degree degree, University university) {
+    public Student(String registration_no, String index_no, String f_name, String m_name, String l_name, String address, String email, String telephone, String gender, String level, String parent_name, int parent_tel_no, Degree degree, University university) {
         this.registration_no = registration_no;
         this.index_no = index_no;
         this.f_name = f_name;
@@ -42,21 +44,8 @@ public class Student {
         this.telephone = telephone;
         this.gender = gender;
         this.level = level;
-        this.degree = degree;
-        this.university = university;
-    }
-
-    public Student(String registration_no, String index_no, String f_name, String m_name, String l_name, String address, String email, String telephone, String gender, String level, Degree degree, University university, List<Result> result_list) {
-        this.registration_no = registration_no;
-        this.index_no = index_no;
-        this.f_name = f_name;
-        this.m_name = m_name;
-        this.l_name = l_name;
-        this.address = address;
-        this.email = email;
-        this.telephone = telephone;
-        this.gender = gender;
-        this.level = level;
+        this.parent_name = parent_name;
+        this.parent_tel_no = parent_tel_no;
         this.degree = degree;
         this.university = university;
         this.result_list = result_list;
@@ -140,6 +129,22 @@ public class Student {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public String getParent_name() {
+        return parent_name;
+    }
+
+    public void setParent_name(String parent_name) {
+        this.parent_name = parent_name;
+    }
+
+    public int getParent_tel_no() {
+        return parent_tel_no;
+    }
+
+    public void setParent_tel_no(int parent_tel_no) {
+        this.parent_tel_no = parent_tel_no;
     }
 
     public Degree getDegree() {

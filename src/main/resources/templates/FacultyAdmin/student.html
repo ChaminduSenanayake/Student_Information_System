@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link th:href="@{/dist/lib/css/bootstrap/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/dist/lib/css/facultyAdmin-style.css}" rel="stylesheet">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css}" rel="stylesheet"/>
 </head>
 
 <body>
@@ -54,15 +55,15 @@
                 </div>
                 <!-- column -->
                 <div class="col-sm-12 col-lg-4">
-                    <div class="card card-hover" onclick="openAddNewModal()">
+                    <div class="card card-hover">
                         <div class="card-body bg-green">
                             <div class="d-flex">
                                 <div class="me-4" >
-                                    <p>Add New Student</p>
+                                    <p>No Of Universities</p>
                                     <h6 class="mb-0">Click here...</h6>
                                 </div>
                                 <div class="chart ms-auto">
-                                    <i class="far fa-plus-octagon fa-4x"></i>
+                                    <i class="fas fa-university fa-4x"></i>
                                 </div>
                             </div>
                         </div>
@@ -77,10 +78,7 @@
                             <div class="card searchCard">
                                 <div class="card-body">
                                     <div class="searchDiv">
-                                        <select class="form-select" aria-label=".form-select-lg example">
-                                            <option selected>Select Batch</option>
-
-                                        </select>
+                                        <input type="text" id="txtYear" class="form-control date" placeholder="Select Year">
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +116,10 @@
                                     <th class="p-3">Faculty Name</th>
                                     <th class="p-3">Degree ID</th>
                                     <th class="p-3">Degree Name</th>
-                                    <th class="p-3">Actions</th>
+                                    <th>
+                                        <button type="button " class="btn btn-success px-4" onclick="openAddNewModal()"><i class="fas fa-plus-circle"></i>&nbsp Add new
+                                        </button>
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody id="studentTable">
@@ -156,6 +157,95 @@
             <div class="modal-body mt-2 mx-3">
                 <form>
                     <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">Registration No</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtRegistrationNo" placeholder="Registration No" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">Index No</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtIndexNo" placeholder="Index No" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">First Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtFirstName" placeholder="First Name">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Middle Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtMiddleName" placeholder="Middle Name">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Last Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtLastName" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Address</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtAddress" placeholder="Address">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEmail" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Telephone</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtTelephone" placeholder="Telephone">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Gender</label>
+                        <div class="col-sm-9">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radio" id="radioMale" checked>
+                                <label class="form-check-label" for="radioMale">
+                                    Male
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radio" id="radioFemale">
+                                <label class="form-check-label" for="radioFemale">
+                                    Female
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Level</label>
+                        <div class="col-sm-9">
+                            <select class="form-select" aria-label=".form-select-lg example">
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Parent Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtParentName" placeholder="Parent Name">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Parent Telephone</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtParentTelephone" placeholder="Parent Telephone">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
                         <label class="col-sm-3 col-form-label">Degree ID</label>
                         <div class="col-sm-9">
                             <select id="selectDegreeID" name="selectDegreeID" class="form-select"
@@ -167,23 +257,11 @@
                     <div class="form-group row mb-3">
                         <label class="col-sm-3 col-form-label">Degree Name</label>
                         <div class="col-sm-9">
-                            <input class="form-control" id="txtUniName" placeholder="University Code" readonly>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-3">
-                        <label class="col-sm-3 col-form-label">Faculty ID</label>
-                        <div class="col-sm-9">
-                            <input class="form-control" id="txtFacultyID" placeholder="Faculty ID">
-                        </div>
-                    </div>
-                    <div class="form-group row mb-3 ">
-                        <label class="col-sm-3 col-form-label">Faculty Name</label>
-                        <div class="col-sm-9">
-                            <input class="form-control" id="txtFacultyName" placeholder="Faculty Name">
+                            <input class="form-control" id="txtDegreeName" placeholder="Degree Name" readonly>
                         </div>
                     </div>
                     <div class=" col-md-12 text-end mt-4">
-                        <button type="button" id="btnAddNew" class=" btn btn-primary mb-2 px-5"><i
+                        <button type="submit" id="btnAddNew" class=" btn btn-primary mb-2 px-5"><i
                                 class="fas fa-save"></i>&nbsp Save
                         </button>
                         <button class="btn btn-danger mb-2 px-5" data-bs-dismiss="modal"
@@ -197,7 +275,7 @@
     </div>
 </div>
 
-<!-- Update faculty Modal -->
+<!-- Update Student Modal -->
 <div class="modal fade" id="updateModal" tabindex="-1 " aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content ">
@@ -208,35 +286,121 @@
             <div class="modal-body mt-2 mx-3">
                 <form>
                     <div class="form-group row mb-3">
-                        <label class="col-sm-3 col-form-label">University Code</label>
+                        <label class="col-sm-3 col-form-label">Year</label>
                         <div class="col-sm-9">
-                            <input class="form-control " id="txtEditUniCode" placeholder="University Code" readonly>
+                            <input type="text" class="form-control date" placeholder="Year" readonly>
                         </div>
                     </div>
                     <div class="form-group row mb-3">
-                        <label class="col-sm-3 col-form-label">University Name</label>
+                        <label class="col-sm-3 col-form-label">Registration No</label>
                         <div class="col-sm-9">
-                            <input class="form-control" id="txtEditUniName" placeholder="University Code" readonly>
+                            <input class="form-control" id="txtEditRegistrationNo" placeholder="Registration No" readonly>
                         </div>
                     </div>
                     <div class="form-group row mb-3">
-                        <label class="col-sm-3 col-form-label">Faculty Id</label>
+                        <label class="col-sm-3 col-form-label">Index No</label>
                         <div class="col-sm-9">
-                            <input class="form-control" id="txtEditFacultyID" placeholder="Faculty ID" readonly>
+                            <input class="form-control" id="txtEditIndexNo" placeholder="Index No" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">First Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEditFirstName" placeholder="First Name">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Middle Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEditMiddleName" placeholder="Middle Name">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Last Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEditLastName" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Address</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEditAddress" placeholder="Address">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEditEmail" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Telephone</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEditTelephone" placeholder="Telephone">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Gender</label>
+                        <div class="col-sm-9">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radio" id="editRadioMale">
+                                <label class="form-check-label" for="radioMale">
+                                    Male
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radio" id="editRadioFemale" checked>
+                                <label class="form-check-label" for="radioFemale">
+                                    Female
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Level</label>
+                        <div class="col-sm-9">
+                            <select class="form-select" aria-label=".form-select-lg example">
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Parent Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEditParentName" placeholder="Parent Name">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Parent Telephone</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEditParentTelephone" placeholder="Parent Telephone">
                         </div>
                     </div>
                     <div class="form-group row mb-3">
-                        <label class="col-sm-3 col-form-label">Faculty Name</label>
+                        <label class="col-sm-3 col-form-label">Degree ID</label>
                         <div class="col-sm-9">
-                            <input class="form-control" id="txtEditFacultyName" placeholder="Faculty Name">
+                            <select id="selectEditDegreeID" name="selectDegreeID" class="form-select"
+                                    aria-label="Default select example">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">Degree Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEditDegreeName" placeholder="Degree Name" readonly>
                         </div>
                     </div>
                     <div class=" col-md-12 text-end mt-4 ">
-                        <button type="button" id="btnUpdate" class=" btn btn-primary mb-2 px-5"><i
+                        <button id="btnUpdate" type="submit" class=" btn btn-primary mb-2 px-5"><i
                                 class="fas fa-edit"></i>&nbsp Update
                         </button>
-                        <button id="cancel" class="btn btn-danger mb-2 px-5" data-bs-dismiss="modal"><i
-                                class="fas fa-window-close"></i>&nbsp Close
+                        <button class="btn btn-danger mb-2 px-5" data-bs-dismiss="modal"
+                                aria-label="Close"><i class="fas fa-window-close"></i>&nbsp Close
                         </button>
                         </br>
                     </div>
@@ -245,12 +409,18 @@
         </div>
     </div>
 </div>
+
 <script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
 <script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/dist/lib/controllers/baseURL.js}"></script>
 <script th:src="@{/dist/lib/js/sweetalert.js}"></script>
 <script th:src="@{/dist/lib/controllers/navBar-controller.js}"></script>
 <script th:src="@{/dist/lib/controllers/facultyAdmin/student-controller.js}"></script>
+
+
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js}"></script>
+
 </body>
 
 </html>
