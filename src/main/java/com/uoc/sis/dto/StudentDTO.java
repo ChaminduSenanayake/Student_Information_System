@@ -16,13 +16,13 @@ public class StudentDTO {
     private String level;
     private String parentName;
     private int parentTelNo;
+    private String password;
     private String degreeID;
     private String degreeName;
     private String unicode;
-    private String uniName;
     private List<ResultDTO> resultList;
 
-    public StudentDTO(String registrationNo, String indexNo, String fName, String mName, String lName, String address, String email, String telephone, String gender, String level, String parentName, int parentTelNo, String degreeID, String degreeName, String unicode, String uniName) {
+    public StudentDTO(String registrationNo, String indexNo, String fName, String mName, String lName, String address, String email, String telephone, String gender, String level, String parentName, int parentTelNo, String password, String degreeID, String degreeName, String unicode) {
         this.registrationNo = registrationNo;
         this.indexNo = indexNo;
         this.fName = fName;
@@ -35,30 +35,10 @@ public class StudentDTO {
         this.level = level;
         this.parentName = parentName;
         this.parentTelNo = parentTelNo;
+        this.password = password;
         this.degreeID = degreeID;
         this.degreeName = degreeName;
         this.unicode = unicode;
-        this.uniName = uniName;
-    }
-
-    public StudentDTO(String registrationNo, String indexNo, String fName, String mName, String lName, String address, String email, String telephone, String gender, String level, String parentName, int parentTelNo, String degreeID, String degreeName, String unicode, String uniName, List<ResultDTO> resultList) {
-        this.registrationNo = registrationNo;
-        this.indexNo = indexNo;
-        this.fName = fName;
-        this.mName = mName;
-        this.lName = lName;
-        this.address = address;
-        this.email = email;
-        this.telephone = telephone;
-        this.gender = gender;
-        this.level = level;
-        this.parentName = parentName;
-        this.parentTelNo = parentTelNo;
-        this.degreeID = degreeID;
-        this.degreeName = degreeName;
-        this.unicode = unicode;
-        this.uniName = uniName;
-        this.resultList = resultList;
     }
 
     public String getRegistrationNo() {
@@ -157,6 +137,14 @@ public class StudentDTO {
         this.parentTelNo = parentTelNo;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getDegreeID() {
         return degreeID;
     }
@@ -179,14 +167,6 @@ public class StudentDTO {
 
     public void setUnicode(String unicode) {
         this.unicode = unicode;
-    }
-
-    public String getUniName() {
-        return uniName;
-    }
-
-    public void setUniName(String uniName) {
-        this.uniName = uniName;
     }
 
     public List<ResultDTO> getResultList() {

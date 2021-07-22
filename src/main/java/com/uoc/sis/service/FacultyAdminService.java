@@ -85,7 +85,6 @@ public class FacultyAdminService {
 
     public FacultyAdminDTO getFacultyAdminByUserName(String userName) {
         try {
-            System.out.println("-------!!!!!!!-----"+userName);
             FacultyAdmin fa = facultyAdminRepository.getByUserName(userName);
             if(fa!=null) {
                 Faculty faculty = fa.getFaculty();

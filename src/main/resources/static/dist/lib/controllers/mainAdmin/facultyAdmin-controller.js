@@ -212,6 +212,8 @@ function openAddNewModal() {
             url:baseURL+"facultyAdmin/getNewID",
             success:function (response){
                 modal.find('#txtFacultyAdminID').val(response);
+                modal.find('#txtEmail').val(response+"@admin.heisis.lk");
+                modal.find('#txtUserName').val(response+"@admin.heisis.lk");
             },
             error:function (error){
                 console.log(error);
@@ -251,9 +253,9 @@ function openUpdateModal(facultyAdmin) {
                 txtTelephone.val(response['telephone']);
                 txtEmail.val(response['email']);
                 txtUserName.val(response['userName']);
-                txtPassword.val("Password");
+                txtPassword.val("");
                 txtPassword.select();
-                txtConfirmPassword.val("password");
+                txtConfirmPassword.val("");
                 txtConfirmPassword.select();
             },
             error:function (error){

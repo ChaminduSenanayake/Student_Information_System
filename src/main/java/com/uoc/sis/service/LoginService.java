@@ -2,6 +2,8 @@ package com.uoc.sis.service;
 
 import com.uoc.sis.dto.FacultyAdminDTO;
 import com.uoc.sis.dto.LoginDTO;
+import com.uoc.sis.dto.StudentDTO;
+import com.uoc.sis.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -11,6 +13,9 @@ public class LoginService {
 
     @Autowired
     private FacultyAdminService adminService;
+
+    @Autowired
+    private StudentService studentService;
 
     public LoginDTO login(LoginDTO loginDTO) {
         String mainAdminUrl = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -29,18 +34,15 @@ public class LoginService {
                 .toUriString();
 
         String userName=loginDTO.getUserName();
-        System.out.println("---------------"+userName);
-        String userType = "Admin";
+
+        String userType = "mainAdmin";
         if(userName.equals("Admin")){
-            userType="Admin";
-        }else if(userName.equals("Student")){
-            userType="stu";
+            userType="mainAdmin";
         }else{
-//            ((userName.split("@"))[0].split("."))[0]
-                userType="fac";
+            userType = (userName.split("@")[1]).split("\\.")[0];
         }
         switch (userType) {
-            case "Admin":
+            case "mainAdmin":
                 if (loginDTO.getUserName().equals("Admin") && loginDTO.getPassword().equals("1234")) {
                     loginDTO.setUrl(mainAdminUrl);
                 } else if (loginDTO.getUserName().equals("Admin") && !loginDTO.getPassword().equals("1234")) {
@@ -50,7 +52,7 @@ public class LoginService {
                     loginDTO.setPassword(null);
                 }
                 return loginDTO;
-            case "fac":
+            case "admin":
                 FacultyAdminDTO dto=adminService.getFacultyAdminByUserName(loginDTO.getUserName());
                 if (dto!=null && loginDTO.getPassword().equals(dto.getPassword())) {
                     loginDTO.setUrl(facultyAdminUrl);
@@ -62,9 +64,11 @@ public class LoginService {
                 }
                 return loginDTO;
             case "stu":
-                if (loginDTO.getUserName().equals("Student") && loginDTO.getPassword().equals("1234")) {
+                String regNo=userName.split("@")[0];
+                StudentDTO studentDTO=studentService.getStudentByRegNo(regNo);
+                if (studentDTO!=null && loginDTO.getPassword().equals(studentDTO.getPassword())) {
                     loginDTO.setUrl(studentUrl);
-                } else if (loginDTO.getUserName().equals("Student") && !loginDTO.getPassword().equals("1234")) {
+                } else if (studentDTO!=null &&  !loginDTO.getPassword().equals(studentDTO.getPassword())) {
                     loginDTO.setPassword(null);
                 } else {
                     loginDTO.setUserName(null);

@@ -9,10 +9,7 @@ function loadUni() {
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
-            if(response.length==0){
-                location.href= baseURL+"login/";
-            }else{
-                for (i in response) {
+            for (i in response) {
                     let university = response[i];
                     let uniCode = university['uniCode'];
                     let uniName = university['uniName'];
@@ -28,8 +25,6 @@ function loadUni() {
                     $('#img_' + uniCode).attr("src", imagePath);
                 }
             }
-
-        }
     });
 }
 

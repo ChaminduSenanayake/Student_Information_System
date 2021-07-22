@@ -26,7 +26,7 @@ public class StudentService {
     public boolean addStudent(StudentDTO dto) {
         Degree degree =degreeRepository.getById(dto.getDegreeID());
         University university=universityRepository.getById(dto.getUnicode());
-        Student student=new Student(dto.getRegistrationNo(),dto.getIndexNo(),dto.getfName(),dto.getmName(),dto.getlName(),dto.getAddress(),dto.getEmail(),dto.getTelephone(),dto.getGender(),dto.getLevel(),dto.getParentName(),dto.getParentTelNo(),degree,university);
+        Student student=new Student(dto.getRegistrationNo(),dto.getIndexNo(),dto.getfName(),dto.getmName(),dto.getlName(),dto.getAddress(),dto.getEmail(),dto.getTelephone(),dto.getGender(),dto.getLevel(),dto.getParentName(),dto.getParentTelNo(),dto.getPassword(),degree,university);
         studentRepository.save(student);
         if (studentRepository.findById(dto.getRegistrationNo()).isPresent()) {
             return true;
@@ -41,7 +41,7 @@ public class StudentService {
             if (objStudent != null) {
                 Degree degree =degreeRepository.getById(dto.getDegreeID());
                 University university=universityRepository.getById(dto.getUnicode());
-                Student student=new Student(dto.getRegistrationNo(),dto.getIndexNo(),dto.getfName(),dto.getmName(),dto.getlName(),dto.getAddress(),dto.getEmail(),dto.getTelephone(),dto.getGender(),dto.getLevel(),dto.getParentName(),dto.getParentTelNo(),degree,university);
+                Student student=new Student(dto.getRegistrationNo(),dto.getIndexNo(),dto.getfName(),dto.getmName(),dto.getlName(),dto.getAddress(),dto.getEmail(),dto.getTelephone(),dto.getGender(),dto.getLevel(),dto.getParentName(),dto.getParentTelNo(),dto.getPassword(),degree,university);
                 studentRepository.save(student);
                 return true;
             } else {
@@ -69,7 +69,21 @@ public class StudentService {
             Degree degree=s.getDegree();
             University university=s.getUniversity();
             if(s!=null) {
-                dtos.add(new StudentDTO(s.getRegistration_no(),s.getIndex_no(),s.getF_name(),s.getM_name(),s.getL_name(),s.getAddress(),s.getEmail(),s.getTelephone(),s.getGender(),s.getLevel(),s.getParent_name(),s.getParent_tel_no(),degree.getDegree_id(),degree.getDegree_name(),university.getUni_code(),university.getUni_name()));
+                dtos.add(new StudentDTO(s.getRegistration_no(),s.getIndex_no(),s.getF_name(),s.getM_name(),s.getL_name(),s.getAddress(),s.getEmail(),s.getTelephone(),s.getGender(),s.getLevel(),s.getParent_name(),s.getParent_tel_no(),null,degree.getDegree_id(),degree.getDegree_name(),university.getUni_code()));
+            }
+        }
+        return dtos;
+    }
+
+    public List<StudentDTO> getAllByFaculty(String facultyID) {
+        List<Student> all = studentRepository.findAllByFacultyID(facultyID);
+        ArrayList<StudentDTO> dtos = new ArrayList<>();
+        for (Student s : all) {
+            Degree degree=s.getDegree();
+            University university=s.getUniversity();
+            System.out.println("----------------"+s.getRegistration_no());
+            if(s!=null) {
+                dtos.add(new StudentDTO(s.getRegistration_no(),s.getIndex_no(),s.getF_name(),s.getM_name(),s.getL_name(),s.getAddress(),s.getEmail(),s.getTelephone(),s.getGender(),s.getLevel(),s.getParent_name(),s.getParent_tel_no(),null,degree.getDegree_id(),degree.getDegree_name(),university.getUni_code()));
             }
         }
         return dtos;
@@ -81,12 +95,13 @@ public class StudentService {
             Student s= studentRepository.getById(regNo);
             Degree degree=s.getDegree();
             University university=s.getUniversity();
-            return new StudentDTO(s.getRegistration_no(),s.getIndex_no(),s.getF_name(),s.getM_name(),s.getL_name(),s.getAddress(),s.getEmail(),s.getTelephone(),s.getGender(),s.getLevel(),s.getParent_name(),s.getParent_tel_no(),degree.getDegree_id(),degree.getDegree_name(),university.getUni_code(),university.getUni_name());
+            return new StudentDTO(s.getRegistration_no(),s.getIndex_no(),s.getF_name(),s.getM_name(),s.getL_name(),s.getAddress(),s.getEmail(),s.getTelephone(),s.getGender(),s.getLevel(),s.getParent_name(),s.getParent_tel_no(),s.getPassword(),degree.getDegree_id(),degree.getDegree_name(),university.getUni_code());
         } catch (EntityNotFoundException e) {
             e.printStackTrace();
         }
         return null;
     }
+
 
     public String getNewRegistrationNo(String year) {
         String prifix = year+"s";
@@ -97,12 +112,12 @@ public class StudentService {
                 int id = Integer.parseInt(lastId.split(prifix)[1]);
                 id++;
                 NumberFormat numberFormat = NumberFormat.getIntegerInstance();
-                numberFormat.setMinimumIntegerDigits(3);
+                numberFormat.setMinimumIntegerDigits(5);
                 numberFormat.setGroupingUsed(false);
                 String newID = numberFormat.format(id);
                 return prifix + newID;
             } else {
-                return prifix + "001";
+                return prifix + "00001";
             }
         } catch (NullPointerException e) {
             e.printStackTrace();
@@ -114,16 +129,16 @@ public class StudentService {
         try {
             Student student= studentRepository.findLastIndex(uniCode);
             if (student != null) {
-                String lastId = student.getRegistration_no();
+                String lastId = student.getIndex_no();
                 int id = Integer.parseInt(lastId.split(prifix)[1]);
                 id++;
                 NumberFormat numberFormat = NumberFormat.getIntegerInstance();
-                numberFormat.setMinimumIntegerDigits(3);
+                numberFormat.setMinimumIntegerDigits(5);
                 numberFormat.setGroupingUsed(false);
                 String newID = numberFormat.format(id);
                 return prifix + newID;
             } else {
-                return prifix + "001";
+                return prifix + "00001";
             }
         } catch (NullPointerException e) {
             e.printStackTrace();

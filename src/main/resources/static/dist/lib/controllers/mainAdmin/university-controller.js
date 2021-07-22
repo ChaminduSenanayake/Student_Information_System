@@ -219,9 +219,10 @@ function getAllUni() {
                     "</tr>";
                 tableUni.append(row);
             }
+        },error: function (error) {
+            console.log(error);
         }
     })
-
 }
 
 function openImageModal(imagePath) {
