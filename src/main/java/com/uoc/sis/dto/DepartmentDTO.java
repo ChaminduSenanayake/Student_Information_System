@@ -5,24 +5,24 @@ import com.uoc.sis.entity.Faculty;
 import javax.persistence.*;
 
 public class DepartmentDTO {
-    private String departmentId;
+    private String departmentID;
     private String name;
     private String facultyID;
     private String facultyName;
 
-    public DepartmentDTO(String departmentId, String name, String facultyID, String facultyName) {
-        this.departmentId = departmentId;
+    public DepartmentDTO(String departmentID, String name, String facultyID, String facultyName) {
+        this.departmentID = departmentID;
         this.name = name;
         this.facultyID = facultyID;
         this.facultyName = facultyName;
     }
 
-    public String getDepartmentId() {
-        return departmentId;
+    public String getDepartmentID() {
+        return departmentID;
     }
 
-    public void setDepartmentId(String departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartmentID(String departmentID) {
+        this.departmentID = departmentID;
     }
 
     public String getName() {

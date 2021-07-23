@@ -25,7 +25,7 @@ public class DegreeController {
         HttpSession session = request.getSession();
         Object user = request.getSession().getAttribute("user_session");
         if(session!=null && user!=null){
-            ModelAndView model=new ModelAndView("/MainAdmin/degree.html");
+            ModelAndView model=new ModelAndView("/FacultyAdmin/degree.html");
             model.addObject("userName",user.toString());
             return model;
         }else{

@@ -8,7 +8,7 @@
 <!-- Navigation bar -->
 <nav th:fragment="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img th:src="@{/dist/lib/images/logo.svg}" style="width:120px;" alt="LOGO"></a>
+        <a class="navbar-brand" href="#"><img th:src="@{/dist/lib/images/logo.svg}" style="width:120px;margin-left: 30px;" alt="LOGO"></a>
         <button class="navbar-toggler" type="button " data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -18,7 +18,6 @@
                 <li class="nav-item"><a class="nav-link" id="universityBtn" onclick="tabChange('university')" >University</a></li>
                 <li class="nav-item"><a class="nav-link" id="facultyBtn" onclick="tabChange('faculty')">Faculty</a></li>
                 <li class="nav-item"><a class="nav-link" id="facultyAdminBtn" onclick="tabChange('facultyAdmin')">Faculty Admin</a></li>
-                <li class="nav-item"><a class="nav-link" id="degreeBtn" onclick="tabChange('degree')">Degree</a></li>
             </ul>
             <div class="d-flex">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">

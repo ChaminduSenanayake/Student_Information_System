@@ -31,7 +31,8 @@ nav{
 
 /*Modal form controlls*/
 .form-control {
-    background-color: white;
+    background-color: transparent;
+    text-align: center;
 }
 
 .form-control[readonly] {
@@ -57,7 +58,7 @@ nav{
 }
 
 #sidebar-wrapper {
-    min-height: 120vh;
+    min-height: 132vh;
     margin-left: -15rem;
     transition: margin 0.25s ease-out;
     background-color: #1F2E4E;

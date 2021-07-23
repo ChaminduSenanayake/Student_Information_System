@@ -55,21 +55,11 @@
                                 <tr class="table-secondary">
                                     <th class="p-3">Department ID</th>
                                     <th class="p-3">Department Name</th>
-                                    <th><button type="button " class="btn btn-success px-4" data-bs-toggle="modal" data-bs-target="#addNewModal">Add new </button></th>
+                                    <th><button type="button " class="btn btn-success px-4" onclick="openAddNewModal()">Add new </button></th>
                                 </tr>
                                 </thead>
                                 <tbody id="departmentTable">
-                                <tr>
-                                    <td class="p-3" id="txtDepartmentId1">D0001</td>
-                                    <td class="p-3" id="txtDepartmentName1">Statistics</td>
-                                    <td>
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-secondary rounded px-4 me-3" id="btnEdit" onclick="openUpdateModal(1)">Edit</button>
-                                            <button type="submit" class="btn btn-danger rounded px-4" id='btnDelete' value="1" name="btnDelete">Delete</button>
-                                        </div>
-                                    </td>
-                                    </form>
-                                </tr>
+
                                 </tbody>
                             </table>
                         </div>
@@ -88,11 +78,11 @@
                 <button type="button " class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body mt-2 mx-3">
-                <form>
+                <form id="addNewDepartment">
                     <div class="form-group row mb-3">
                         <label class="col-sm-3 col-form-label">Department ID</label>
                         <div class="col-sm-9">
-                            <input class="form-control" id="txtDepartmentId" placeholder="Department ID">
+                            <input class="form-control" id="txtDepartmentID" placeholder="Department ID">
                         </div>
                     </div>
                     <div class="form-group row mb-3 ">
@@ -111,7 +101,7 @@
     </div>
 </div>
 <!-- Update department -->
-<div class="modal fade" id="updateDepartmentModal" tabindex="-1 " aria-hidden="true">
+<div class="modal fade" id="updateModal" tabindex="-1 " aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content ">
             <div class="modal-header">
@@ -119,11 +109,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body mt-2 mx-3">
-                <form>
+                <form id="updateDepartment">
                     <div class="form-group row mb-3">
                         <label class="col-sm-3 col-form-label">Department ID</label>
                         <div class="col-sm-9">
-                            <input class="form-control " id="txtEditDepartmentId" placeholder="Department ID" readonly>
+                            <input class="form-control " id="txtEditDepartmentID" placeholder="Department ID" readonly>
                         </div>
                     </div>
                     <div class="form-group row mb-3">

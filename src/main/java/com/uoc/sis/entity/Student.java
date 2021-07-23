@@ -14,6 +14,7 @@ public class Student {
     private String address;
     private String email;
     private String telephone;
+    private String NIC;
     private String gender;
     private String level;
     private String parent_name;
@@ -21,11 +22,11 @@ public class Student {
     private String password;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumns(@JoinColumn(name = "degree_id",referencedColumnName = "degree_id"))
+    @JoinColumns(@JoinColumn(name = "degree_id", referencedColumnName = "degree_id"))
     private Degree degree;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumns(@JoinColumn(name = "uni_code",referencedColumnName = "uni_code"))
+    @JoinColumns(@JoinColumn(name = "uni_code", referencedColumnName = "uni_code"))
     private University university;
 
     @OneToMany
@@ -34,7 +35,7 @@ public class Student {
     public Student() {
     }
 
-    public Student(String registration_no, String index_no, String f_name, String m_name, String l_name, String address, String email, String telephone, String gender, String level, String parent_name, int parent_tel_no, String password, Degree degree, University university) {
+    public Student(String registration_no, String index_no, String f_name, String m_name, String l_name, String address, String email, String telephone, String NIC, String gender, String level, String parent_name, int parent_tel_no, String password, Degree degree, University university) {
         this.registration_no = registration_no;
         this.index_no = index_no;
         this.f_name = f_name;
@@ -43,6 +44,7 @@ public class Student {
         this.address = address;
         this.email = email;
         this.telephone = telephone;
+        this.NIC = NIC;
         this.gender = gender;
         this.level = level;
         this.parent_name = parent_name;
@@ -116,6 +118,14 @@ public class Student {
         this.telephone = telephone;
     }
 
+    public String getNIC() {
+        return NIC;
+    }
+
+    public void setNIC(String NIC) {
+        this.NIC = NIC;
+    }
+
     public String getGender() {
         return gender;
     }
@@ -148,6 +158,14 @@ public class Student {
         this.parent_tel_no = parent_tel_no;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public Degree getDegree() {
         return degree;
     }
@@ -171,12 +189,5 @@ public class Student {
     public void setResult_list(List<Result> result_list) {
         this.result_list = result_list;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
+

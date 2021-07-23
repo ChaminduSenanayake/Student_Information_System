@@ -12,6 +12,7 @@ public class StudentDTO {
     private String address;
     private String email;
     private String telephone;
+    private String NIC;
     private String gender;
     private String level;
     private String parentName;
@@ -22,7 +23,7 @@ public class StudentDTO {
     private String unicode;
     private List<ResultDTO> resultList;
 
-    public StudentDTO(String registrationNo, String indexNo, String fName, String mName, String lName, String address, String email, String telephone, String gender, String level, String parentName, int parentTelNo, String password, String degreeID, String degreeName, String unicode) {
+    public StudentDTO(String registrationNo, String indexNo, String fName, String mName, String lName, String address, String email, String telephone, String NIC, String gender, String level, String parentName, int parentTelNo, String password, String degreeID, String degreeName, String unicode) {
         this.registrationNo = registrationNo;
         this.indexNo = indexNo;
         this.fName = fName;
@@ -31,6 +32,7 @@ public class StudentDTO {
         this.address = address;
         this.email = email;
         this.telephone = telephone;
+        this.NIC = NIC;
         this.gender = gender;
         this.level = level;
         this.parentName = parentName;
@@ -103,6 +105,14 @@ public class StudentDTO {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public String getNIC() {
+        return NIC;
+    }
+
+    public void setNIC(String NIC) {
+        this.NIC = NIC;
     }
 
     public String getGender() {

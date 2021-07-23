@@ -5,7 +5,7 @@ var uniName;
 $(document).ready(function () {
 
     document.getElementById('studentBtn').style.color = "#ffffff";
-    var userName=$(txtUserName).html();
+    var userName=$('#txtUserName').html();
     getFacultyAdmin(userName);
     getAllStudents();
     getUniCount();
@@ -38,15 +38,19 @@ $(document).ready(function () {
         $("#studentTable tr").filter(function () {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
-
-        $('#btnSearch').html("<i class=\"fas fa-eraser\"></i>&nbsp&nbspClear");
-        $('#btnSearch').css("background-color", "#54948F")
+        if(value==""){
+            $('#btnSearch').html("<i class=\"fas fa-search\"></i> Search");
+            $('#btnSearch').css("background-color", "#3B9B76");
+        }else{
+            $('#btnSearch').html("<i class=\"fas fa-eraser\"></i>&nbsp&nbspClear");
+            $('#btnSearch').css("background-color", "#54948F")
+        }
     });
 
     $('#btnSearch').click(function () {
         $('#btnSearch').html("<i class=\"fas fa-search\"></i> Search");
         $('#btnSearch').css("background-color", "#3B9B76");
-        $('#search').val(null);
+        $('#txtSearch').val(null);
         getAllStudents();
     })
 
@@ -61,6 +65,7 @@ $(document).ready(function () {
         let address=$('#txtAddress').val();
         let email=$('#txtEmail').val();
         let telephone=$('#txtTelephone').val();
+        let NIC=$('#txtNIC').val();
         let gender=$("input[name='radioGender']:checked").val();
         let level=$('#txtLevel').val();
         let parentName=$('#txtParentName').val();
@@ -80,6 +85,7 @@ $(document).ready(function () {
                 "address":address,
                 "email":email,
                 "telephone":telephone,
+                "NIC":NIC,
                 "gender":gender,
                 "level":level,
                 "parentName":parentName,
@@ -95,8 +101,8 @@ $(document).ready(function () {
                 data: dataObj,
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
-                success: function (responce) {
-                    if (responce) {
+                success: function (response) {
+                    if (response) {
                         swal("Good job!", "Student Saved Successfully!", "success");
                         $('#addNewModal').on('hidden.bs.modal', function (e) {
                             let modal = $(this);
@@ -105,6 +111,7 @@ $(document).ready(function () {
                             modal.find('#txtLastName').val("");
                             modal.find('#txtAddress').val("");
                             modal.find('#txtTelephone').val("");
+                            modal.find('#txtNIC').val("");
                             modal.find('#txtEmail').val("");
                             modal.find('#txtParentName').val("");
                             modal.find('#txtParentTelephone').val("");
@@ -138,6 +145,7 @@ $(document).ready(function () {
         let address=$('#txtEditAddress').val();
         let email=$('#txtEditEmail').val();
         let telephone=$('#txtEditTelephone').val();
+        let NIC=$('#txtNIC').val();
         let gender=$("input[name='editRadioGender']:checked").val();
         let level=$('#txtEditLevel').val();
         let parentName=$('#txtEditParentName').val();
@@ -157,6 +165,7 @@ $(document).ready(function () {
                 "address":address,
                 "email":email,
                 "telephone":telephone,
+                "NIC":NIC,
                 "gender":gender,
                 "level":level,
                 "parentName":parentName,
@@ -172,8 +181,8 @@ $(document).ready(function () {
                 data: dataObj,
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
-                success: function (responce) {
-                    if (responce) {
+                success: function (response) {
+                    if (response) {
                         swal("Good job!", "Student Updated Successfully!", "success");
                         $('#addNewModal').on('hidden.bs.modal', function (e) {
                             let modal = $(this);
@@ -182,6 +191,7 @@ $(document).ready(function () {
                             modal.find('#txtEditLastName').val("");
                             modal.find('#txtEditAddress').val("");
                             modal.find('#txtEditTelephone').val("");
+                            modal.find('#txtEditNIC').val("");
                             modal.find('#txtEditEmail').val("");
                             modal.find('#txtEditParentName').val("");
                             modal.find('#txtEditParentTelephone').val("");
@@ -340,6 +350,7 @@ function openUpdateModal(registrationNo) {
                 modal.find('#txtEditAddress').val(response['address']);
                 modal.find('#txtEditEmail').val(response['email']);
                 modal.find('#txtEditTelephone').val(response['telephone']);
+                modal.find('#txtEditNIC').val(response['nic']);
                 $("input[name='editRadioGender']:checked").val(response['gender']);
                 modal.find('#txtEditLevel').val(response['level']);
                 modal.find('#txtEditParentName').val(response['parentName']);
@@ -376,6 +387,7 @@ function openViewModal(registrationNo) {
                 modal.find('#txtViewAddress').val(response['address']);
                 modal.find('#txtViewEmail').val(response['email']);
                 modal.find('#txtViewTelephone').val(response['telephone']);
+                modal.find('#txtViewNIC').val(response['nic']);
                 modal.find('#txtViewGender').val(response['gender']);
                 modal.find('#txtViewLevel').val(response['level']);
                 modal.find('#txtViewParentName').val(response['parentName']);

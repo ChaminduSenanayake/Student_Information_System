@@ -16,111 +16,102 @@
 <div class="d-flex" id="wrapper">
     <div th:insert="Student/sideBar :: sidebar"></div>
     <form class="container mt-5 p-5">
-        <h2 class="page-title"><b>Dimuthu's Profile</b></h2>
-        <div class="form-group row mb-3">
-            <label class="col-sm-2 col-form-label">Registration NO</label>
-            <div class="col-sm-10">
-                <input class="form-control" id="txtRegistrationNO" placeholder="Registration NO" readonly>
+        <h2 class="page-title"><b id="txtTitle"></b></h2>
+        <div class="form-group row mb-3 text-center">
+            <label class="col-sm-3 col-form-label">Registration No</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="txtViewRegistrationNo" placeholder="Registration No" readonly>
             </div>
         </div>
-        <div class="form-group row mb-3 ">
-            <label class="col-sm-2 col-form-label">Index NO</label>
-            <div class="col-sm-10 ">
-                <input class="form-control" id="txtIndexNO" placeholder="Index NO" readonly>
-            </div>
-        </div>
-        <div class="form-group row mb-3 ">
-            <label class="col-sm-2 col-form-label">Student Name</label>
-            <div class="col-sm-10 ">
-                <input class="form-control" id="txtStudentName" placeholder="Student Name" readonly>
-            </div>
-        </div>
-        <div class="form-group row mb-3 ">
-            <label class="col-sm-2 col-form-label">NIC</label>
-            <div class="col-sm-10 ">
-                <input class="form-control" id="txtNIC" placeholder="NIC" readonly>
-            </div>
-        </div>
-        <div class="form-group row mb-3 ">
-            <label class="col-sm-2 col-form-label">Address</label>
-            <div class="col-sm-10 ">
-                <input class="form-control" id="txtAddress" placeholder="Address" readonly>
-            </div>
-        </div>
-        <div class="form-group row mb-3 ">
-            <label class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10 ">
-                <input class="form-control" id="txtEmail" placeholder="Email" readonly>
-            </div>
-        </div>
-        <div class="form-group row mb-3 ">
-            <label class="col-sm-2 col-form-label">Telephone</label>
-            <div class="col-sm-10 ">
-                <input class="form-control" id="txtTelephone" placeholder="Telephone" readonly>
-            </div>
-        </div>
-        <div class="form-group row mb-3 ">
-            <label class="col-sm-2 col-form-label">Gender</label>
-            <div class="col-sm-10 ">
-                <input class="form-control" id="txtGender" placeholder="Gender" readonly>
+        <div class="form-group row mb-3 text-center">
+            <label class="col-sm-3 col-form-label">Index No</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="txtViewIndexNo" placeholder="Index No" readonly>
             </div>
         </div>
 
-        <div class="form-group row mb-3 ">
-            <label class="col-sm-2 col-form-label">Degree</label>
-            <div class="col-sm-10 ">
-                <input class="form-control" id="txtDegree" placeholder="Degree" readonly>
+        <div class="form-group row mb-3 text-center">
+            <label class="col-sm-3 col-form-label">First Name</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="txtViewFirstName" placeholder="First Name" readonly>
             </div>
         </div>
-        <div class="form-group row mb-3 ">
-            <label class="col-sm-2 col-form-label">Level</label>
-            <div class="col-sm-10 ">
-                <input class="form-control" id="txtLevel" placeholder="Level" readonly>
+        <div class="form-group row mb-3 text-center">
+            <label class="col-sm-3 col-form-label">Middle Name</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="txtViewMiddleName" placeholder="Middle Name" readonly>
+            </div>
+        </div>
+        <div class="form-group row mb-3 text-center">
+            <label class="col-sm-3 col-form-label">Last Name</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="txtViewLastName" placeholder="Last Name" readonly>
+            </div>
+        </div>
+        <div class="form-group row mb-3 text-center">
+            <label class="col-sm-3 col-form-label">Address</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="txtViewAddress" placeholder="Address" readonly>
+            </div>
+        </div>
+        <div class="form-group row mb-3 text-center ">
+            <label class="col-sm-3 col-form-label">Email</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="txtViewEmail" placeholder="Email" readonly>
+            </div>
+        </div>
+        <div class="form-group row mb-3 text-center">
+            <label class="col-sm-3 col-form-label">Telephone</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="txtViewTelephone" placeholder="Telephone" readonly>
+            </div>
+        </div>
+        <div class="form-group row mb-3 text-center">
+            <label class="col-sm-3 col-form-label">NIC</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="txtViewNIC" placeholder="NIC" readonly>
+            </div>
+        </div>
+        <div class="form-group row mb-3">
+            <label class="col-sm-3 col-form-label text-center">Gender</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="txtViewGender" placeholder="Gender" readonly>
+            </div>
+        </div>
+        <div class="form-group row mb-3 text-center">
+            <label class="col-sm-3 col-form-label">Level</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="txtViewLevel" placeholder="Level" readonly>
+            </div>
+        </div>
+        <div class="form-group row mb-3 text-center">
+            <label class="col-sm-3 col-form-label">Parent Name</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="txtViewParentName" placeholder="Parent Name" readonly>
+            </div>
+        </div>
+        <div class="form-group row mb-3 text-center">
+            <label class="col-sm-3 col-form-label">Parent Telephone</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="txtViewParentTelephone" placeholder="Parent Telephone" readonly>
+            </div>
+        </div>
+        <div class="form-group row mb-3 text-center">
+            <label class="col-sm-3 col-form-label">Degree ID</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="txtViewDegreeID" placeholder="Degree ID" readonly>
+            </div>
+        </div>
+        <div class="form-group row mb-3 text-center">
+            <label class="col-sm-3 col-form-label">Degree Name</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="txtViewDegreeName" placeholder="Degree Name" readonly>
             </div>
         </div>
     </form>
 
-    </div>
-
-    <!-- add new faculty Modal -->
-    <div class="modal fade" id="addNewModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title ">Change Password</h5>
-                    <button type="button " class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body mt-2 mx-3">
-                    <form>
-                        <div class="form-group row mb-3">
-                            <label class="col-sm-3 col-form-label">Current Password</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" id="txtCurrentPassword" placeholder="Current Password">
-                            </div>
-                        </div>
-                        <div class="form-group row mb-3 ">
-                            <label class="col-sm-3 col-form-label">New Password</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" id="txtNewPassword" placeholder="New Password">
-                            </div>
-                        </div>
-                        <div class="form-group row mb-3 ">
-                            <label class="col-sm-3 col-form-label">Confirm Password</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" id="txtConfirmPassword" placeholder="Confirm Password">
-                            </div>
-                        </div>
-                        <div class=" col-md-12 text-end mt-4">
-                            <button name="btnAddNew" type="submit" class=" btn btn-primary mb-2 px-5">Save</button>
-                            <button id="cancel" name="cancel" class="btn btn-danger mb-2 px-5" data-bs-dismiss="modal"
-                                    aria-label="Close">Close</button></br>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
+
 
 <script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
 <script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>

@@ -1,5 +1,7 @@
 package com.uoc.sis.entity;
 
+import org.hibernate.annotations.ManyToAny;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,8 +9,9 @@ public class Department {
     @Id
     private String department_id;
     private String name;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumns(@JoinColumn(name = "faculty_id",referencedColumnName = "faculty_id",insertable = false,updatable = false))
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumns(@JoinColumn(name = "faculty_id",referencedColumnName = "faculty_id"))
     private Faculty faculty;
 
     public Department() {

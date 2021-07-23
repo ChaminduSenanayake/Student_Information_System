@@ -9,8 +9,14 @@ $(document).ready(function () {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
 
-        $('#btnSearch').html("<i class=\"fas fa-eraser\"></i>&nbsp&nbspClear");
-        $('#btnSearch').css("background-color","#54948F")
+        if(value==""){
+            $('#btnSearch').html("<i class=\"fas fa-search\"></i> Search");
+            $('#btnSearch').css("background-color","#3B9B76");
+        }else{
+            $('#btnSearch').html("<i class=\"fas fa-eraser\"></i>&nbsp&nbspClear");
+            $('#btnSearch').css("background-color","#54948F");
+        }
+
     });
 
     $('#btnSearch').click(function (){

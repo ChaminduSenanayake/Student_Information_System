@@ -26,7 +26,7 @@ public class StudentService {
     public boolean addStudent(StudentDTO dto) {
         Degree degree =degreeRepository.getById(dto.getDegreeID());
         University university=universityRepository.getById(dto.getUnicode());
-        Student student=new Student(dto.getRegistrationNo(),dto.getIndexNo(),dto.getfName(),dto.getmName(),dto.getlName(),dto.getAddress(),dto.getEmail(),dto.getTelephone(),dto.getGender(),dto.getLevel(),dto.getParentName(),dto.getParentTelNo(),dto.getPassword(),degree,university);
+        Student student=new Student(dto.getRegistrationNo(),dto.getIndexNo(),dto.getfName(),dto.getmName(),dto.getlName(),dto.getAddress(),dto.getEmail(),dto.getTelephone(),dto.getNIC(),dto.getGender(),dto.getLevel(),dto.getParentName(),dto.getParentTelNo(),dto.getPassword(),degree,university);
         studentRepository.save(student);
         if (studentRepository.findById(dto.getRegistrationNo()).isPresent()) {
             return true;
@@ -41,7 +41,7 @@ public class StudentService {
             if (objStudent != null) {
                 Degree degree =degreeRepository.getById(dto.getDegreeID());
                 University university=universityRepository.getById(dto.getUnicode());
-                Student student=new Student(dto.getRegistrationNo(),dto.getIndexNo(),dto.getfName(),dto.getmName(),dto.getlName(),dto.getAddress(),dto.getEmail(),dto.getTelephone(),dto.getGender(),dto.getLevel(),dto.getParentName(),dto.getParentTelNo(),dto.getPassword(),degree,university);
+                Student student=new Student(dto.getRegistrationNo(),dto.getIndexNo(),dto.getfName(),dto.getmName(),dto.getlName(),dto.getAddress(),dto.getEmail(),dto.getTelephone(),dto.getNIC(),dto.getGender(),dto.getLevel(),dto.getParentName(),dto.getParentTelNo(),dto.getPassword(),degree,university);
                 studentRepository.save(student);
                 return true;
             } else {
@@ -69,7 +69,7 @@ public class StudentService {
             Degree degree=s.getDegree();
             University university=s.getUniversity();
             if(s!=null) {
-                dtos.add(new StudentDTO(s.getRegistration_no(),s.getIndex_no(),s.getF_name(),s.getM_name(),s.getL_name(),s.getAddress(),s.getEmail(),s.getTelephone(),s.getGender(),s.getLevel(),s.getParent_name(),s.getParent_tel_no(),null,degree.getDegree_id(),degree.getDegree_name(),university.getUni_code()));
+                dtos.add(new StudentDTO(s.getRegistration_no(),s.getIndex_no(),s.getF_name(),s.getM_name(),s.getL_name(),s.getAddress(),s.getEmail(),s.getTelephone(),s.getNIC(),s.getGender(),s.getLevel(),s.getParent_name(),s.getParent_tel_no(),null,degree.getDegree_id(),degree.getDegree_name(),university.getUni_code()));
             }
         }
         return dtos;
@@ -83,7 +83,7 @@ public class StudentService {
             University university=s.getUniversity();
             System.out.println("----------------"+s.getRegistration_no());
             if(s!=null) {
-                dtos.add(new StudentDTO(s.getRegistration_no(),s.getIndex_no(),s.getF_name(),s.getM_name(),s.getL_name(),s.getAddress(),s.getEmail(),s.getTelephone(),s.getGender(),s.getLevel(),s.getParent_name(),s.getParent_tel_no(),null,degree.getDegree_id(),degree.getDegree_name(),university.getUni_code()));
+                dtos.add(new StudentDTO(s.getRegistration_no(),s.getIndex_no(),s.getF_name(),s.getM_name(),s.getL_name(),s.getAddress(),s.getEmail(),s.getTelephone(),s.getNIC(),s.getGender(),s.getLevel(),s.getParent_name(),s.getParent_tel_no(),null,degree.getDegree_id(),degree.getDegree_name(),university.getUni_code()));
             }
         }
         return dtos;
@@ -95,7 +95,7 @@ public class StudentService {
             Student s= studentRepository.getById(regNo);
             Degree degree=s.getDegree();
             University university=s.getUniversity();
-            return new StudentDTO(s.getRegistration_no(),s.getIndex_no(),s.getF_name(),s.getM_name(),s.getL_name(),s.getAddress(),s.getEmail(),s.getTelephone(),s.getGender(),s.getLevel(),s.getParent_name(),s.getParent_tel_no(),s.getPassword(),degree.getDegree_id(),degree.getDegree_name(),university.getUni_code());
+            return new StudentDTO(s.getRegistration_no(),s.getIndex_no(),s.getF_name(),s.getM_name(),s.getL_name(),s.getAddress(),s.getEmail(),s.getTelephone(),s.getNIC(),s.getGender(),s.getLevel(),s.getParent_name(),s.getParent_tel_no(),s.getPassword(),degree.getDegree_id(),degree.getDegree_name(),university.getUni_code());
         } catch (EntityNotFoundException e) {
             e.printStackTrace();
         }

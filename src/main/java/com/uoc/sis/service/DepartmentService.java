@@ -25,10 +25,11 @@ public class DepartmentService {
     private DepartmentRepository departmentRepository;
 
     public boolean addDepartment(DepartmentDTO dto) {
+
         Faculty faculty = facultyRepository.getById(dto.getFacultyID());
-        Department department=new Department(dto.getDepartmentId(),dto.getName(),faculty);
+        Department department=new Department(dto.getDepartmentID(),dto.getName(),faculty);
         departmentRepository.save(department);
-        if (departmentRepository.findById(dto.getDepartmentId()).isPresent()) {
+        if (departmentRepository.findById(dto.getDepartmentID()).isPresent()) {
             return true;
         } else {
             return false;
@@ -36,11 +37,14 @@ public class DepartmentService {
     }
 
     public boolean updateDepartment(DepartmentDTO dto) {
+
         try {
-            Department objDepartment=departmentRepository.getById(dto.getDepartmentId());
+            Department objDepartment=departmentRepository.getById(dto.getDepartmentID());
             if (objDepartment != null) {
                 Faculty faculty=facultyRepository.getById(dto.getFacultyID());
-                Department department=new Department(dto.getDepartmentId(),dto.getName(),faculty);
+                Department department=new Department(dto.getDepartmentID(),dto.getName(),faculty);
+
+
                 departmentRepository.save(department);
                 return true;
             } else {

@@ -51,16 +51,24 @@ nav{
     min-width: max-content;
 }
 
-
 /*searchbar Styles*/
-#searchDiv{
-    position: relative;
-    width: 31.25rem;
-    max-width: 90%;
-    margin-bottom: 20px;
+.searchCard{
+    border: none;
+    padding: 0;
+    margin: 0;
 }
-
-#searchDiv input {
+.searchDiv{
+    position: relative;
+}
+.searchDiv select {
+    border: 0;
+    border-radius: 50px;
+    font-size: 1rem;
+    padding: 0.78rem 2rem;
+    width: 100%;
+    border: 1px solid #3B9B76;
+}
+.searchDiv input{
     border: 0;
     border-radius: 50px;
     font-size: 1rem;
@@ -69,7 +77,7 @@ nav{
     border: 1px solid #3B9B76;
 }
 
-#searchDiv button {
+.searchDiv button {
     background-color:  #3B9B76;
     color: white;
     position: absolute;
@@ -80,18 +88,11 @@ nav{
     padding: 0.85rem 2rem;
 }
 
-#searchDiv button:hover {
+.searchDiv button:hover {
     background-color: #5AB193;
-}
-
-button {
-    cursor: pointer;
-}
-
-button:active {
-    transform: scale(0.95);
 }
 
 input:focus, button:focus {
     outline: none;
 }
+

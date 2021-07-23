@@ -15,6 +15,182 @@
 <!-- middle section -->
 <div class="d-flex" id="wrapper">
     <div th:insert="FacultyAdmin/sideBar :: sidebar"></div>
+    <div class="container-fluid mt-5 p-5">
+        <h2 class="page-title">Course</h2>
+        <div class="container-fluid">
+            <div class="col-12 ">
+                <div class="card">
+                    <div class="row">
+                        <!--Search Bar-->
+                        <div class="col-sm-12 col-lg-6">
+                            <div class="card searchCard">
+                                <div class="card-body">
+                                    <div class="searchDiv">
+                                        <input type="text" id="txtSearchDepartmentID" autocomplete="off"
+                                               placeholder="Course ID..." />
+                                        <button id="btnSearchDepartmentID"><i
+                                                class="fas fa-search"></i>&nbsp&nbspSearch</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-6">
+                            <div class="card searchCard">
+                                <div class="card-body">
+                                    <div class="searchDiv">
+                                        <input type="text" id="txtSearchDepartmentName" autocomplete="off"
+                                               placeholder="Level..." />
+                                        <button id="btnSearchDepartmentName"><i
+                                                class="fas fa-search"></i>&nbsp&nbspSearch</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <!-- Table -->
+                        <div class="table-responsive">
+                            <table class="table text-center">
+                                <thead>
+                                <tr class="table-secondary">
+                                    <th class="p-3">Course ID</th>
+                                    <th class="p-3">Department ID</th>
+                                    <th class="p-3">Course Name</th>
+                                    <th class="p-3">Semester</th>
+                                    <th class="p-3">Level</th>
+                                    <th><button type="button " class="btn btn-success px-4" data-bs-toggle="modal" data-bs-target="#addNewModal">Add new </button></th>
+                                </tr>
+                                </thead>
+                                <tbody id="courseTable">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- add new Course -->
+<div class="modal fade" id="addNewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Add New Course</h5>
+                <button type="button " class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body mt-2 mx-3">
+                <form id="adddNewCourse">
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">Course ID</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtCourseId" placeholder="Course ID">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">Department ID</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtDepartmentId" placeholder="Department ID">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Course Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtCourseName" placeholder="Course Name">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Semester</label>
+                        <div class="col-sm-9">
+                            <select class="form-select" id="txtSemester" aria-label=".form-select-lg example">
+                                <option selected>1</option>
+                                <option>2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Level</label>
+                        <div class="col-sm-9">
+                            <select class="form-select" id="txtLevel" aria-label=".form-select-lg example">
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class=" col-md-12 text-end mt-4">
+                        <button name="btnAddNew" type="submit" class=" btn btn-primary mb-2 px-5">Save</button>
+                        <button name="cancel" class="btn btn-danger mb-2 px-5" data-bs-dismiss="modal" aria-label="Close">Close</button></br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Update Course -->
+<div class="modal fade" id="updateCourseModal" tabindex="-1 " aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Course</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body mt-2 mx-3">
+                <form id="updateCourse">
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">Course ID</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEditCourseID" placeholder="Course ID">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">Department ID</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEditID" placeholder="Department ID">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-3 col-form-label">Department ID</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEditID" placeholder="Department ID">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Course Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtEditName" placeholder="Course Name">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Semester</label>
+                        <div class="col-sm-9">
+                            <select class="form-select" id="txtEditSemester" aria-label=".form-select-lg example">
+                                <option selected>1</option>
+                                <option>2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Level</label>
+                        <div class="col-sm-9">
+                            <select class="form-select" id="txtEditLevel" aria-label=".form-select-lg example">
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class=" col-md-12 text-end mt-4 ">
+                        <button name="btnUpdate" type="submit" class=" btn btn-primary mb-2 px-5">Update</button>
+                        <button id="cancel" name="cancel" class="btn btn-danger mb-2 px-5" data-bs-dismiss="modal" aria-label="Close">Close</button></br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 <script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
 <script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>

@@ -1,32 +1,66 @@
+var facultyID;
+var facultyName;
+var uniCode;
+var uniName;
 $(document).ready(function () {
     document.getElementById('degreeBtn').style.color = "#ffffff";
+    var userName=$('#txtUserName').html();
+    getFacultyAdmin(userName);
     getAllDegrees();
 
-    // Table Search
-    $("#search").on("keyup", function() {
+    // Table Search Degree ID
+    $("#txtSearchDegreeID").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $("#degreeTable tr").filter(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
 
-        $('#btnSearch').html("<i class=\"fas fa-eraser\"></i>&nbsp&nbspClear");
-        $('#btnSearch').css("background-color","#54948F")
+        if(value==""){
+            $('#btnSearchDegreeID').html("<i class=\"fas fa-search\"></i> Search");
+            $('#btnSearchDegreeID').css("background-color","#3B9B76");
+        }else{
+            $('#btnSearchDegreeID').html("<i class=\"fas fa-eraser\"></i>&nbsp&nbspClear");
+            $('#btnSearchDegreeID').css("background-color","#54948F")
+        }
+
     });
 
-    $('#btnSearch').click(function (){
-        $('#btnSearch').html("<i class=\"fas fa-search\"></i> Search");
-        $('#btnSearch').css("background-color","#3B9B76");
-        $('#search').val(null);
+    $('#btnSearchDegreeID').click(function (){
+        $('#btnSearchDegreeID').html("<i class=\"fas fa-search\"></i> Search");
+        $('#btnSearchDegreeID').css("background-color","#3B9B76");
+        $('#txtSearchDegreeID').val(null);
         getAllDegrees();
     })
+
+    // Table Search
+    $("#txtSearchDegreeName").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#degreeTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+        if(value==""){
+            $('#btnSearchDegreeName').html("<i class=\"fas fa-search\"></i> Search");
+            $('#btnSearchDegreeName').css("background-color","#3B9B76");
+        }else{
+            $('#btnSearchDegreeName').html("<i class=\"fas fa-eraser\"></i>&nbsp&nbspClear");
+            $('#btnSearchDegreeName').css("background-color","#54948F")
+        }
+
+    });
+
+    $('#btnSearchDegreeName').click(function (){
+        $('#btnSearchDegreeName').html("<i class=\"fas fa-search\"></i> Search");
+        $('#btnSearchDegreeName').css("background-color","#3B9B76");
+        $('#txtSearchDegreeName').val(null);
+        getAllDegrees();
+    })
+
 
     // Add new
     $('#addNewDegree').submit(function (event) {
         event.preventDefault();
         let degreeID=$('#txtDegreeId').val();
         let degreeName=$('#txtDegreeName').val();
-        let facultyID=$('#selectFacultyID').val();
-        let facultyName=$('#txtFacultyName').val();
 
         let dataObj=JSON.stringify({
             "degreeID":degreeID,
@@ -63,14 +97,12 @@ $(document).ready(function () {
 
         let degreeID=$('#txtEditDegreeID').val();
         let degreeName=$('#txtEditDegreeName').val();
-        let facultyID=$('#txtEditFacultyID').val();
-        let facultyName=$('#txtEditFacultyName').val();
 
         let dataObj=JSON.stringify({
             "degreeID":degreeID,
             "degreeName":degreeName,
             "facultyID":facultyID,
-            "uniName":facultyName
+            "facultyName":facultyName
         });
         $.ajax({
             type: "PUT",
@@ -99,36 +131,40 @@ $(document).ready(function () {
     });
 });
 
+
+function getFacultyAdmin(userName) {
+    $.ajax({
+        type: "GET",
+        url: baseURL + "facultyAdmin/getByUserName/"+userName,
+        dataType: 'json',
+        async:false,
+        contentType: 'application/json; charset=utf-8',
+        success: function (response) {
+            $('#txtUserName').html(response['fName']+" "+response['lName']);
+            facultyID=response['facultyID'];
+            $.ajax({
+                type: "GET",
+                url: baseURL + "university/getUniversityByFacultyID/"+response['facultyID'],
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (response) {
+                    $('#uniImage').attr("src",response['imagePath']);
+                    $('#uniName').html(response['uniName']);
+                    uniCode=response['uniCode'];
+                    uniName= response['uniName'];
+                }
+            })
+        }
+    });
+}
+
+
 function openAddNewModal() {
     let addNewModal = new bootstrap.Modal(document.getElementById('addNewModal'));
     $('#addNewModal').on('show.bs.modal', function(event) {
         let modal = $(this);
         let select=modal.find('#selectFacultyID');
         let txtFacName=modal.find('#txtFacultyName');
-
-        $.ajax({
-            type:"GET",
-            url:baseURL+"faculty/getAll",
-            dataType:'json',
-            contentType: 'application/json; charset=utf-8',
-            success:function (response) {
-                var sel = document.getElementById('selectFacultyID');
-                for (i = sel.length - 1; i >= 0; i--) {
-                    sel.remove(i);
-                }
-                for (i in response) {
-                    let faculty = response[i];
-                    let facultyID = faculty['facultyID'];
-                    let facultyName = faculty['facultyName'];
-                    let option = "<option>" + facultyID + "</option>";
-
-                    select.append(option);
-                    if(i==0){txtFacName.val(facultyName)}
-                }
-            },error(error) {
-                console.log(error);
-            }
-        })
 
         $.ajax({
             type:"GET",
@@ -150,8 +186,6 @@ function openUpdateModal(degreeID) {
         let modal = $(this);
         let txtDegreeID=modal.find('#txtEditDegreeID');
         let txtDegreeName=modal.find('#txtEditDegreeName');
-        let txtFacultyID=modal.find('#txtEditFacultyID');
-        let txtFacultyName=modal.find('#txtEditFacultyName');
 
         $.ajax({
             type:"GET",
@@ -161,8 +195,6 @@ function openUpdateModal(degreeID) {
             success:function (response) {
                 txtDegreeID.val(response['degreeID']);
                 txtDegreeName.val(response['degreeName']);
-                txtFacultyID.val(response['facultyID']);
-                txtFacultyName.val([response['facultyName']]);
             },error(error) {
                 console.log(error);
             }
@@ -172,21 +204,6 @@ function openUpdateModal(degreeID) {
     updateModal.show();
 }
 
-$('#selectFacultyID').change(function() {
-    let facultyID=$(this).val();
-    $.ajax({
-        type:"GET",
-        url:baseURL+"faculty/getFaculty/"+facultyID,
-        dataType:'json',
-        contentType: 'application/json; charset=utf-8',
-        success:function (response){
-            $('#txtFacultyName').val(response['facultyName']);
-        },
-        error:function (error){
-            console.log(error);
-        }
-    });
-});
 
 function deleteDegree(degreeID){
     swal({
@@ -235,12 +252,8 @@ function getAllDegrees(){
                 let degree=response[i];
                 let degreeID=degree['degreeID'];
                 let degreeName=degree['degreeName'];
-                let facultyID=degree['facultyID'];
-                let facultyName=degree['facultyName'];
 
                 let row="<tr>\n" +
-                    "    <td class=\"p-3\">"+facultyID+"</td>\n" +
-                    "    <td class=\"p-3\">"+facultyName+"</td>\n" +
                     "    <td class=\"p-3\">"+degreeID+"</td>\n" +
                     "    <td class=\"p-3\">"+degreeName+"</td>\n" +
                     "<div class=\"btn-group\" role=\"group\">\n" +
