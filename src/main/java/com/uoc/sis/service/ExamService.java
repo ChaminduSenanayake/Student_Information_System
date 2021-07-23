@@ -29,9 +29,9 @@ public class ExamService {
 
     public boolean addExam(ExamDTO dto) {
         Course course=courseRepository.getById(dto.getCourseID());
-        Exam exam=new Exam(dto.getExamId(),dto.getExamName(),dto.getDate(),dto.getDuration(),course);
+        Exam exam=new Exam(dto.getExamID(),dto.getExamName(),dto.getDate(),dto.getDuration(),course);
         examRepository.save(exam);
-        if (examRepository.findById(dto.getExamId()).isPresent()) {
+        if (examRepository.findById(dto.getExamID()).isPresent()) {
             return true;
         } else {
             return false;
@@ -40,10 +40,10 @@ public class ExamService {
 
     public boolean updateExam(ExamDTO dto) {
         try {
-            Exam objExam = examRepository.getById(dto.getExamId());
+            Exam objExam = examRepository.getById(dto.getExamID());
             if (objExam != null) {
                 Course course=courseRepository.getById(dto.getCourseID());
-                Exam exam=new Exam(dto.getExamId(),dto.getExamName(),dto.getDate(),dto.getDuration(),course);
+                Exam exam=new Exam(dto.getExamID(),dto.getExamName(),dto.getDate(),dto.getDuration(),course);
                 examRepository.save(exam);
                 return true;
             } else {

@@ -7,47 +7,29 @@ import javax.persistence.*;
 import java.util.List;
 
 public class CourseDTO {
-    private String courseId;
-    private String courseLevel;
+    private String courseID;
     private String courseName;
     private int semester;
+    private String courseLevel;
     private String departmentID;
-    private String DepartmentName;
+    private String departmentName;
     private List<Registration> registration_list;
 
-    public CourseDTO(String courseId, String courseLevel, String courseName, int semester, String departmentID, String departmentName) {
-        this.courseId = courseId;
-        this.courseLevel = courseLevel;
+    public CourseDTO(String courseID, String courseName, int semester, String courseLevel, String departmentID, String departmentName) {
+        this.courseID = courseID;
         this.courseName = courseName;
         this.semester = semester;
-        this.departmentID = departmentID;
-        DepartmentName = departmentName;
-    }
-
-    public CourseDTO(String courseId, String courseLevel, String courseName, int semester, String departmentID, String departmentName, List<Registration> registration_list) {
-        this.courseId = courseId;
         this.courseLevel = courseLevel;
-        this.courseName = courseName;
-        this.semester = semester;
         this.departmentID = departmentID;
-        DepartmentName = departmentName;
-        this.registration_list = registration_list;
+        this.departmentName = departmentName;
     }
 
-    public String getCourseId() {
-        return courseId;
+    public String getCourseID() {
+        return courseID;
     }
 
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
-    }
-
-    public String getCourseLevel() {
-        return courseLevel;
-    }
-
-    public void setCourseLevel(String courseLevel) {
-        this.courseLevel = courseLevel;
+    public void setCourseID(String courseID) {
+        this.courseID = courseID;
     }
 
     public String getCourseName() {
@@ -66,6 +48,14 @@ public class CourseDTO {
         this.semester = semester;
     }
 
+    public String getCourseLevel() {
+        return courseLevel;
+    }
+
+    public void setCourseLevel(String courseLevel) {
+        this.courseLevel = courseLevel;
+    }
+
     public String getDepartmentID() {
         return departmentID;
     }
@@ -75,11 +65,11 @@ public class CourseDTO {
     }
 
     public String getDepartmentName() {
-        return DepartmentName;
+        return departmentName;
     }
 
     public void setDepartmentName(String departmentName) {
-        DepartmentName = departmentName;
+        this.departmentName = departmentName;
     }
 
     public List<Registration> getRegistration_list() {

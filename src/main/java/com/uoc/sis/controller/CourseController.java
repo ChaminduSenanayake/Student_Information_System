@@ -36,6 +36,7 @@ public class CourseController {
 
     @PostMapping("/save")
     public boolean addCourse(@RequestBody CourseDTO courseDTO){
+        System.out.println("-----------------");
         return courseService.addCourse(courseDTO);
     }
 
@@ -54,7 +55,7 @@ public class CourseController {
         return courseService.getAll();
     }
 
-    @GetMapping("/getCourseByID/{courseID}")
+    @GetMapping("/getCourse/{courseID}")
     public CourseDTO getByID(@PathVariable("courseID") String courseID){
         return courseService.getCourseByID(courseID);
     }

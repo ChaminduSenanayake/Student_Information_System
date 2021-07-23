@@ -3,7 +3,7 @@ package com.uoc.sis.dto;
 import java.util.List;
 
 public class ExamDTO {
-    private String examId;
+    private String examID;
     private String examName;
     private String date;
     private String duration;
@@ -11,9 +11,8 @@ public class ExamDTO {
     private String courseName;
     private List<ResultDTO> resultList;
 
-
-    public ExamDTO(String examId, String examName, String date, String duration, String courseID, String courseName) {
-        this.examId = examId;
+    public ExamDTO(String examID, String examName, String date, String duration, String courseID, String courseName) {
+        this.examID = examID;
         this.examName = examName;
         this.date = date;
         this.duration = duration;
@@ -21,22 +20,12 @@ public class ExamDTO {
         this.courseName = courseName;
     }
 
-    public ExamDTO(String examId, String examName, String date, String duration, String courseID, String courseName, List<ResultDTO> resultList) {
-        this.examId = examId;
-        this.examName = examName;
-        this.date = date;
-        this.duration = duration;
-        this.courseID = courseID;
-        this.courseName = courseName;
-        this.resultList = resultList;
+    public String getExamID() {
+        return examID;
     }
 
-    public String getExamId() {
-        return examId;
-    }
-
-    public void setExamId(String examId) {
-        this.examId = examId;
+    public void setExamID(String examID) {
+        this.examID = examID;
     }
 
     public String getExamName() {

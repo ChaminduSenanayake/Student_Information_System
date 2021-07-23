@@ -10,8 +10,8 @@ public class Course {
     private String course_level;
     private String course_name;
     private int semester;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumns(@JoinColumn(name = "faculty_id",referencedColumnName = "faculty_id",insertable = false,updatable = false))
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumns(@JoinColumn(name = "department_id",referencedColumnName = "department_id"))
     private Department department;
 
     @OneToMany
