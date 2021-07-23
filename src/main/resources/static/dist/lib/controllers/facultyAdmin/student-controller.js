@@ -103,7 +103,7 @@ $(document).ready(function () {
                 contentType: 'application/json; charset=utf-8',
                 success: function (response) {
                     if (response) {
-                        swal("Good job!", "Student Saved Successfully!", "success");
+                        swal("Good job!", "Student has been saved succeessfully!", "success");
                         $('#addNewModal').on('hidden.bs.modal', function (e) {
                             let modal = $(this);
                             modal.find('#txtFirstName').val("");
@@ -183,7 +183,7 @@ $(document).ready(function () {
                 contentType: 'application/json; charset=utf-8',
                 success: function (response) {
                     if (response) {
-                        swal("Good job!", "Student Updated Successfully!", "success");
+                        swal("Good job!", "Your changes have been saved succeessfully!", "success");
                         $('#addNewModal').on('hidden.bs.modal', function (e) {
                             let modal = $(this);
                             modal.find('#txtEditFirstName').val("");
@@ -536,4 +536,56 @@ function deleteStudent(registrationNo){
         });
 }
 
+// Validation
 
+let telephone=document.getElementById('txtTelephone');
+let firstName=document.getElementById('txtFirstName');
+let middleName=document.getElementById('txtMiddleName');
+let lastName=document.getElementById('txtLastName');
+let password=document.getElementById('txtPassword');
+
+telephone.addEventListener('input', function(){
+    let regexTelephone = /^[0-9]{10}$/;
+    if (!regexTelephone.test(telephone.value)) {
+        telephone.setCustomValidity('Invalid Telephone Number');
+    }else {
+        telephone.setCustomValidity('');
+    }
+});
+
+firstName.addEventListener('input', function(){
+    let regexName = /^[a-zA-Z\s]*$/;
+    if (!regexName.test(firstName.value)) {
+        firstName.setCustomValidity('Invalid Name');
+    }else {
+        firstName.setCustomValidity('');
+    }
+});
+
+middleName.addEventListener('input', function(){
+    let regexName = /^[a-zA-Z\s]*$/;
+    if (!regexName.test(middleName.value)) {
+        middleName.setCustomValidity('Invalid Name');
+    }else {
+        middleName.setCustomValidity('');
+    }
+});
+
+lastName.addEventListener('input', function(){
+    let regexName = /^[a-zA-Z\s]*$/;
+    if (!regexName.test(firstName.value)) {
+        firstName.setCustomValidity('Invalid Name');
+    }else {
+        firstName.setCustomValidity('');
+    }
+});
+
+
+password.addEventListener('input', function(){
+    let regex = /^[A-Za-z]\w{6,14}$/;
+    if (!regex.test(password.value)) {
+        password.setCustomValidity('Password size sholud be 6-14');
+    }else {
+        password.setCustomValidity('');
+    }
+});

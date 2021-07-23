@@ -28,7 +28,7 @@ $(document).ready(function () {
             contentType:'application/json; charset=utf-8',
             success: function (responce) {
                 if(responce){
-                    swal("Good job!", "You clicked the button!", "success");
+                    swal("Good job!", "Department has been saved succeessfully!", "success");
                     $('#addNewModal').on('hidden.bs.modal', function (e) {
                         let modal=$(this);
                         modal.find('#txtDepartmentName').val("");
@@ -66,7 +66,7 @@ $(document).ready(function () {
             contentType:'application/json; charset=utf-8',
             success: function (response) {
                 if(response){
-                    swal("Good job!", "You clicked the button!", "success");
+                    swal("Good job!", "Your changes have been saved succeessfully!", "success");
                     $('#updateModal').on('hidden.bs.modal', function (e) {
                         let modal=$(this);
                         modal.find('#txtEditDepartmentName').val("");
@@ -222,3 +222,23 @@ function getAllDepartments(){
 }
 
 
+// Validation
+let departmentName=document.getElementById('txtDepartmentName');
+departmentName.addEventListener('input', function(){
+    let regex = /^[a-zA-Z ]{2,200}$/;
+    if (!regex.test(departmentName.value)) {
+        departmentName.setCustomValidity('Invalid Department Name');
+    }else {
+        departmentName.setCustomValidity('');
+    }
+});
+
+let editDepartmentName=document.getElementById('txtEditDepartmentName');
+editDepartmentName.addEventListener('input', function(){
+    let regex = /^[a-zA-Z ]{2,200}$/;
+    if (!regex.test(editDepartmentName.value)) {
+        editDepartmentName.setCustomValidity('Invalid Department Name');
+    }else {
+        editDepartmentName.setCustomValidity('');
+    }
+});

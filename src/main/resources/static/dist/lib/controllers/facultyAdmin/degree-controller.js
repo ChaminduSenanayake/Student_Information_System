@@ -76,7 +76,7 @@ $(document).ready(function () {
             contentType:'application/json; charset=utf-8',
             success: function (responce) {
                 if(responce){
-                    swal("Good job!", "You clicked the button!", "success");
+                    swal("Good job!", "Degree has been saved succeessfully!", "success");
                     $('#addNewModal').on('hidden.bs.modal', function (e) {
                         let modal=$(this);
                         modal.find('#txtDegreeName').val("");
@@ -112,7 +112,7 @@ $(document).ready(function () {
             contentType:'application/json; charset=utf-8',
             success: function (responce) {
                 if(responce){
-                    swal("Good job!", "You clicked the button!", "success");
+                    swal("Good job!", "Your changes have been saved succeessfully!", "success");
                     $('#updateModal').on('hidden.bs.modal', function (e) {
                         let modal=$(this);
                         modal.find('#txtEditDegreeName').val("");
@@ -269,6 +269,27 @@ function getAllDegrees(){
     })
 }
 
+// Validation
 
+let degreeName=document.getElementById('txtDegreeName');
 
+degreeName.addEventListener('input', function(){
+    let regex = /^[a-zA-Z ]{2,200}$/;
+    if (!regex.test(degreeName.value)) {
+        degreeName.setCustomValidity('Invalid Degree Name');
+    }else {
+        degreeName.setCustomValidity('');
+    }
+});
+
+let editDegreeName=document.getElementById('txtEditDegreeName');
+
+editDegreeName.addEventListener('input', function(){
+    let regex = /^[a-zA-Z ]{2,200}$/;
+    if (!regex.test(editDegreeName.value)) {
+        editDegreeName.setCustomValidity('Invalid Degree Name');
+    }else {
+        editDegreeName.setCustomValidity('');
+    }
+});
 

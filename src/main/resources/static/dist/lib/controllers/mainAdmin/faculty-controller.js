@@ -47,7 +47,7 @@ $(document).ready(function () {
             contentType:'application/json; charset=utf-8',
             success: function (responce) {
                 if(responce){
-                    swal("Good job!", "You clicked the button!", "success");
+                    swal("Good job!", "Faculty has been saved succeessfully!", "success");
                     $('#addNewModal').on('hidden.bs.modal', function (e) {
                         let modal=$(this);
                         modal.find('#txtFacultyName').val("");
@@ -87,7 +87,7 @@ $(document).ready(function () {
             contentType:'application/json; charset=utf-8',
             success: function (responce) {
                 if(responce){
-                    swal("Good job!", "You clicked the button!", "success");
+                    swal("Good job!", "Your changes have been saved succeessfully!", "success");
                     $('#updateModal').on('hidden.bs.modal', function (e) {
                         let modal=$(this);
                         modal.find('#txtEditFacultyName').val("");
@@ -260,3 +260,26 @@ function getAllFaculties(){
         }
     })
 }
+
+// Validation
+let facultyName=document.getElementById('txtFacultyName');
+
+facultyName.addEventListener('input', function(){
+    let regex = /^[a-zA-Z ]{2,30}$/;
+    if (!regex.test(facultyName.value)) {
+        facultyName.setCustomValidity('Invalid faculty Name');
+    }else {
+        facultyName.setCustomValidity('');
+    }
+});
+
+let editFacultyName=document.getElementById('txtEditFacultyName');
+
+editFacultyName.addEventListener('input', function(){
+    let regex = /^[a-zA-Z ]{2,200}$/;
+    if (!regex.test(editFacultyName.value)) {
+        editFacultyName.setCustomValidity('Invalid faculty Name');
+    }else {
+        editFacultyName.setCustomValidity('');
+    }
+});

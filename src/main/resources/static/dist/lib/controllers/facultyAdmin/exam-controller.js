@@ -82,7 +82,7 @@ $(document).ready(function () {
             contentType:'application/json; charset=utf-8',
             success: function (responce) {
                 if(responce){
-                    swal("Good job!", "You clicked the button!", "success");
+                    swal("Good job!", "Exam has been saved succeessfullyn!", "success");
                     $('#addNewModal').on('hidden.bs.modal', function (e) {
                         let modal=$(this);
                         modal.find('#txtExamName').val("");
@@ -129,7 +129,7 @@ $(document).ready(function () {
             contentType:'application/json; charset=utf-8',
             success: function (response) {
                 if(response){
-                    swal("Good job!", "You clicked the button!", "success");
+                    swal("Good job!", "Your changes have been saved succeessfully!", "success");
                     $("#updateModal").modal('hide');
                     getAllExams();
                 }else{
@@ -371,3 +371,24 @@ function getFacultyAdmin(userName) {
     });
 }
 
+
+// Validation
+let examName=document.getElementById('txtExamName');
+examName.addEventListener('input', function(){
+    let regex = /^[a-zA-Z ]{2,200}$/;
+    if (!regex.test(examName.value)) {
+        examName.setCustomValidity('Invalid Exam Name Name');
+    }else {
+        examName.setCustomValidity('');
+    }
+});
+
+let editExamName=document.getElementById('txtEditExamName');
+editExamName.addEventListener('input', function(){
+    let regex = /^[a-zA-Z ]{2,200}$/;
+    if (!regex.test(editExamName.value)) {
+        editExamName.setCustomValidity('Invalid Exam Name Name');
+    }else {
+        editExamName.setCustomValidity('');
+    }
+});

@@ -82,7 +82,7 @@ $(document).ready(function () {
             contentType:'application/json; charset=utf-8',
             success: function (responce) {
                 if(responce){
-                    swal("Good job!", "You clicked the button!", "success");
+                    swal("Good job!", "Course has been saved succeessfully!", "success");
                     $('#addNewModal').on('hidden.bs.modal', function (e) {
                         let modal=$(this);
                         modal.find('#txtCourseName').val("");
@@ -128,7 +128,7 @@ $(document).ready(function () {
             contentType:'application/json; charset=utf-8',
             success: function (response) {
                 if(response){
-                    swal("Good job!", "You clicked the button!", "success");
+                    swal("Good job!", "Your Changes have been saved succeessfully!", "success");
                     $("#updateModal").modal('hide');
                     getAllCourses();
                 }else{
@@ -369,3 +369,24 @@ function getAllCourses(){
     })
 }
 
+
+// Validation
+let courseName=document.getElementById('txtCourseName');
+courseName.addEventListener('input', function(){
+    let regex = /^[a-zA-Z ]{2,200}$/;
+    if (!regex.test(courseName.value)) {
+        courseName.setCustomValidity('Invalid Course Name');
+    }else {
+        courseName.setCustomValidity('');
+    }
+});
+
+let editCourseName=document.getElementById('txtEditCourseName');
+editCourseName.addEventListener('input', function(){
+    let regex = /^[a-zA-Z ]{2,200}$/;
+    if (!regex.test(editCourseName.value)) {
+        editCourseName.setCustomValidity('Invalid Course Name');
+    }else {
+        editCourseName.setCustomValidity('');
+    }
+});

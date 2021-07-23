@@ -49,7 +49,7 @@ $('#addNewUniversity').submit(function (event) {
                 $("#addNewModal").modal('hide');
                 getAllUni();
             } else {
-                swal("OOps!", "You clicked the button!", "error");
+                swal("OOps!", "University has been saved succeessfully!", "error");
             }
         },
         error: function (error) {
@@ -81,7 +81,7 @@ $('#updateUniversity').submit(function (event) {
                         location.reload();
                     });
                 } else {
-                    swal("OOps!", "You clicked the button!", "error");
+                    swal("OOps!", "Your changes have been saved succeessfully!", "error");
                 }
             },
             error: function (error) {
@@ -103,7 +103,7 @@ $('#updateUniversity').submit(function (event) {
                     $("#updateUniversityModal").modal('hide');
                     swal({
                         title: "Good job!",
-                        text: "You clicked the button!",
+                        text: "Your changes have been saved succeessfully!",
                         icon: "success"
                     }).then(function () {
                         location.reload();
@@ -238,34 +238,29 @@ function openImageModal(imagePath) {
     imageModal.show();
 }
 
-// $('#btnUpdate').click(function (){
-//     let uniCode=$('#txtEditUniCode').val();
-//     let uniName=$('#txtEditUniversityName').val();
-//     let dataObject=JSON.stringify({
-//         "uniCode":uniCode,
-//         "uniName":uniName
-//     });
-//     $.ajax({
-//         type:"PUT",
-//         url:MainAdminURL+"university/update",
-//         data:dataObject,
-//         dataType:'json',
-//         contentType:'application/json; charset=utf-8',
-//         success:function (responce){
-//             if(responce){
-//                 swal("Good job!", "You clicked the button!", "success");
-//
-//                 $("#updateUniversityModal").modal('hide');
-//                 getAllUni();
-//             }else{
-//                 swal("OOps!", "You clicked the button!", "error");
-//             }
-//         },
-//         error:function (error){
-//             console.log(error);
-//         }
-//     });
-// });
 
 
+// Validation
+let universityName=document.getElementById('txtUniversityName');
+
+universityName.addEventListener('input', function(){
+    let regex = /^[a-zA-Z ]{2,200}$/;
+    if (!regex.test(universityName.value)) {
+        universityName.setCustomValidity('Invalid university Name');
+    }else {
+        universityName.setCustomValidity('');
+    }
+});
+
+
+let editUniversityName=document.getElementById('txtEditUniversityName');
+
+editUniversityName.addEventListener('input', function(){
+    let regex = /^[a-zA-Z ]{2,200}$/;
+    if (!regex.test(editUniversityName.value)) {
+        editUniversityName.setCustomValidity('Invalid university Name');
+    }else {
+        editUniversityName.setCustomValidity('');
+    }
+});
 
