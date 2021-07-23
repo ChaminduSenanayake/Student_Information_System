@@ -6,16 +6,18 @@ public class ExamDTO {
     private String examID;
     private String examName;
     private String date;
-    private String duration;
+    private String startTime;
+    private String endTime;
     private String courseID;
     private String courseName;
     private List<ResultDTO> resultList;
 
-    public ExamDTO(String examID, String examName, String date, String duration, String courseID, String courseName) {
+    public ExamDTO(String examID, String examName, String date, String startTime, String endTime, String courseID, String courseName) {
         this.examID = examID;
         this.examName = examName;
         this.date = date;
-        this.duration = duration;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.courseID = courseID;
         this.courseName = courseName;
     }
@@ -44,12 +46,20 @@ public class ExamDTO {
         this.date = date;
     }
 
-    public String getDuration() {
-        return duration;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setDuration(String duration) {
-        this.duration = duration;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public String getCourseID() {

@@ -20,40 +20,43 @@ public class ExamController {
     private ExamService examService;
 
     @GetMapping("/")
-    public ModelAndView loadPage(HttpServletRequest request){
+    public ModelAndView loadPage(HttpServletRequest request) {
         HttpSession session = request.getSession();
         Object user = request.getSession().getAttribute("user_session");
-        if(session!=null && user!=null){
-            ModelAndView model=new ModelAndView("/facultyAdmin/exam.html");
-            model.addObject("userName",user.toString());
+        if (session != null && user != null) {
+            ModelAndView model = new ModelAndView("/facultyAdmin/exam.html");
+            model.addObject("userName", user.toString());
             return model;
-        }else{
-            ModelAndView model=new ModelAndView("login.html");
-            model.addObject("sessionExpired","Session Expired...! Please sign in again");
+        } else {
+            ModelAndView model = new ModelAndView("login.html");
+            model.addObject("sessionExpired", "Session Expired...! Please sign in again");
             return model;
         }
 
     }
 
     @PostMapping("/save")
-    public boolean addExam(@RequestBody ExamDTO examDTO){
+    public boolean addExam(@RequestBody ExamDTO examDTO) {
         return examService.addExam(examDTO);
     }
+
     @PutMapping("/update")
-    public boolean updateExam(@RequestBody ExamDTO examDTO){
+    public boolean updateExam(@RequestBody ExamDTO examDTO) {
         return examService.updateExam(examDTO);
     }
+
     @DeleteMapping("/delete/{examID}")
-    public boolean deleteExam(@PathVariable("examID") String examID){
+    public boolean deleteExam(@PathVariable("examID") String examID) {
         return examService.deleteExam(examID);
     }
+
     @GetMapping("/getAll")
-    public List<ExamDTO> getAll(){
+    public List<ExamDTO> getAll() {
         return examService.getAll();
     }
 
     @GetMapping("/getExam/{examID}")
-    public ExamDTO getByID(@PathVariable("examID") String examID){
+    public ExamDTO getByID(@PathVariable("examID") String examID) {
         return examService.getExam(examID);
     }
 

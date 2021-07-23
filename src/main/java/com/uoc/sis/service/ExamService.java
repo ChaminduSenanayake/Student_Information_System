@@ -29,7 +29,7 @@ public class ExamService {
 
     public boolean addExam(ExamDTO dto) {
         Course course=courseRepository.getById(dto.getCourseID());
-        Exam exam=new Exam(dto.getExamID(),dto.getExamName(),dto.getDate(),dto.getDuration(),course);
+        Exam exam=new Exam(dto.getExamID(),dto.getExamName(),dto.getDate(),dto.getStartTime(),dto.getEndTime(),course);
         examRepository.save(exam);
         if (examRepository.findById(dto.getExamID()).isPresent()) {
             return true;
@@ -43,7 +43,7 @@ public class ExamService {
             Exam objExam = examRepository.getById(dto.getExamID());
             if (objExam != null) {
                 Course course=courseRepository.getById(dto.getCourseID());
-                Exam exam=new Exam(dto.getExamID(),dto.getExamName(),dto.getDate(),dto.getDuration(),course);
+                Exam exam=new Exam(dto.getExamID(),dto.getExamName(),dto.getDate(),dto.getStartTime(),dto.getEndTime(),course);
                 examRepository.save(exam);
                 return true;
             } else {
@@ -70,7 +70,7 @@ public class ExamService {
         for (Exam exam : all) {
             Course course=exam.getCourse();
             if(course!=null) {
-                dtos.add(new ExamDTO(exam.getExam_id(),exam.getExam_name(),exam.getDate(),exam.getDuration(),course.getCourse_id(),course.getCourse_name()));
+                dtos.add(new ExamDTO(exam.getExam_id(),exam.getExam_name(),exam.getDate(),exam.getStartTime(),exam.getEndTime(),course.getCourse_id(),course.getCourse_name()));
             }
         }
         return dtos;
@@ -81,7 +81,7 @@ public class ExamService {
         try {
             Exam exam = examRepository.getById(ExamID);
             Course course=exam.getCourse();
-            return new ExamDTO(exam.getExam_id(),exam.getExam_name(),exam.getDate(),exam.getDuration(),course.getCourse_id(),course.getCourse_name());
+            return new ExamDTO(exam.getExam_id(),exam.getExam_name(),exam.getDate(),exam.getStartTime(),exam.getEndTime(),course.getCourse_id(),course.getCourse_name());
         } catch (EntityNotFoundException e) {
             e.printStackTrace();
         }

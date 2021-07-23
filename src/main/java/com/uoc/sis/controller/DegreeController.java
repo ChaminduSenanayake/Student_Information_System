@@ -21,42 +21,45 @@ public class DegreeController {
     private DegreeService degreeService;
 
     @GetMapping("/")
-    public ModelAndView loadPage(HttpServletRequest request){
+    public ModelAndView loadPage(HttpServletRequest request) {
         HttpSession session = request.getSession();
         Object user = request.getSession().getAttribute("user_session");
-        if(session!=null && user!=null){
-            ModelAndView model=new ModelAndView("/FacultyAdmin/degree.html");
-            model.addObject("userName",user.toString());
+        if (session != null && user != null) {
+            ModelAndView model = new ModelAndView("/FacultyAdmin/degree.html");
+            model.addObject("userName", user.toString());
             return model;
-        }else{
-            ModelAndView model=new ModelAndView("login.html");
-            model.addObject("sessionExpired","Session Expired...! Please sign in again");
+        } else {
+            ModelAndView model = new ModelAndView("login.html");
+            model.addObject("sessionExpired", "Session Expired...! Please sign in again");
             return model;
         }
 
     }
 
     @PostMapping("/save")
-    public boolean addDegree(@RequestBody DegreeDTO dto){
+    public boolean addDegree(@RequestBody DegreeDTO dto) {
 
         return degreeService.addDegree(dto);
     }
 
-    @PutMapping ("/update")
-    public boolean updateDegree(@RequestBody DegreeDTO dto){
-        System.out.println(dto.getDegreeID()+"====="+dto.getDegreeName()+"==="+dto.getFacultyID()+"====="+dto.getFacultyName());
+    @PutMapping("/update")
+    public boolean updateDegree(@RequestBody DegreeDTO dto) {
+        System.out.println(dto.getDegreeID() + "=====" + dto.getDegreeName() + "===" + dto.getFacultyID() + "=====" + dto.getFacultyName());
         return degreeService.updateDegree(dto);
     }
+
     @DeleteMapping("/delete/{degreeID}")
-    public boolean deleteFaculty(@PathVariable("degreeID") String degreeID){
+    public boolean deleteFaculty(@PathVariable("degreeID") String degreeID) {
         return degreeService.deleteDegree(degreeID);
     }
+
     @GetMapping("/getAll")
-    public List<DegreeDTO> getAll(){
+    public List<DegreeDTO> getAll() {
         return degreeService.getAll();
     }
+
     @GetMapping("/getDegree/{degreeID}")
-    public DegreeDTO getByID(@PathVariable("degreeID") String degreeID){
+    public DegreeDTO getByID(@PathVariable("degreeID") String degreeID) {
         return degreeService.getDegreeByID(degreeID);
     }
 

@@ -19,44 +19,43 @@ public class CourseController {
     private CourseService courseService;
 
     @GetMapping("/")
-    public ModelAndView loadPage(HttpServletRequest request){
+    public ModelAndView loadPage(HttpServletRequest request) {
         HttpSession session = request.getSession();
         Object user = request.getSession().getAttribute("user_session");
-        if(session!=null && user!=null){
-            ModelAndView model=new ModelAndView("/facultyAdmin/course.html");
-            model.addObject("userName",user.toString());
+        if (session != null && user != null) {
+            ModelAndView model = new ModelAndView("/facultyAdmin/course.html");
+            model.addObject("userName", user.toString());
             return model;
-        }else{
-            ModelAndView model=new ModelAndView("login.html");
-            model.addObject("sessionExpired","Session Expired...! Please sign in again");
+        } else {
+            ModelAndView model = new ModelAndView("login.html");
+            model.addObject("sessionExpired", "Session Expired...! Please sign in again");
             return model;
         }
 
     }
 
     @PostMapping("/save")
-    public boolean addCourse(@RequestBody CourseDTO courseDTO){
-        System.out.println("-----------------");
+    public boolean addCourse(@RequestBody CourseDTO courseDTO) {
         return courseService.addCourse(courseDTO);
     }
 
     @PutMapping("/update")
-    public boolean updateCourse(@RequestBody CourseDTO courseDTO){
+    public boolean updateCourse(@RequestBody CourseDTO courseDTO) {
         return courseService.updateCourse(courseDTO);
     }
 
     @DeleteMapping("/delete/{courseID}")
-    public boolean deleteCourse(@PathVariable("courseID") String courseID){
+    public boolean deleteCourse(@PathVariable("courseID") String courseID) {
         return courseService.deleteCourse(courseID);
     }
 
     @GetMapping("/getAll")
-    public List<CourseDTO> getAll(){
+    public List<CourseDTO> getAll() {
         return courseService.getAll();
     }
 
     @GetMapping("/getCourse/{courseID}")
-    public CourseDTO getByID(@PathVariable("courseID") String courseID){
+    public CourseDTO getByID(@PathVariable("courseID") String courseID) {
         return courseService.getCourseByID(courseID);
     }
 

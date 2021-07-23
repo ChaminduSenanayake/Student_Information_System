@@ -22,37 +22,38 @@ public class CourseRegistrationController {
 
 
     @GetMapping("/")
-    public ModelAndView loadPage(HttpServletRequest request){
+    public ModelAndView loadPage(HttpServletRequest request) {
         HttpSession session = request.getSession();
         Object user = request.getSession().getAttribute("user_session");
-        if(session!=null && user!=null){
-            ModelAndView model=new ModelAndView("/Student/course.html");
-            model.addObject("userName",user.toString());
+        if (session != null && user != null) {
+            ModelAndView model = new ModelAndView("/Student/course.html");
+            model.addObject("userName", user.toString());
             return model;
-        }else{
-            ModelAndView model=new ModelAndView("login.html");
-            model.addObject("sessionExpired","Session Expired...! Please sign in again");
+        } else {
+            ModelAndView model = new ModelAndView("login.html");
+            model.addObject("sessionExpired", "Session Expired...! Please sign in again");
             return model;
         }
 
     }
 
     @PostMapping("/save")
-    public boolean addRegistration(@RequestBody CourseRegistrationDTO courseRegistrationDTO){
+    public boolean addRegistration(@RequestBody CourseRegistrationDTO courseRegistrationDTO) {
         return registrationService.addCourseRegistration(courseRegistrationDTO);
     }
 
     @PutMapping("/update")
-    public boolean updateRegistration(@RequestBody CourseRegistrationDTO courseRegistrationDTO){
+    public boolean updateRegistration(@RequestBody CourseRegistrationDTO courseRegistrationDTO) {
         return registrationService.updateCourseRegistration(courseRegistrationDTO);
     }
+
     @DeleteMapping("/delete/{registrationNo}/{courseID}")
-    public boolean deleteRegistration(@PathVariable("registrationNo") String registrationNo,@PathVariable("courseID") String courseID){
-        return registrationService.deleteCourseRegistration(registrationNo,courseID);
+    public boolean deleteRegistration(@PathVariable("registrationNo") String registrationNo, @PathVariable("courseID") String courseID) {
+        return registrationService.deleteCourseRegistration(registrationNo, courseID);
     }
 
     @DeleteMapping("/getCourses/{registrationNo}")
-    public List<CourseRegistrationDTO> getCoursesByRegNO(@PathVariable("registrationNo") String registrationNo){
+    public List<CourseRegistrationDTO> getCoursesByRegNO(@PathVariable("registrationNo") String registrationNo) {
         return registrationService.getCoursesByRegNO(registrationNo);
     }
 

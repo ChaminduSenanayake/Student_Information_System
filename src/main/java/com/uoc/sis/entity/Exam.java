@@ -9,9 +9,10 @@ public class Exam {
     private String exam_id;
     private String exam_name;
     private String date;
-    private String duration;
+    private String startTime;
+    private String endTime;
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumns(@JoinColumn(name = "course_id",referencedColumnName = "course_id",insertable = false,updatable = false))
+    @JoinColumns(@JoinColumn(name = "course_id",referencedColumnName = "course_id"))
     private Course course;
 
     @OneToMany
@@ -20,21 +21,13 @@ public class Exam {
     public Exam() {
     }
 
-    public Exam(String exam_id, String exam_name, String date, String duration, Course course) {
+    public Exam(String exam_id, String exam_name, String date, String startTime, String endTime, Course course) {
         this.exam_id = exam_id;
         this.exam_name = exam_name;
         this.date = date;
-        this.duration = duration;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.course = course;
-    }
-
-    public Exam(String exam_id, String exam_name, String date, String duration, Course course, List<Result> result_list) {
-        this.exam_id = exam_id;
-        this.exam_name = exam_name;
-        this.date = date;
-        this.duration = duration;
-        this.course = course;
-        this.result_list = result_list;
     }
 
     public String getExam_id() {
@@ -61,20 +54,20 @@ public class Exam {
         this.date = date;
     }
 
-    public String getDuration() {
-        return duration;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setDuration(String duration) {
-        this.duration = duration;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    public List<Result> getResult_list() {
-        return result_list;
+    public String getEndTime() {
+        return endTime;
     }
 
-    public void setResult_list(List<Result> result_list) {
-        this.result_list = result_list;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public Course getCourse() {
@@ -83,5 +76,13 @@ public class Exam {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public List<Result> getResult_list() {
+        return result_list;
+    }
+
+    public void setResult_list(List<Result> result_list) {
+        this.result_list = result_list;
     }
 }

@@ -6,6 +6,7 @@ $(document).ready(function () {
     document.getElementById('examBtn').style.color = "#ffffff";
     var userName=$(txtUserName).html();
     getFacultyAdmin(userName);
+    getAllExams();
 
     // Table Search Exam ID
     $("#txtSearchExamID").on("keyup", function() {
@@ -21,11 +22,16 @@ $(document).ready(function () {
             $('#btnSearchExamID').html("<i class=\"fas fa-eraser\"></i>&nbsp&nbspClear");
             $('#btnSearchExamID').css("background-color","#54948F")
         }
-
+    });
+    $('#btnSearchExamID').click(function (){
+        $('#btnSearchExamID').html("<i class=\"fas fa-search\"></i> Search");
+        $('#btnSearchExamID').css("background-color","#3B9B76");
+        $('#txtSearchExamID').val(null);
+        getAllExams();
     });
 
     // Table Search Exam Date
-    $("#txtSearchExamID").on("change", function() {
+    $("#txtSearchExamDate").on("change", function() {
         var value = $(this).val().toLowerCase();
         $("#examTable tr").filter(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
@@ -39,14 +45,6 @@ $(document).ready(function () {
             $('#btnSearchExamDate').css("background-color","#54948F")
         }
 
-    });
-
-
-    $('#btnSearchExamDate').click(function (){
-        $('#btnSearchExamID').html("<i class=\"fas fa-search\"></i> Search");
-        $('#btnSearchExamID').css("background-color","#3B9B76");
-        $('#txtSearchExamID').val(null);
-        getAllExams();
     });
 
     $('#btnSearchExamDate').click(function (){
@@ -64,13 +62,15 @@ $(document).ready(function () {
         let courseID=$('#selectCourseID').val();
         let courseName=$('#txtCourseName').val();
         let date=$('#txtExamDate').val();
-        let duration=$('#txtExamDuration').val();
+        let startTime=$('#txtExamStartTime').val();
+        let endTime=$('#txtExamEndTime').val();
 
         let dataObj=JSON.stringify({
             "examID":examID,
             "examName":examName,
             "date":date,
-            "duration":duration,
+            "startTime":startTime,
+            "endTime":endTime,
             "courseID":courseID,
             "courseName":courseName
         });
@@ -103,18 +103,20 @@ $(document).ready(function () {
 
 
     $('#updateExam').submit(function (event) {
-        let examID=$('#txtExamID').val();
-        let examName=$('#txtExamName').val();
-        let courseID=$('#selectCourseID').val();
-        let courseName=$('#txtCourseName').val();
-        let date=$('#txtExamDate').val();
-        let duration=$('#txtExamDuration').val();
+        let examID=$('#txtEditExamID').val();
+        let examName=$('#txtEditExamName').val();
+        let courseID=$('#selectEditCourseID').val();
+        let courseName=$('#txtEditCourseName').val();
+        let date=$('#txtEditExamDate').val();
+        let startTime=$('#txtEditExamStartTime').val();
+        let endTime=$('#txtEditExamEndTime').val();
 
         let dataObj=JSON.stringify({
             "examID":examID,
             "examName":examName,
             "date":date,
-            "duration":duration,
+            "startTime":startTime,
+            "endTime":endTime,
             "courseID":courseID,
             "courseName":courseName
         });
@@ -150,7 +152,7 @@ $('#selectCourseID').change(function() {
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
-            $('#txtCourseName').val(response['name']);
+            $('#txtCourseName').val(response['courseName']);
         },
         error: function (error) {
             console.log(error);
@@ -166,7 +168,7 @@ $('#selectEditCourseID').change(function() {
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
-            $('#txtEditCourseName').val(response['name']);
+            $('#txtEditCourseName').val(response['courseName']);
         },
         error: function (error) {
             console.log(error);
@@ -174,31 +176,6 @@ $('#selectEditCourseID').change(function() {
     });
 });
 
-function getFacultyAdmin(userName) {
-    $.ajax({
-        type: "GET",
-        url: baseURL + "facultyAdmin/getByUserName/"+userName,
-        dataType: 'json',
-        async:false,
-        contentType: 'application/json; charset=utf-8',
-        success: function (response) {
-            $('#txtUserName').html(response['fName']+" "+response['lName']);
-            facultyID=response['facultyID'];
-            $.ajax({
-                type: "GET",
-                url: baseURL + "university/getUniversityByFacultyID/"+response['facultyID'],
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
-                success: function (response) {
-                    $('#uniImage').attr("src",response['imagePath']);
-                    $('#uniName').html(response['uniName']);
-                    uniCode=response['uniCode'];
-                    uniName= response['uniName'];
-                }
-            })
-        }
-    });
-}
 
 function openAddNewModal() {
     let addNewModal = new bootstrap.Modal(document.getElementById('addNewModal'));
@@ -244,27 +221,27 @@ function openAddNewModal() {
     addNewModal.show();
 }
 
-function openUpdateModal(courseID) {
+function openUpdateModal(examID) {
     let updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
     $('#updateModal').on('show.bs.modal', function(event) {
         let modal = $(this);
 
         $.ajax({
             type:"GET",
-            url:baseURL+"department/getAll",
+            url:baseURL+"course/getAll/",
             dataType:'json',
             contentType: 'application/json; charset=utf-8',
             success:function (response) {
-                var sel = document.getElementById('selectEditDepartmentID');
+                var sel = document.getElementById('selectEditCourseID');
                 for (i = sel.length ; i >= 1; i--) {
                     sel.remove(i-1);
                 }
                 for (i in response) {
-                    let department = response[i];
-                    let depID = department['departmentID'];
-                    let option = "<option>" + depID + "</option>";
-                    $('#selectEditDepartmentID').append(option);
-                    if(i==0){$('#txtEditDepartmentName').val(department['name'])}
+                    let course = response[i];
+                    let courseID = course['courseID'];
+                    let option = "<option>" + courseID + "</option>";
+                    $('#selectEditCourseID').append(option);
+                    if(i==0){$('#txtEditCourseName').val(course['courseName'])}
                 }
 
             },error(error) {
@@ -274,16 +251,17 @@ function openUpdateModal(courseID) {
 
         $.ajax({
             type:"GET",
-            url:baseURL+"course/getCourse/"+courseID,
+            url:baseURL+"exam/getExam/"+examID,
             dataType:'json',
             contentType: 'application/json; charset=utf-8',
             success:function (response) {
-                $('#txtEditCourseID').val(response['courseID']);
+                $('#txtEditExamID').val(response['examID']);
+                $('#txtEditExamName').val(response['examName']);
+                $('#selectEditCourseID').val(response['courseID']);
                 $('#txtEditCourseName').val(response['courseName']);
-                $('#txtEditSemester').val(response['semester']);
-                $('#txtEditLevel').val(response['courseLevel']);
-                $('#selectEditDepartmentID').val(response['departmentID']);
-                $('#txtEditDepartmentName').val(response['departmentName']);
+                $('#txtEditExamDate').val(response['date']);
+                $('#txtEditExamStartTime').val(response['startTime']);
+                $('#txtEditExamEndTime').val(response['endTime']);
             },error(error) {
                 console.log(error);
             }
@@ -294,10 +272,10 @@ function openUpdateModal(courseID) {
 }
 
 
-function deleteCourse(courseID){
+function deleteExam(examID){
     swal({
         title: "Are you sure?",
-        text: "Course will be deleted..!!",
+        text: "Exam will be deleted..!!",
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -306,12 +284,12 @@ function deleteCourse(courseID){
             if (willDelete) {
                 $.ajax({
                     type:"DELETE",
-                    url:baseURL+"course/delete/"+courseID,
+                    url:baseURL+"exam/delete/"+examID,
                     dataType:'json',
                     success:function (response){
                         if(response){
                             swal("Poof! Your imaginary file has been deleted!", {icon: "success"});
-                            getAllCourses();
+                            getAllExams();
                         }else{
                             swal("Poof! Your imaginary file has not been deleted!", {
                                 icon: "error",
@@ -328,40 +306,68 @@ function deleteCourse(courseID){
         });
 }
 
-function getAllCourses() {
-    let courseTable = $('#courseTable');
-    courseTable.empty();
+function getAllExams() {
+    let examTable = $('#examTable');
+    examTable.empty();
     $.ajax({
         type: "GET",
-        url: baseURL + "course/getAll",
+        url: baseURL + "exam/getAll",
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
             for (i in response) {
-                let course = response[i];
-                let courseID = course['courseID'];
-                let courseName = course['courseName']
-                let semester = course['semester'];
-                let level = course['courseLevel'];
-                let departmentID = course['departmentID'];
-                let departmentName = course['departmentName'];
-
+                let exam = response[i];
+                let examID = exam['examID'];
+                let examName = exam['examName'];
+                let courseID = exam['courseID'];
+                let courseName = exam['courseName'];
+                let date = exam['date'];
+                let startTime = exam['startTime'];
+                let endTime = exam['endTime'];
                 let row = "<tr>\n" +
+                    "    <td class=\"p-3\">" + examID + "</td>\n" +
+                    "    <td class=\"p-3\">" + examName + "</td>\n" +
                     "    <td class=\"p-3\">" + courseID + "</td>\n" +
                     "    <td class=\"p-3\">" + courseName + "</td>\n" +
-                    "    <td class=\"p-3\">" + semester + "</td>\n" +
-                    "    <td class=\"p-3\">" + level + "</td>\n" +
-                    "    <td class=\"p-3\">" + departmentID + "</td>\n" +
-                    "    <td class=\"p-3\">" + departmentName + "</td>\n" +
+                    "    <td class=\"p-3\">" + date + "</td>\n" +
+                    "    <td class=\"p-3\">" + startTime + "</td>\n" +
+                    "    <td class=\"p-3\">" + endTime + "</td>\n" +
                     "<div class=\"btn-group\" role=\"group\">\n" +
                     "<td>\n" +
-                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\"" + courseID + "\" onclick=\"openUpdateModal(this.id)\"><i class=\"fas fa-edit\"></i> Edit</button>\n" +
-                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\"" + courseID + "\" onclick=\"deleteCourse(this.id)\"><i class=\"fas fa-trash-alt\"></i> Delete</button>\n" +
+                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\"" + examID + "\" onclick=\"openUpdateModal(this.id)\"><i class=\"fas fa-edit\"></i> Edit</button>\n" +
+                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\"" + examID + "\" onclick=\"deleteExam(this.id)\"><i class=\"fas fa-trash-alt\"></i> Delete</button>\n" +
                     "</div>\n" +
                     "</td>\n" +
                     "</tr>";
-                courseTable.append(row);
+                examTable.append(row);
             }
         }
     })
 }
+
+function getFacultyAdmin(userName) {
+    $.ajax({
+        type: "GET",
+        url: baseURL + "facultyAdmin/getByUserName/"+userName,
+        dataType: 'json',
+        async:false,
+        contentType: 'application/json; charset=utf-8',
+        success: function (response) {
+            $('#txtUserName').html(response['fName']+" "+response['lName']);
+            facultyID=response['facultyID'];
+            $.ajax({
+                type: "GET",
+                url: baseURL + "university/getUniversityByFacultyID/"+response['facultyID'],
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (response) {
+                    $('#uniImage').attr("src",response['imagePath']);
+                    $('#uniName').html(response['uniName']);
+                    uniCode=response['uniCode'];
+                    uniName= response['uniName'];
+                }
+            })
+        }
+    });
+}
+
