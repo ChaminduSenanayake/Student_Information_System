@@ -39,7 +39,7 @@ $('#addNewUniversity').submit(function (event) {
         contentType: false,
         success: function (response) {
             if (response) {
-                swal("Saved!", "You clicked the button!", "success");
+                swal("Good job!", "University has been saved succeessfully!", "success");
                 $('#addNewModal').on('hidden.bs.modal', function (e) {
                     let modal = $(this);
                     modal.find('#txtUniCode').val("");
@@ -49,7 +49,7 @@ $('#addNewUniversity').submit(function (event) {
                 $("#addNewModal").modal('hide');
                 getAllUni();
             } else {
-                swal("OOps!", "University has been saved succeessfully!", "error");
+                swal("OOps!", "You clicked the button!", "error");
             }
         },
         error: function (error) {
@@ -75,13 +75,13 @@ $('#updateUniversity').submit(function (event) {
                     $("#updateUniversityModal").modal('hide');
                     swal({
                         title: "Good job!",
-                        text: "You clicked the button!",
+                        text: "Your changes have been saved succeessfully!",
                         icon: "success"
                     }).then(function () {
                         location.reload();
                     });
                 } else {
-                    swal("OOps!", "Your changes have been saved succeessfully!", "error");
+                    swal("OOps!", "You clicked the button!", "error");
                 }
             },
             error: function (error) {

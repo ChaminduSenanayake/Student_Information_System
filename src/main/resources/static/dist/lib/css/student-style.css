@@ -58,7 +58,7 @@ nav{
 }
 
 #sidebar-wrapper {
-    min-height: 132vh;
+    min-height: 110vh;
     margin-left: -15rem;
     transition: margin 0.25s ease-out;
     background-color: #1F2E4E;
@@ -99,3 +99,5 @@ nav{
         padding: 0.85rem 2rem;
     }
 }
+
+

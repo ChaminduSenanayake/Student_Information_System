@@ -7,7 +7,7 @@ public class Registration {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumns(@JoinColumn(name = "registration_no",referencedColumnName = "registration_no",insertable = false,updatable = false))
     private Student student;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumns(@JoinColumn(name = "course_id",referencedColumnName = "course_id",insertable = false,updatable = false))
     private Course course;
 

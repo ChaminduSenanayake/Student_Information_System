@@ -63,6 +63,7 @@ $(document).ready(function () {
         let courseName=$('#txtCourseName').val();
         let semester=$('#txtSemester').val();
         let level=$('#txtLevel').val();
+        let credits=$('#txtCourseCredits').val();
         let departmentID=$('#selectDepartmentID').val();
         let departmentName=$('#txtDepartmentName').val();
 
@@ -71,6 +72,7 @@ $(document).ready(function () {
             "courseName":courseName,
             "semester":semester,
             "courseLevel":level,
+            "credits":credits,
             "departmentID":departmentID,
             "departmentName":departmentName
         });
@@ -108,6 +110,7 @@ $(document).ready(function () {
         let courseName=$('#txtEditCourseName').val();
         let semester=$('#txtEditSemester').val();
         let level=$('#txtEditLevel').val();
+        let credits=$('#txtEditCourseCredits').val();
         let departmentID=$('#selectEditDepartmentID').val();
         let departmentName=$('#txtEditDepartmentName').val();
 
@@ -116,6 +119,7 @@ $(document).ready(function () {
             "courseName":courseName,
             "semester":semester,
             "courseLevel":level,
+            "credits":credits,
             "departmentID":departmentID,
             "departmentName":departmentName
         });
@@ -175,31 +179,31 @@ $('#selectEditDepartmentID').change(function() {
     });
 });
 
-function getFacultyAdmin(userName) {
-    $.ajax({
-        type: "GET",
-        url: baseURL + "facultyAdmin/getByUserName/"+userName,
-        dataType: 'json',
-        async:false,
-        contentType: 'application/json; charset=utf-8',
-        success: function (response) {
-            $('#txtUserName').html(response['fName']+" "+response['lName']);
-            facultyID=response['facultyID'];
-            $.ajax({
-                type: "GET",
-                url: baseURL + "university/getUniversityByFacultyID/"+response['facultyID'],
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
-                success: function (response) {
-                    $('#uniImage').attr("src",response['imagePath']);
-                    $('#uniName').html(response['uniName']);
-                    uniCode=response['uniCode'];
-                    uniName= response['uniName'];
-                }
-            })
-        }
-    });
-}
+// function getFacultyAdmin(userName) {
+//     $.ajax({
+//         type: "GET",
+//         url: baseURL + "facultyAdmin/getByUserName/"+userName,
+//         dataType: 'json',
+//         async:false,
+//         contentType: 'application/json; charset=utf-8',
+//         success: function (response) {
+//             $('#txtUserName').html(response['fName']+" "+response['lName']);
+//             facultyID=response['facultyID'];
+//             $.ajax({
+//                 type: "GET",
+//                 url: baseURL + "university/getUniversityByFacultyID/"+response['facultyID'],
+//                 dataType: 'json',
+//                 contentType: 'application/json; charset=utf-8',
+//                 success: function (response) {
+//                     $('#uniImage').attr("src",response['imagePath']);
+//                     $('#uniName').html(response['uniName']);
+//                     uniCode=response['uniCode'];
+//                     uniName= response['uniName'];
+//                 }
+//             })
+//         }
+//     });
+// }
 
 
 
@@ -346,6 +350,7 @@ function getAllCourses(){
                 let courseName=course['courseName']
                 let semester= course['semester'];
                 let level=course['courseLevel'];
+                let credits=course['credits'];
                 let departmentID=course['departmentID'];
                 let departmentName=course['departmentName'];
 
@@ -354,6 +359,7 @@ function getAllCourses(){
                     "    <td class=\"p-3\">"+courseName+"</td>\n" +
                     "    <td class=\"p-3\">"+semester+"</td>\n" +
                     "    <td class=\"p-3\">"+level+"</td>\n" +
+                    "    <td class=\"p-3\">"+credits+"</td>\n" +
                     "    <td class=\"p-3\">"+departmentID+"</td>\n" +
                     "    <td class=\"p-3\">"+departmentName+"</td>\n" +
                     "<div class=\"btn-group\" role=\"group\">\n" +

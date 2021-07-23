@@ -70,6 +70,8 @@ $(document).ready(function () {
                                 modal.find('#txtTelephone').val("");
                                 modal.find('#txtEmail').val("");
                                 modal.find('#txtUserName').val("");
+                                modal.find('#txtPassword').val("");
+                                modal.find('#txtConfirmPassword').val("");
                             });
                             $("#addNewModal").modal('hide');
                             getAllFacultyAdmins();
@@ -456,7 +458,7 @@ lastName.addEventListener('input', function(){
 password.addEventListener('input', function(){
     let regex = /^[A-Za-z]\w{6,14}$/;
     if (!regex.test(password.value)) {
-        password.setCustomValidity('password size sholud be 6-14');
+        password.setCustomValidity('Please choose a password with 6-14 characters');
     }else {
         password.setCustomValidity('');
     }

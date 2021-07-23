@@ -42,10 +42,10 @@ public class CourseRegistrationController {
         return registrationService.addCourseRegistration(courseRegistrationDTO);
     }
 
-    @PutMapping("/update")
-    public boolean updateRegistration(@RequestBody CourseRegistrationDTO courseRegistrationDTO) {
-        return registrationService.updateCourseRegistration(courseRegistrationDTO);
-    }
+//    @PutMapping("/update")
+//    public boolean updateRegistration(@RequestBody CourseRegistrationDTO courseRegistrationDTO) {
+//        return registrationService.updateCourseRegistration(courseRegistrationDTO);
+//    }
 
     @DeleteMapping("/delete/{registrationNo}/{courseID}")
     public boolean deleteRegistration(@PathVariable("registrationNo") String registrationNo, @PathVariable("courseID") String courseID) {

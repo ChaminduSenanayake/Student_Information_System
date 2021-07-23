@@ -9,12 +9,14 @@ public class CourseRegistrationDTO {
     private String courseID;
     private String courseName;
     private String level;
+    private int credits;
 
-    public CourseRegistrationDTO(String registrationNo, String courseID, String courseName, String level) {
+    public CourseRegistrationDTO(String registrationNo, String courseID, String courseName, String level, int credits) {
         this.registrationNo = registrationNo;
         this.courseID = courseID;
         this.courseName = courseName;
         this.level = level;
+        this.credits = credits;
     }
 
     public String getRegistrationNo() {
@@ -47,5 +49,13 @@ public class CourseRegistrationDTO {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+    public void setCredits(int credits) {
+        this.credits = credits;
     }
 }

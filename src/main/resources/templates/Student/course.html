@@ -17,42 +17,40 @@
     <div th:insert="Student/sideBar :: sidebar"></div>
     <div class="container-fluid mt-5 p-5">
         <h2 class="page-title"><b>Course Registration</b></h2>
-        <form>
+        <form id="courseRegistration">
             <div class="form-group row mb-3">
                 <label class="col-sm-2 col-form-label">Course ID</label>
-                <div class="col-sm-10">
+                <div class="col-sm-8">
                     <select class="form-select" id="txtCourseID">
-                        <option value="1 ">ST 3008</option>
-                        <option value="2 ">ST 3009</option>
-                        <option value="3 ">ST 3010</option>
+
                     </select>
                 </div>
             </div>
             <div class="form-group row mb-3">
                 <label class="col-sm-2 col-form-label">Course Name</label>
-                <div class="col-sm-10">
+                <div class="col-sm-8">
                     <input class="form-control" id="txtCourseName" placeholder="Course Name" readonly>
                 </div>
             </div>
             <div class="form-group row mb-3 ">
                 <label class="col-sm-2 col-form-label">Course Level</label>
-                <div class="col-sm-10 ">
+                <div class="col-sm-8 ">
                     <input class="form-control" id="txtCourseLevel" placeholder="Course Level" readonly>
                 </div>
             </div>
             <div class="form-group row mb-3 ">
                 <label class="col-sm-2 col-form-label">Semester</label>
-                <div class="col-sm-10 ">
+                <div class="col-sm-8 ">
                     <input class="form-control" id="txtSemester" placeholder="Semester" readonly>
                 </div>
             </div>
             <div class="form-group row mb-3 ">
                 <label class="col-sm-2 col-form-label">Number Of Credits</label>
-                <div class="col-sm-10 ">
-                    <input class="form-control" id="txtCredits" placeholder="Number Of Credits" readonly>
+                <div class="col-sm-8 ">
+                    <input class="form-control" id="txtCredits" type="number" placeholder="Number Of Credits" readonly>
                 </div>
             </div>
-            <div class=" col-md-12 text-end ">
+            <div class=" col-md-10 text-end ">
                 <button name="btnAddNew" type="submit" class=" btn btn-primary mb-5 px-5">Add</button>
                 <button id="cancel" name="cancel" class="btn btn-danger mb-5 px-5" data-bs-dismiss="modal"
                         aria-label="Close">Close</button></br>

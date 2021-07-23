@@ -10,8 +10,9 @@ public class Course {
     private String course_level;
     private String course_name;
     private int semester;
+    private int credits;
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumns(@JoinColumn(name = "department_id",referencedColumnName = "department_id"))
+    @JoinColumns(@JoinColumn(name = "department_id", referencedColumnName = "department_id"))
     private Department department;
 
     @OneToMany
@@ -20,21 +21,13 @@ public class Course {
     public Course() {
     }
 
-    public Course(String course_id, String course_level, String course_name, int semester, Department department) {
+    public Course(String course_id, String course_level, String course_name, int semester, int credits, Department department) {
         this.course_id = course_id;
         this.course_level = course_level;
         this.course_name = course_name;
         this.semester = semester;
+        this.credits = credits;
         this.department = department;
-    }
-
-    public Course(String course_id, String course_level, String course_name, int semester, Department department, List<Registration> registration_list) {
-        this.course_id = course_id;
-        this.course_level = course_level;
-        this.course_name = course_name;
-        this.semester = semester;
-        this.department = department;
-        this.registration_list = registration_list;
     }
 
     public String getCourse_id() {
@@ -67,6 +60,14 @@ public class Course {
 
     public void setSemester(int semester) {
         this.semester = semester;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+    public void setCredits(int credits) {
+        this.credits = credits;
     }
 
     public Department getDepartment() {

@@ -217,32 +217,32 @@ $(document).ready(function () {
 
 });
 
-
-function getFacultyAdmin(userName) {
-    $.ajax({
-        type: "GET",
-        url: baseURL + "facultyAdmin/getByUserName/"+userName,
-        dataType: 'json',
-        async:false,
-        contentType: 'application/json; charset=utf-8',
-        success: function (response) {
-            $('#txtUserName').html(response['fName']+" "+response['lName']);
-            facultyID=response['facultyID'];
-            $.ajax({
-                type: "GET",
-                url: baseURL + "university/getUniversityByFacultyID/"+response['facultyID'],
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
-                success: function (response) {
-                    $('#uniImage').attr("src",response['imagePath']);
-                    $('#uniName').html(response['uniName']);
-                    uniCode=response['uniCode'];
-                    uniName= response['uniName'];
-                }
-            })
-        }
-    });
-}
+//
+// function getFacultyAdmin(userName) {
+//     $.ajax({
+//         type: "GET",
+//         url: baseURL + "facultyAdmin/getByUserName/"+userName,
+//         dataType: 'json',
+//         async:false,
+//         contentType: 'application/json; charset=utf-8',
+//         success: function (response) {
+//             $('#txtUserName').html(response['fName']+" "+response['lName']);
+//             facultyID=response['facultyID'];
+//             $.ajax({
+//                 type: "GET",
+//                 url: baseURL + "university/getUniversityByFacultyID/"+response['facultyID'],
+//                 dataType: 'json',
+//                 contentType: 'application/json; charset=utf-8',
+//                 success: function (response) {
+//                     $('#uniImage').attr("src",response['imagePath']);
+//                     $('#uniName').html(response['uniName']);
+//                     uniCode=response['uniCode'];
+//                     uniName= response['uniName'];
+//                 }
+//             })
+//         }
+//     });
+// }
 
 function openAddNewModal() {
     let addNewModal = new bootstrap.Modal(document.getElementById('addNewModal'));
@@ -584,7 +584,7 @@ lastName.addEventListener('input', function(){
 password.addEventListener('input', function(){
     let regex = /^[A-Za-z]\w{6,14}$/;
     if (!regex.test(password.value)) {
-        password.setCustomValidity('Password size sholud be 6-14');
+        password.setCustomValidity('Please choose a password with 6-14 characters');
     }else {
         password.setCustomValidity('');
     }

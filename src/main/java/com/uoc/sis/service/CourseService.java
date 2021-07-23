@@ -29,7 +29,7 @@ public class CourseService {
 
     public boolean addCourse(CourseDTO dto) {
         Department department=departmentRepository.getById(dto.getDepartmentID());
-        Course course=new Course(dto.getCourseID(),dto.getCourseLevel(),dto.getCourseName(),dto.getSemester(),department);
+        Course course=new Course(dto.getCourseID(),dto.getCourseLevel(),dto.getCourseName(),dto.getSemester(),dto.getCredits(),department);
         courseRepository.save(course);
         if (courseRepository.findById(dto.getCourseID()).isPresent()) {
             return true;
@@ -43,7 +43,7 @@ public class CourseService {
             Course objCourse = courseRepository.getById(dto.getCourseID());
             if (objCourse != null) {
                 Department department=departmentRepository.getById(dto.getDepartmentID());
-                Course course=new Course(dto.getCourseID(),dto.getCourseLevel(),dto.getCourseName(),dto.getSemester(),department);
+                Course course=new Course(dto.getCourseID(),dto.getCourseLevel(),dto.getCourseName(),dto.getSemester(),dto.getCredits(),department);
                 courseRepository.save(course);
                 return true;
             } else {
@@ -70,7 +70,7 @@ public class CourseService {
         for (Course course : all) {
             Department department=course.getDepartment();
             if(department!=null) {
-                dtos.add(new CourseDTO(course.getCourse_id(),course.getCourse_name(),course.getSemester(),course.getCourse_level(),department.getDepartment_id(),department.getName()));
+                dtos.add(new CourseDTO(course.getCourse_id(),course.getCourse_name(),course.getSemester(),course.getCourse_level(),course.getCredits(),department.getDepartment_id(),department.getName()));
             }
         }
         return dtos;
@@ -81,7 +81,7 @@ public class CourseService {
         try {
             Course course = courseRepository.getById(courseID);
             Department department=course.getDepartment();
-            return new CourseDTO(course.getCourse_id(),course.getCourse_name(),course.getSemester(),course.getCourse_level(),department.getDepartment_id(),department.getName());
+            return new CourseDTO(course.getCourse_id(),course.getCourse_name(),course.getSemester(),course.getCourse_level(),course.getCredits(),department.getDepartment_id(),department.getName());
         } catch (EntityNotFoundException e) {
             e.printStackTrace();
         }

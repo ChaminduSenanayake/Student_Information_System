@@ -2,10 +2,7 @@ package com.uoc.sis.service;
 
 import com.uoc.sis.dto.CourseDTO;
 import com.uoc.sis.dto.CourseRegistrationDTO;
-import com.uoc.sis.entity.Course;
-import com.uoc.sis.entity.Department;
-import com.uoc.sis.entity.Registration;
-import com.uoc.sis.entity.Student;
+import com.uoc.sis.entity.*;
 import com.uoc.sis.repository.CourseRegistrationRepository;
 import com.uoc.sis.repository.CourseRepository;
 import com.uoc.sis.repository.DepartmentRepository;
@@ -32,6 +29,7 @@ public class CourseRegistrationService {
         Course course=courseRepository.getById(dto.getCourseID());
         Student student=studentRepository.getById(dto.getRegistrationNo());
         Registration registration=new Registration(student,course);
+
         courseRegistrationRepository.save(registration);
         Registration registration1=courseRegistrationRepository.getByCombineID(dto.getRegistrationNo(),dto.getCourseID());
         if (registration1!=null) {
@@ -41,23 +39,23 @@ public class CourseRegistrationService {
         }
     }
 
-    public boolean updateCourseRegistration(CourseRegistrationDTO dto) {
-        try {
-            Registration objRegistration=courseRegistrationRepository.getByCombineID(dto.getRegistrationNo(),dto.getCourseID());
-            if (objRegistration != null) {
-                Course course=courseRepository.getById(dto.getCourseID());
-                Student student=studentRepository.getById(dto.getRegistrationNo());
-                Registration registration=new Registration(student,course);
-                courseRegistrationRepository.save(registration);
-                return true;
-            } else {
-                return false;
-            }
-        } catch (EntityNotFoundException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+//    public boolean updateCourseRegistration(CourseRegistrationDTO dto) {
+//        try {
+//            Registration objRegistration=courseRegistrationRepository.getByCombineID(dto.getRegistrationNo(),dto.getCourseID());
+//            if (objRegistration != null) {
+//                Course course=courseRepository.getById(dto.getCourseID());
+//                Student student=studentRepository.getById(dto.getRegistrationNo());
+//                Registration registration=new Registration(student,course);
+//                courseRegistrationRepository.save(registration);
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        } catch (EntityNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
 
     public boolean deleteCourseRegistration(String registrationNo,String courseID) {
         Registration objRegistration=courseRegistrationRepository.getByCombineID(registrationNo,courseID);
@@ -89,7 +87,7 @@ public class CourseRegistrationService {
             Course course=registration.getCourse();
             Student student=registration.getStudent();
             if(course!=null&student!=null) {
-                dtos.add(new CourseRegistrationDTO(student.getRegistration_no(),course.getCourse_id(),course.getCourse_name(),course.getCourse_level()));
+                dtos.add(new CourseRegistrationDTO(student.getRegistration_no(),course.getCourse_id(),course.getCourse_name(),course.getCourse_level(),course.getCredits()));
             }
         }
         return dtos;
