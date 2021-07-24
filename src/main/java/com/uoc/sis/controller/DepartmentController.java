@@ -52,6 +52,11 @@ public class DepartmentController {
         return departmentService.getAll();
     }
 
+    @GetMapping("/getAllByFacultyID/{facultyID}")
+    public List<DepartmentDTO> getAll(@PathVariable("facultyID") String facultyID){
+        return departmentService.getAllByFacultyID(facultyID);
+    }
+
     @GetMapping("/getDepartment/{departmentID}")
     public DepartmentDTO getByID(@PathVariable("departmentID") String departmentID){
         return departmentService.getDepartmentByID(departmentID);

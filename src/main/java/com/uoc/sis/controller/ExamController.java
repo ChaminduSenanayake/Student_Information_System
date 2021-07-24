@@ -55,6 +55,12 @@ public class ExamController {
         return examService.getAll();
     }
 
+    @GetMapping("/getAllByFacultyID/{facultyID}")
+    public List<ExamDTO> getAllByFacultyID(@PathVariable("facultyID") String facultyID) {
+        return examService.getAllByFacultyID(facultyID);
+    }
+
+
     @GetMapping("/getExam/{examID}")
     public ExamDTO getByID(@PathVariable("examID") String examID) {
         return examService.getExam(examID);

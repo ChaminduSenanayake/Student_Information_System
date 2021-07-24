@@ -56,7 +56,7 @@ public class CourseController {
     }
 
     @GetMapping("/getAllByFacultyID/{facultyID}")
-    public List<CourseDTO> getAllByFaculty(@PathVariable("facultyID") String facultyID){
+    public List<CourseDTO> getAllByFacultyID(@PathVariable("facultyID") String facultyID){
         return courseService.getAllByFacultyID(facultyID);
     }
 

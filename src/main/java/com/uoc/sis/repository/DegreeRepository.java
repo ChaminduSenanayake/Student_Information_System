@@ -15,6 +15,6 @@ public interface DegreeRepository extends JpaRepository<Degree,String> {
     @Query(value = "select * from Degree order by degree_id desc limit 1;",nativeQuery = true)
     Degree findLastData();
 
-    @Query(value = "select * from Degree where where faculty_id=:facultyID",nativeQuery = true)
+    @Query(value = "select * from Degree where faculty_id=:facultyID",nativeQuery = true)
     List<Degree> findAllByFacultyID(@Param("facultyID") String facultyID);
 }

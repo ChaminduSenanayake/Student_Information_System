@@ -311,7 +311,7 @@ function getAllExams() {
     examTable.empty();
     $.ajax({
         type: "GET",
-        url: baseURL + "exam/getAll",
+        url: baseURL + "exam/getAllByFacultyID/"+facultyID,
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function (response) {

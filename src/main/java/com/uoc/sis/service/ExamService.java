@@ -76,6 +76,17 @@ public class ExamService {
         return dtos;
     }
 
+    public List<ExamDTO> getAllByFacultyID(String facultyID) {
+        List<Exam> all = examRepository.findAllByFacultyID(facultyID);
+        ArrayList<ExamDTO> dtos = new ArrayList<>();
+        for (Exam exam : all) {
+            Course course=exam.getCourse();
+            if(course!=null) {
+                dtos.add(new ExamDTO(exam.getExam_id(),exam.getExam_name(),exam.getDate(),exam.getStartTime(),exam.getEndTime(),course.getCourse_id(),course.getCourse_name()));
+            }
+        }
+        return dtos;
+    }
 
     public ExamDTO getExam(String ExamID) {
         try {

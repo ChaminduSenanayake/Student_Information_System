@@ -197,7 +197,7 @@ function getAllDepartments(){
     departmentTable.empty();
     $.ajax({
         type:"GET",
-        url:baseURL+"department/getAll",
+        url:baseURL+"department/getAllByFacultyID/"+facultyID,
         dataType:'json',
         contentType: 'application/json; charset=utf-8',
         success:function (response){

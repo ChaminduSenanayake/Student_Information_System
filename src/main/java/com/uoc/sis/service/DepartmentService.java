@@ -77,6 +77,18 @@ public class DepartmentService {
         return dtos;
     }
 
+    public List<DepartmentDTO> getAllByFacultyID(String facultyID) {
+        List<Department> all = departmentRepository.findAllByFacultyID(facultyID);
+        ArrayList<DepartmentDTO> dtos = new ArrayList<>();
+        for (Department department : all) {
+            Faculty fac=department.getFaculty();
+            if(fac!=null) {
+                dtos.add(new DepartmentDTO(department.getDepartment_id(), department.getName(), fac.getFaculty_id(), fac.getFaculty_name()));
+            }
+        }
+        return dtos;
+    }
+
 
     public DepartmentDTO getDepartmentByID(String departmentID) {
         try {
