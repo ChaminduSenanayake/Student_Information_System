@@ -11,15 +11,18 @@ import java.util.List;
 
 @Repository
 public interface ResultRepository extends JpaRepository<Result,String> {
-    @Query(value = "select * from Result where registration_no=:regNo and exam_id=:examID;",nativeQuery = true)
+    @Query(value = "select * from Result where registration_no=:regNo and exam_id=:examID",nativeQuery = true)
     Result getByCombineID(@Param("regNo")String regNo,@Param("examID")String examID);
 
-    @Query(value = "delete from Result where registration_no=:regNo and exam_id=:examID;",nativeQuery = true)
+    @Query(value = "delete from Result where registration_no=:regNo and exam_id=:examID",nativeQuery = true)
     Result deleteResult(@Param("regNo")String regNo,@Param("examID")String examID);
 
-    @Query(value = "select * from Result,Exam where Result.exam_id=Exam.exam_id and Exam.course_id=:courseID and Exam.date=:examDate;",nativeQuery = true)
-    List<Result> getResultByCourseIDandDate(@Param("courseID")String courseID, @Param("examDate")String examDate);
+    @Query(value = "select * from Result where exam_id=:examID",nativeQuery = true)
+    List<Result> findAllByExamID(@Param("examID")String examID);
 
-    @Query(value = "select * from Result Result.registration_no=:registrationNo;",nativeQuery = true)
-    List<Result> getResultByCourseIDandDate(@Param("registrationNo")String registrationNo);
+    @Query(value = "select * from Result where registration_no=:registrationNo",nativeQuery = true)
+    List<Result> findAllByRegNo(@Param("registrationNo")String registrationNo);
+
 }
+
+

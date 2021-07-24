@@ -29,11 +29,12 @@ public class ResultService {
 
     public boolean addResult(ResultDTO dto) {
         Exam exam = examRepository.getById(dto.getExamID());
-        Student student=studentRepository.getById(dto.getRegistrationNo());
-        Result result =new Result(student,exam,dto.getGrade());
+        Student student = studentRepository.getById(dto.getRegistrationNo());
+        Result_pk result_pk = new Result_pk(dto.getRegistrationNo(), dto.getExamID());
+        Result result = new Result(student, exam, result_pk, dto.getGrade());
         resultRepository.save(result);
-        Result isPresent=resultRepository.getByCombineID(dto.getRegistrationNo(),dto.getExamID());
-        if (isPresent!=null) {
+        Result isPresent = resultRepository.getByCombineID(dto.getRegistrationNo(), dto.getExamID());
+        if (isPresent != null) {
             return true;
         } else {
             return false;
@@ -53,14 +54,14 @@ public class ResultService {
 //    }
 
 
-
     public boolean updateResult(ResultDTO dto) {
         try {
-            Result result=resultRepository.getByCombineID(dto.getRegistrationNo(),dto.getExamID());
+            Result result = resultRepository.getByCombineID(dto.getRegistrationNo(), dto.getExamID());
             if (result != null) {
                 Exam exam = examRepository.getById(dto.getExamID());
-                Student student=studentRepository.getById(dto.getRegistrationNo());
-                Result newResult =new Result(student,exam,dto.getGrade());
+                Student student = studentRepository.getById(dto.getRegistrationNo());
+                Result_pk result_pk = new Result_pk(dto.getRegistrationNo(), dto.getExamID());
+                Result newResult = new Result(student, exam, result_pk, dto.getGrade());
                 resultRepository.save(newResult);
                 return true;
             } else {
@@ -72,10 +73,10 @@ public class ResultService {
         return false;
     }
 
-    public boolean deleteResult(String registrationNo,String examID) {
-        Result result=resultRepository.getByCombineID(registrationNo,examID);
+    public boolean deleteResult(String registrationNo, String examID) {
+        Result result = resultRepository.getByCombineID(registrationNo, examID);
         if (result != null) {
-            resultRepository.deleteResult(registrationNo,examID);
+            resultRepository.deleteResult(registrationNo, examID);
             return true;
         } else {
             return false;
@@ -86,43 +87,57 @@ public class ResultService {
         List<Result> all = resultRepository.findAll();
         ArrayList<ResultDTO> dtos = new ArrayList<>();
         for (Result result : all) {
-            Student student=result.getStudent();
-            Exam exam=result.getExam();
-            if(student!=null && exam!=null) {
-                Course course=courseRepository.getById(exam.getCourse().getCourse_id());
-                dtos.add(new ResultDTO(student.getRegistration_no(),exam.getExam_id(),course.getCourse_id() ,course.getCourse_name(),course.getCourse_level(),result.getGrade()));
+            Student student = result.getStudent();
+            Exam exam = result.getExam();
+            if (student != null && exam != null) {
+                Course course = courseRepository.getById(exam.getCourse().getCourse_id());
+                dtos.add(new ResultDTO(student.getRegistration_no(), exam.getExam_id(), course.getCourse_id(), course.getCourse_name(), course.getCourse_level(), result.getGrade(), course.getCredits()));
             }
         }
         return dtos;
     }
 
-
-    public  List<ResultDTO>  getResultsByCourseIDandDate(String courseID,String date) {
-        List<Result> all = resultRepository.getResultByCourseIDandDate(courseID,date);
+    public List<ResultDTO> getAllByExamID(String examID) {
+        List<Result> all = resultRepository.findAllByExamID(examID);
         ArrayList<ResultDTO> dtos = new ArrayList<>();
         for (Result result : all) {
-            Student student=result.getStudent();
-            Exam exam=result.getExam();
-            if(student!=null && exam!=null) {
-                Course course=courseRepository.getById(exam.getCourse().getCourse_id());
-                dtos.add(new ResultDTO(student.getRegistration_no(),exam.getExam_id(),course.getCourse_id() ,course.getCourse_name(),course.getCourse_level(),result.getGrade()));
+            Student student = result.getStudent();
+            Exam exam = result.getExam();
+            if (student != null && exam != null) {
+                Course course = courseRepository.getById(exam.getCourse().getCourse_id());
+                dtos.add(new ResultDTO(student.getRegistration_no(), exam.getExam_id(), course.getCourse_id(), course.getCourse_name(), course.getCourse_level(), result.getGrade(), course.getCredits()));
             }
         }
         return dtos;
     }
 
-    public  List<ResultDTO>  getResultsByStudentRegistrationNo(String registrationNo) {
-        List<Result> all = resultRepository.getResultByCourseIDandDate(registrationNo);
+    public List<ResultDTO> getAllByRegNo(String regNo) {
+        List<Result> all = resultRepository.findAllByRegNo(regNo);
         ArrayList<ResultDTO> dtos = new ArrayList<>();
         for (Result result : all) {
-            Student student=result.getStudent();
-            Exam exam=result.getExam();
-            if(student!=null && exam!=null) {
-                Course course=courseRepository.getById(exam.getCourse().getCourse_id());
-                dtos.add(new ResultDTO(student.getRegistration_no(),exam.getExam_id(),course.getCourse_id() ,course.getCourse_name(),course.getCourse_level(),result.getGrade()));
+            Student student = result.getStudent();
+            Exam exam = result.getExam();
+            if (student != null && exam != null) {
+                Course course = courseRepository.getById(exam.getCourse().getCourse_id());
+                dtos.add(new ResultDTO(student.getRegistration_no(), exam.getExam_id(), course.getCourse_id(), course.getCourse_name(), course.getCourse_level(), result.getGrade(), course.getCredits()));
             }
         }
         return dtos;
+    }
+
+    public ResultDTO getResult(String regNo, String examID) {
+        Result result = resultRepository.getByCombineID(regNo, examID);
+        if (result != null) {
+            Exam exam = examRepository.getById(examID);
+            Course course = courseRepository.getById(exam.getCourse().getCourse_id());
+            return new ResultDTO(regNo, examID, course.getCourse_id(), course.getCourse_name(), course.getCourse_level(), result.getGrade(), course.getCredits());
+
+        }
+        return null;
     }
 
 }
+
+
+
+

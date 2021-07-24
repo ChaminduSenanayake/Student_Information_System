@@ -4,11 +4,11 @@ import javax.persistence.*;
 
 @Entity
 public class Result {
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumns(@JoinColumn(name = "registration_no",referencedColumnName = "registration_no",insertable = false,updatable = false))
     private Student student;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumns(@JoinColumn(name = "exam_id",referencedColumnName = "exam_id",insertable = false,updatable = false))
     private Exam exam;
 
@@ -20,9 +20,10 @@ public class Result {
     public Result() {
     }
 
-    public Result(Student student, Exam exam, String grade) {
+    public Result(Student student, Exam exam, Result_pk result_pk, String grade) {
         this.student = student;
         this.exam = exam;
+        this.result_pk = result_pk;
         this.grade = grade;
     }
 

@@ -4,18 +4,20 @@ package com.uoc.sis.dto;
 public class ResultDTO {
     private String registrationNo;
     private String examID;
-    private String courceID;
-    private String courceName;
+    private String courseID;
+    private String courseName;
     private int level;
     private String grade;
+    private int credits;
 
-    public ResultDTO(String registrationNo, String examID, String courceID, String courceName, int level, String grade) {
+    public ResultDTO(String registrationNo, String examID, String courseID, String courseName, int level, String grade, int credits) {
         this.registrationNo = registrationNo;
         this.examID = examID;
-        this.courceID = courceID;
-        this.courceName = courceName;
+        this.courseID = courseID;
+        this.courseName = courseName;
         this.level = level;
         this.grade = grade;
+        this.credits = credits;
     }
 
     public String getRegistrationNo() {
@@ -34,20 +36,20 @@ public class ResultDTO {
         this.examID = examID;
     }
 
-    public String getCourceID() {
-        return courceID;
+    public String getCourseID() {
+        return courseID;
     }
 
-    public void setCourceID(String courceID) {
-        this.courceID = courceID;
+    public void setCourseID(String courseID) {
+        this.courseID = courseID;
     }
 
-    public String getCourceName() {
-        return courceName;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public void setCourceName(String courceName) {
-        this.courceName = courceName;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public int getLevel() {
@@ -64,6 +66,14 @@ public class ResultDTO {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+    public void setCredits(int credits) {
+        this.credits = credits;
     }
 }
 

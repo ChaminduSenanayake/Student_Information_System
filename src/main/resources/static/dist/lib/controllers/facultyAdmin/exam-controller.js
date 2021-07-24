@@ -84,7 +84,7 @@ $(document).ready(function () {
             contentType:'application/json; charset=utf-8',
             success: function (responce) {
                 if(responce){
-                    swal("Good job!", "Exam has been saved succeessfullyn!", "success");
+                    swal("Good job!", "Exam has been saved succeessfully!", "success");
                     $('#addNewModal').on('hidden.bs.modal', function (e) {
                         let modal=$(this);
                         modal.find('#txtExamName').val("");
@@ -182,6 +182,8 @@ $('#selectEditCourseID').change(function() {
 
 
 function openAddNewModal() {
+    var userName=$('#txtUserName').html();
+    getFacultyAdmin(userName);
     let addNewModal = new bootstrap.Modal(document.getElementById('addNewModal'));
     $('#addNewModal').on('show.bs.modal', function(event) {
         let modal = $(this);
@@ -226,6 +228,8 @@ function openAddNewModal() {
 }
 
 function openUpdateModal(examID) {
+    var userName=$('#txtUserName').html();
+    getFacultyAdmin(userName);
     let updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
     $('#updateModal').on('show.bs.modal', function(event) {
         let modal = $(this);

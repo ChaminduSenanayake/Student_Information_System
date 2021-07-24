@@ -13,6 +13,7 @@ $(document).ready(function () {
     $('#addNewDepartment').submit(function (event) {
         var userName=$('#txtUserName').html();
         getFacultyAdmin(userName);
+
         let departmentID=$('#txtDepartmentID').val();
         let departmentName=$('#txtDepartmentName').val();
 
@@ -199,6 +200,7 @@ function deleteDepartment(departmentID){
 function getAllDepartments(){
     var userName=$('#txtUserName').html();
     getFacultyAdmin(userName);
+
     let departmentTable=$('#departmentTable');
     departmentTable.empty();
     $.ajax({

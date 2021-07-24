@@ -249,6 +249,9 @@ $(document).ready(function () {
 // }
 
 function openAddNewModal() {
+    var userName=$('#txtUserName').html();
+    getFacultyAdmin(userName);
+
     let addNewModal = new bootstrap.Modal(document.getElementById('addNewModal'));
     let year=$('#txtYear').val();
     if(year==""){
@@ -445,6 +448,7 @@ $('#selectEditDegreeID').change(function() {
 function getAllStudents(){
     var userName=$('#txtUserName').html();
     getFacultyAdmin(userName);
+
     let tableStudents=$('#studentTable');
     tableStudents.empty();
     $.ajax({

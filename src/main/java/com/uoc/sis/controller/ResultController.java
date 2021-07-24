@@ -52,13 +52,19 @@ public class ResultController {
         return resultService.getAll();
     }
 
-    @GetMapping("/getResultByCourseIDandDate/{courseID}/{date}")
-    public List<ResultDTO> getByResultsByCourseIDandDate(@PathVariable("courseID") String courseID,@PathVariable("date") String date){
-        return resultService.getResultsByCourseIDandDate(courseID,date);
+    @GetMapping("/getAllByExamID/{examID}")
+    public List<ResultDTO> getAllByExamID(@PathVariable("examID") String examID){
+        return resultService.getAllByExamID(examID);
     }
-    @GetMapping("/getByStudentRegistrationNo/{registrationNo}")
-    public List<ResultDTO> getBy(@PathVariable("registrationNo") String registrationNo){
-        return resultService.getResultsByStudentRegistrationNo(registrationNo);
+
+    @GetMapping("/getAllByRegNo/{registrationNo}")
+    public List<ResultDTO> getAllByRegNo(@PathVariable("registrationNo") String registrationNo){
+        return resultService.getAllByRegNo(registrationNo);
+    }
+
+    @GetMapping("/getResult/{registrationNo}/{examID}")
+    public ResultDTO getResult(@PathVariable("registrationNo") String registrationNo,@PathVariable("examID") String examID){
+        return resultService.getResult(registrationNo,examID);
     }
 
 }

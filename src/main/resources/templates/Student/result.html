@@ -16,87 +16,72 @@
 <div class="d-flex" id="wrapper">
     <div th:insert="Student/sideBar :: sidebar"></div>
     <div class="container-fluid mt-5 p-5">
-        <h2 class="page-title"><b>Results</b></h2>
+        <h2 class="page-title"><b>My Results</b></h2>
         <div class="container table-div mb-5">
             <h5 class="font-weight-bold text-start mb-3 ms-3"><b>Level 1</b></h5>
             <table class="table text-center">
                 <thead>
                 <tr class="table-secondary">
-                    <th class="p-3">Registration NO</th>
                     <th class="p-3">Course ID</th>
                     <th class="p-3">Course Name</th>
-                    <th class="p-3">Exam ID</th>
+                    <th class="p-3">Credits</th>
                     <th class="p-3">Grade</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td class="p-3">2017s16212</td>
-                    <td class="p-3">ST 3008</td>
-                    <td class="p-3">Sataitical Modeling</td>
-                    <td class="p-3">STE 3008</td>
-                    <td class="p-3">B+</td>
-
-                </tr>
-                <tr>
-                    <td class="p-3">2017s16212</td>
-                    <td class="p-3">ST 3009</td>
-                    <td class="p-3">Time Series</td>
-                    <td class="p-3">STE 3009</td>
-                    <td class="p-3">A</td>
-
-                </tr>
-                <tr>
-                    <td class="p-3">2017s16212</td>
-                    <td class="p-3">ST 3010</td>
-                    <td class="p-3">Health Statistics</td>
-                    <td class="p-3">STE 3010</td>
-                    <td class="p-3">B</td>
-
-                </tr>
+                <tbody id="tableLevel1">
                 </tbody>
             </table>
         </div>
-        <div class="table-div container mb-2">
+
+        <div class="container table-div mb-5">
             <h5 class="font-weight-bold text-start mb-3 ms-3"><b>Level 2</b></h5>
             <table class="table text-center">
                 <thead>
                 <tr class="table-secondary">
-                    <th class="p-3">Registration NO</th>
                     <th class="p-3">Course ID</th>
                     <th class="p-3">Course Name</th>
-                    <th class="p-3">Exam ID</th>
+                    <th class="p-3">Credits</th>
                     <th class="p-3">Grade</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td class="p-3">2017s16212</td>
-                    <td class="p-3">ST 3008</td>
-                    <td class="p-3">Sataitical Modeling</td>
-                    <td class="p-3">STE 3008</td>
-                    <td class="p-3">B+</td>
-
-                </tr>
-                <tr>
-                    <td class="p-3">2017s16212</td>
-                    <td class="p-3">ST 3009</td>
-                    <td class="p-3">Time Series</td>
-                    <td class="p-3">STE 3009</td>
-                    <td class="p-3">A</td>
-
-                </tr>
-                <tr>
-                    <td class="p-3" id="txtRegistrationNO3">2017s16212</td>
-                    <td class="p-3" id="txtCourseID3">ST 3010</td>
-                    <td class="p-3" id="txtCourseName3">Health Statistics</td>
-                    <td class="p-3" id="txtExamID3">STE 3010</td>
-                    <td class="p-3" id="txtGrade3">B</td>
-
-                </tr>
+                <tbody id="tableLevel2">
                 </tbody>
             </table>
         </div>
+
+        <div class="container table-div mb-5">
+            <h5 class="font-weight-bold text-start mb-3 ms-3"><b>Level 3</b></h5>
+            <table class="table text-center">
+                <thead>
+                <tr class="table-secondary">
+                    <th class="p-3">Course ID</th>
+                    <th class="p-3">Course Name</th>
+                    <th class="p-3">Credits</th>
+                    <th class="p-3">Grade</th>
+                </tr>
+                </thead>
+                <tbody id="tableLevel3">
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container table-div mb-5">
+            <h5 class="font-weight-bold text-start mb-3 ms-3"><b>Level 4</b></h5>
+            <table class="table text-center">
+                <thead>
+                <tr class="table-secondary">
+                    <th class="p-3">Course ID</th>
+                    <th class="p-3">Course Name</th>
+                    <th class="p-3">Credits</th>
+                    <th class="p-3">Grade</th>
+                </tr>
+                </thead>
+                <tbody id="tableLevel4">
+                </tbody>
+            </table>
+        </div>
+
 
     </div>
 </div>
