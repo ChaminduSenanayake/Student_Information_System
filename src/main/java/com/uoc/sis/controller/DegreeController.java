@@ -58,6 +58,11 @@ public class DegreeController {
         return degreeService.getAll();
     }
 
+    @GetMapping("/getAllByFacultyID/{facultyID}")
+    public List<DegreeDTO> getAll(@PathVariable("facultyID") String facultyID) {
+        return degreeService.getAllByFacultyID(facultyID);
+    }
+
     @GetMapping("/getDegree/{degreeID}")
     public DegreeDTO getByID(@PathVariable("degreeID") String degreeID) {
         return degreeService.getDegreeByID(degreeID);

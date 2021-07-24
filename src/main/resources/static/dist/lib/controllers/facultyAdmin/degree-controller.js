@@ -244,7 +244,7 @@ function getAllDegrees(){
     tableDegree.empty();
     $.ajax({
         type:"GET",
-        url:baseURL+"degree/getAll",
+        url:baseURL+"degree/getAllByFacultyID/"+facultyID,
         dataType:'json',
         contentType: 'application/json; charset=utf-8',
         success:function (response){

@@ -28,7 +28,8 @@ public class CourseRegistrationService {
     public boolean addCourseRegistration(CourseRegistrationDTO dto) {
         Course course=courseRepository.getById(dto.getCourseID());
         Student student=studentRepository.getById(dto.getRegistrationNo());
-        Registration registration=new Registration(student,course);
+        Registration_pk pk=new Registration_pk(student.getRegistration_no(),course.getCourse_id());
+        Registration registration=new Registration(student,course,pk);
 
         courseRegistrationRepository.save(registration);
         Registration registration1=courseRegistrationRepository.getByCombineID(dto.getRegistrationNo(),dto.getCourseID());
@@ -59,6 +60,7 @@ public class CourseRegistrationService {
 
     public boolean deleteCourseRegistration(String registrationNo,String courseID) {
         Registration objRegistration=courseRegistrationRepository.getByCombineID(registrationNo,courseID);
+
         if (objRegistration!=null) {
             courseRegistrationRepository.deleteRegistration(registrationNo,courseID);
             return true;
@@ -87,7 +89,7 @@ public class CourseRegistrationService {
             Course course=registration.getCourse();
             Student student=registration.getStudent();
             if(course!=null&student!=null) {
-                dtos.add(new CourseRegistrationDTO(student.getRegistration_no(),course.getCourse_id(),course.getCourse_name(),course.getCourse_level(),course.getCredits()));
+                dtos.add(new CourseRegistrationDTO(student.getRegistration_no(),course.getCourse_id(),course.getCourse_name(),course.getCourse_level(),course.getSemester(),course.getCredits()));
             }
         }
         return dtos;

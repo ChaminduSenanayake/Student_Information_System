@@ -73,6 +73,17 @@ public class DegreeService {
         return dtos;
     }
 
+    public List<DegreeDTO> getAllByFacultyID(String facultyID) {
+        List<Degree> all = degreeRepository.findAllByFacultyID(facultyID);
+        ArrayList<DegreeDTO> dtos = new ArrayList<>();
+        for (Degree degree : all) {
+            Faculty fac=degree.getFaculty();
+            if(fac!=null) {
+                dtos.add(new DegreeDTO(degree.getDegree_id(), degree.getDegree_name(), fac.getFaculty_id(), fac.getFaculty_name()));
+            }
+        }
+        return dtos;
+    }
 
     public DegreeDTO getDegreeByID(String degreeID) {
         try {

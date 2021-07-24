@@ -2,6 +2,7 @@ package com.uoc.sis.controller;
 
 import com.uoc.sis.dto.CourseDTO;
 import com.uoc.sis.dto.DepartmentDTO;
+import com.uoc.sis.dto.StudentDTO;
 import com.uoc.sis.service.CourseService;
 import com.uoc.sis.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,11 @@ public class CourseController {
     @GetMapping("/getAll")
     public List<CourseDTO> getAll() {
         return courseService.getAll();
+    }
+
+    @GetMapping("/getAllByFacultyID/{facultyID}")
+    public List<CourseDTO> getAllByFaculty(@PathVariable("facultyID") String facultyID){
+        return courseService.getAllByFacultyID(facultyID);
     }
 
     @GetMapping("/getCourse/{courseID}")

@@ -6,10 +6,10 @@ public class ResultDTO {
     private String examID;
     private String courceID;
     private String courceName;
-    private String level;
+    private int level;
     private String grade;
 
-    public ResultDTO(String registrationNo, String examID, String courceID, String courceName, String level, String grade) {
+    public ResultDTO(String registrationNo, String examID, String courceID, String courceName, int level, String grade) {
         this.registrationNo = registrationNo;
         this.examID = examID;
         this.courceID = courceID;
@@ -50,11 +50,11 @@ public class ResultDTO {
         this.courceName = courceName;
     }
 
-    public String getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 

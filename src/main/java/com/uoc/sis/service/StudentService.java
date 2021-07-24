@@ -81,7 +81,6 @@ public class StudentService {
         for (Student s : all) {
             Degree degree=s.getDegree();
             University university=s.getUniversity();
-            System.out.println("----------------"+s.getRegistration_no());
             if(s!=null) {
                 dtos.add(new StudentDTO(s.getRegistration_no(),s.getIndex_no(),s.getF_name(),s.getM_name(),s.getL_name(),s.getAddress(),s.getEmail(),s.getTelephone(),s.getNIC(),s.getGender(),s.getLevel(),s.getParent_name(),s.getParent_tel_no(),null,degree.getDegree_id(),degree.getDegree_name(),university.getUni_code()));
             }

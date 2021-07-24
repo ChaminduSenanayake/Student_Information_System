@@ -52,7 +52,7 @@ public class CourseRegistrationController {
         return registrationService.deleteCourseRegistration(registrationNo, courseID);
     }
 
-    @DeleteMapping("/getCourses/{registrationNo}")
+    @GetMapping("/getCourses/{registrationNo}")
     public List<CourseRegistrationDTO> getCoursesByRegNO(@PathVariable("registrationNo") String registrationNo) {
         return registrationService.getCoursesByRegNO(registrationNo);
     }

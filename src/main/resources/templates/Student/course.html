@@ -17,46 +17,56 @@
     <div th:insert="Student/sideBar :: sidebar"></div>
     <div class="container-fluid mt-5 p-5">
         <h2 class="page-title"><b>Course Registration</b></h2>
-        <form id="courseRegistration">
-            <div class="form-group row mb-3">
-                <label class="col-sm-2 col-form-label">Course ID</label>
-                <div class="col-sm-8">
-                    <select class="form-select" id="txtCourseID">
+        <div class="container middlebox">
+            <form id="courseRegistration" class="justify-content-center">
+                <div class="row mb-1">
+                    <label class="col-sm-3 col-form-label"><b>Course ID</b></label>
+                    <label class="col-sm-1 col-form-label"><b>:</b></label>
+                    <div class="col-sm-8">
+                        <select class="form-select" id="txtCourseID">
 
-                    </select>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row mb-3">
-                <label class="col-sm-2 col-form-label">Course Name</label>
-                <div class="col-sm-8">
-                    <input class="form-control" id="txtCourseName" placeholder="Course Name" readonly>
+                <div class="row mb-1">
+                    <label class="col-sm-3 col-form-label"><b>Course Name</b></label>
+                    <label class="col-sm-1 col-form-label"><b>:</b></label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="txtCourseName" placeholder="Course Name" readonly>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row mb-3 ">
-                <label class="col-sm-2 col-form-label">Course Level</label>
-                <div class="col-sm-8 ">
-                    <input class="form-control" id="txtCourseLevel" placeholder="Course Level" readonly>
+                <div class="row mb-1 ">
+                    <label class="col-sm-3 col-form-label"><b>Course Level</b></label>
+                    <label class="col-sm-1 col-form-label"><b>:</b></label>
+                    <div class="col-sm-8 ">
+                        <input class="form-control" id="txtCourseLevel" type="number" placeholder="Course Level" readonly>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row mb-3 ">
-                <label class="col-sm-2 col-form-label">Semester</label>
-                <div class="col-sm-8 ">
-                    <input class="form-control" id="txtSemester" placeholder="Semester" readonly>
+                <div class="row mb-1 ">
+                    <label class="col-sm-3 col-form-label"><b>Semester</b></label>
+                    <label class="col-sm-1 col-form-label"><b>:</b></label>
+                    <div class="col-sm-8 ">
+                        <input class="form-control" id="txtSemester" type="number" placeholder="Semester" readonly>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row mb-3 ">
-                <label class="col-sm-2 col-form-label">Number Of Credits</label>
-                <div class="col-sm-8 ">
-                    <input class="form-control" id="txtCredits" type="number" placeholder="Number Of Credits" readonly>
+                <div class=" row mb-1 ">
+                    <label class="col-sm-3 col-form-label"><b>No Of Credits</b></label>
+                    <label class="col-sm-1 col-form-label"><b>:</b></label>
+                    <div class="col-sm-8 ">
+                        <input class="form-control" id="txtCredits" type="number" placeholder="Number Of Credits" readonly>
+                    </div>
                 </div>
-            </div>
-            <div class=" col-md-10 text-end ">
-                <button name="btnAddNew" type="submit" class=" btn btn-primary mb-5 px-5">Add</button>
-                <button id="cancel" name="cancel" class="btn btn-danger mb-5 px-5" data-bs-dismiss="modal"
-                        aria-label="Close">Close</button></br>
-            </div>
-        </form>
+                <div class="text-center mt-2">
+                    <button name="btnAddNew" type="submit" class=" btn btn-primary px-5"><i class="fas fa-save"></i> Add</button>
+                    <button id="cancel" name="cancel" class="btn btn-danger px-5" data-bs-dismiss="modal"
+                            aria-label="Close"><i class="fas fa-window-close"></i> Close</button></br>
+                </div>
+            </form>
+        </div>
+        <div class="container-fluid justify-content-center">
 
+
+        </div>
 
         <div class="table-div container">
             <h5 class="font-weight-bold text-start mb-3 ms-3"><b>My Courses</b></h5>
@@ -71,21 +81,8 @@
                     <th class="p-3">Change</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td class="p-3" id="txtCourseCode1">ST 3008</td>
-                    <td class="p-3" id="txtCourseName1">Statistical Modeling</td>
-                    <td class="p-3" id="txtCourseLevel1">Level 1</td>
-                    <td class="p-3" id="txtSemester1">Semester 2</td>
-                    <td class="p-3" id="txtCredits1">3</td>
-                    <td>
-                        <div class="btn-group" role="group">
-                            <button type="submit" class="btn btn-danger rounded px-4" id='btnDelete' value="1"
-                                    name="btnDelete"><i class="fas fa-trash-alt"></i></button>
-                        </div>
-                    </td>
-                    </form>
-                </tr>
+                <tbody id="registrationTable">
+
                 </tbody>
             </table>
         </div>

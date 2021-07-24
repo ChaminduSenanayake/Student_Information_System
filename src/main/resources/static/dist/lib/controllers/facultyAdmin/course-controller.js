@@ -340,7 +340,7 @@ function getAllCourses(){
     courseTable.empty();
     $.ajax({
         type:"GET",
-        url:baseURL+"course/getAll",
+        url:baseURL+"course/getAllByFacultyID/"+facultyID,
         dataType:'json',
         contentType: 'application/json; charset=utf-8',
         success:function (response){

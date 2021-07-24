@@ -76,6 +76,17 @@ public class CourseService {
         return dtos;
     }
 
+    public List<CourseDTO> getAllByFacultyID(String facultyID) {
+        List<Course> all = courseRepository.findAllByFacultyID(facultyID);
+        ArrayList<CourseDTO> dtos = new ArrayList<>();
+        for (Course course : all) {
+            Department department=course.getDepartment();
+            if(department!=null) {
+                dtos.add(new CourseDTO(course.getCourse_id(),course.getCourse_name(),course.getSemester(),course.getCourse_level(),course.getCredits(),department.getDepartment_id(),department.getName()));
+            }
+        }
+        return dtos;
+    }
 
     public CourseDTO getCourseByID(String courseID) {
         try {

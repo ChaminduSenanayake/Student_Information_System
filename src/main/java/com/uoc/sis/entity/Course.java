@@ -7,7 +7,7 @@ import java.util.List;
 public class Course {
     @Id
     private String course_id;
-    private String course_level;
+    private int course_level;
     private String course_name;
     private int semester;
     private int credits;
@@ -21,7 +21,7 @@ public class Course {
     public Course() {
     }
 
-    public Course(String course_id, String course_level, String course_name, int semester, int credits, Department department) {
+    public Course(String course_id, int course_level, String course_name, int semester, int credits, Department department) {
         this.course_id = course_id;
         this.course_level = course_level;
         this.course_name = course_name;
@@ -38,11 +38,11 @@ public class Course {
         this.course_id = course_id;
     }
 
-    public String getCourse_level() {
+    public int getCourse_level() {
         return course_level;
     }
 
-    public void setCourse_level(String course_level) {
+    public void setCourse_level(int course_level) {
         this.course_level = course_level;
     }
 

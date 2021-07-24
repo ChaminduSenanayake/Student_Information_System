@@ -58,7 +58,6 @@ function loadDetails(registrationNo) {
         dataType:'json',
         contentType: 'application/json; charset=utf-8',
         success:function (response) {
-            $('#txtUserName').html(response['fName']+" "+response['lName']);
             $('#txtViewRegistrationNo').val(response['registrationNo']);
             $('#txtViewIndexNo').val(response['indexNo']);
             $('#txtViewFirstName').val(response['fName']);
@@ -75,7 +74,6 @@ function loadDetails(registrationNo) {
             $('#txtViewDegreeName').val(response['degreeName']);
             $('#txtTitle').html(response['fName']+"'s Profile");
             $('#studentName').html(response['fName']+" "+response['mName']+" "+response['lName']);
-
         },error(error) {
             console.log(error);
         }
