@@ -163,3 +163,6 @@ input:focus, button:focus {
     }
 }
 
+table td{
+    font-size: 13px;
+}

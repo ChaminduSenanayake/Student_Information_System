@@ -34,8 +34,8 @@ nav{
 }
 
 .form-control[readonly] {
-    text-align: left;
-    background-color: transparent;
+    text-align: center;
+    background-color: white;
     border: none;
 }
 .form-control:focus {

@@ -79,3 +79,35 @@ function loadDetails(registrationNo) {
         }
     })
 }
+
+
+
+function openUpdateStudentProfileModal() {
+    var userName=$('#txtUserName').html();
+    var registrationNo=userName.split("@")[0];
+    let updateModal = new bootstrap.Modal(document.getElementById('updateStudentProfileModal'));
+    $('#updateStudentProfileModal').on('show.bs.modal', function(event) {
+        let modal = $(this);
+
+        $.ajax({
+            type:"GET",
+            url:baseURL+"student/getStudent/"+registrationNo,
+            dataType:'json',
+            contentType: 'application/json; charset=utf-8',
+            success:function (response) {
+
+                modal.find('#txtEditRegistrationNo').val(response['registrationNo']);
+                modal.find('#txtEditIndexNo').val(response['indexNo']);
+                modal.find('#txtEditFirstName').val(response['fName']);
+                modal.find('#txtEditMiddleName').val(response['mName']);
+                modal.find('#txtEditLastName').val(response['lName']);
+                modal.find('#txtEditPassword').val(response['password']);
+                modal.find('#txtEditConfirmPassword').val(response['password']);
+            },error(error) {
+                console.log(error);
+            }
+        })
+
+    })
+    updateModal.show();
+}

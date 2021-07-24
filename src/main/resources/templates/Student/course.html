@@ -11,6 +11,7 @@
 
 <body>
 <!-- Navigation bar -->
+
 <nav th:insert="Student/navBar :: navbar"></nav>
 <!-- middle section -->
 <div class="d-flex" id="wrapper">
@@ -89,7 +90,7 @@
 
     </div>
 </div>
-
+<div th:insert="Student/navbar :: updateStudent"></div>
 <script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
 <script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/dist/lib/controllers/baseURL.js}"></script>

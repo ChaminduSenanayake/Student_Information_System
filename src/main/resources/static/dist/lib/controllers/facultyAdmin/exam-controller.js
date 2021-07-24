@@ -340,12 +340,11 @@ function getAllExams() {
                     "    <td class=\"p-3\">" + courseID + "</td>\n" +
                     "    <td class=\"p-3\">" + courseName + "</td>\n" +
                     "    <td class=\"p-3\">" + date + "</td>\n" +
-                    "    <td class=\"p-3\">" + startTime + "</td>\n" +
-                    "    <td class=\"p-3\">" + endTime + "</td>\n" +
+                    "    <td class=\"p-3\">" + startTime+"-"+endTime + "</td>\n" +
                     "<div class=\"btn-group\" role=\"group\">\n" +
                     "<td>\n" +
-                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\"" + examID + "\" onclick=\"openUpdateModal(this.id)\"><i class=\"fas fa-edit\"></i> Edit</button>\n" +
-                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\"" + examID + "\" onclick=\"deleteExam(this.id)\"><i class=\"fas fa-trash-alt\"></i> Delete</button>\n" +
+                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\"" + examID + "\" onclick=\"openUpdateModal(this.id)\"><i class=\"fas fa-edit\"></i>Edit</button>\n" +
+                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\"" + examID + "\" onclick=\"deleteExam(this.id)\"><i class=\"fas fa-trash-alt\"></i>Delete</button>\n" +
                     "</div>\n" +
                     "</td>\n" +
                     "</tr>";

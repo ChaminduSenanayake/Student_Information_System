@@ -180,7 +180,6 @@ function getAllRegistrations() {
 
 function deleteCourseRegistration(courseID) {
     let regNo = $('#txtUserName').html().split("@")[0];
-    alert(regNo);
     swal({
         title: "Are you sure?",
         text: "Registration will be deleted..!!",
