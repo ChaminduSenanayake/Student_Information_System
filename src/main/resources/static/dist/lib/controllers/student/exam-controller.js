@@ -19,16 +19,18 @@ function getExams(){
                 let courseRegistration=response[i];
                 let courseID=courseRegistration['courseID'];
                 let courseName=courseRegistration['courseName'];
-                let level=courseRegistration['level']
-                let semester=courseRegistration['semester'];
-                let credits=courseRegistration['credits'];
+                let examID=courseRegistration['examID']
+                let date=courseRegistration['date'];
+                let startTime=courseRegistration['startTime'];
+                let endTime=courseRegistration['endTime'];
 
                 let row="<tr>\n" +
                     "<td class=\"p-3\">"+courseID+"</td>\n" +
                     "<td class=\"p-3\">"+courseName+"</td>\n" +
-                    "<td class=\"p-3\">"+level+"</td>\n" +
-                    "<td class=\"p-3\">"+semester+"</td>\n" +
-                    "<td class=\"p-3\">"+credits+"</td>\n" +
+                    "<td class=\"p-3\">"+examID+"</td>\n" +
+                    "<td class=\"p-3\">"+date+"</td>\n" +
+                    "<td class=\"p-3\">"+startTime+"</td>\n" +
+                    "<td class=\"p-3\">"+endTime+"</td>\n" +
                     "</tr>";
                 examTable.append(row);
             }

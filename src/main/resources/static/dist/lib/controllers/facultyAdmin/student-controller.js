@@ -57,6 +57,8 @@ $(document).ready(function () {
 
     // Add New
     $('#addNewSudent').submit(function (event) {
+        var userName=$('#txtUserName').html();
+        getFacultyAdmin(userName);
         let regNo=$('#txtRegistrationNo').val();
         let index=$('#txtIndexNo').val();
         let fName=$('#txtFirstName').val();
@@ -137,6 +139,8 @@ $(document).ready(function () {
 
     // Update Student
     $('#updateStudent').submit(function (event) {
+        var userName=$('#txtUserName').html();
+        getFacultyAdmin(userName);
         let regNo=$('#txtEditRegistrationNo').val();
         let index=$('#txtEditIndexNo').val();
         let fName=$('#txtEditFirstName').val();
@@ -439,6 +443,8 @@ $('#selectEditDegreeID').change(function() {
 
 
 function getAllStudents(){
+    var userName=$('#txtUserName').html();
+    getFacultyAdmin(userName);
     let tableStudents=$('#studentTable');
     tableStudents.empty();
     $.ajax({

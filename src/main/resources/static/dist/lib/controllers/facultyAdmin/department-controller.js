@@ -11,6 +11,8 @@ $(document).ready(function () {
 
     // Add new
     $('#addNewDepartment').submit(function (event) {
+        var userName=$('#txtUserName').html();
+        getFacultyAdmin(userName);
         let departmentID=$('#txtDepartmentID').val();
         let departmentName=$('#txtDepartmentName').val();
 
@@ -49,6 +51,8 @@ $(document).ready(function () {
 
 
     $('#updateDepartment').submit(function (event) {
+        var userName=$('#txtUserName').html();
+        getFacultyAdmin(userName);
         let departmentID=$('#txtEditDepartmentID').val();
         let departmentName=$('#txtEditDepartmentName').val();
 
@@ -193,6 +197,8 @@ function deleteDepartment(departmentID){
 
 
 function getAllDepartments(){
+    var userName=$('#txtUserName').html();
+    getFacultyAdmin(userName);
     let departmentTable=$('#departmentTable');
     departmentTable.empty();
     $.ajax({

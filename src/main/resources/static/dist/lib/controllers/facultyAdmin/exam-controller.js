@@ -57,6 +57,8 @@ $(document).ready(function () {
 
     // Add new
     $('#addNewExam').submit(function (event) {
+        var userName=$('#txtUserName').html();
+        getFacultyAdmin(userName);
         let examID=$('#txtExamID').val();
         let examName=$('#txtExamName').val();
         let courseID=$('#selectCourseID').val();
@@ -103,6 +105,8 @@ $(document).ready(function () {
 
 
     $('#updateExam').submit(function (event) {
+        var userName=$('#txtUserName').html();
+        getFacultyAdmin(userName);
         let examID=$('#txtEditExamID').val();
         let examName=$('#txtEditExamName').val();
         let courseID=$('#selectEditCourseID').val();
@@ -186,7 +190,7 @@ function openAddNewModal() {
 
         $.ajax({
             type:"GET",
-            url:baseURL+"course/getAll",
+            url:baseURL+"course/getAllByFacultyID/"+facultyID,
             dataType:'json',
             contentType: 'application/json; charset=utf-8',
             success:function (response) {
@@ -228,7 +232,7 @@ function openUpdateModal(examID) {
 
         $.ajax({
             type:"GET",
-            url:baseURL+"course/getAll/",
+            url:baseURL+"course/getAllByFacultyID/"+facultyID,
             dataType:'json',
             contentType: 'application/json; charset=utf-8',
             success:function (response) {
@@ -307,6 +311,8 @@ function deleteExam(examID){
 }
 
 function getAllExams() {
+    var userName=$('#txtUserName').html();
+    getFacultyAdmin(userName);
     let examTable = $('#examTable');
     examTable.empty();
     $.ajax({

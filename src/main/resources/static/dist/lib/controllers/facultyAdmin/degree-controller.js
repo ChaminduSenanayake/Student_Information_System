@@ -58,6 +58,8 @@ $(document).ready(function () {
 
     // Add new
     $('#addNewDegree').submit(function (event) {
+        var userName=$('#txtUserName').html();
+        getFacultyAdmin(userName);
         event.preventDefault();
         let degreeID=$('#txtDegreeId').val();
         let degreeName=$('#txtDegreeName').val();
@@ -94,7 +96,8 @@ $(document).ready(function () {
     });
 
     $('#updateDegree').submit(function (event) {
-
+        var userName=$('#txtUserName').html();
+        getFacultyAdmin(userName);
         let degreeID=$('#txtEditDegreeID').val();
         let degreeName=$('#txtEditDegreeName').val();
 
@@ -240,6 +243,8 @@ function deleteDegree(degreeID){
 }
 
 function getAllDegrees(){
+    var userName=$('#txtUserName').html();
+    getFacultyAdmin(userName);
     let tableDegree=$('#degreeTable');
     tableDegree.empty();
     $.ajax({

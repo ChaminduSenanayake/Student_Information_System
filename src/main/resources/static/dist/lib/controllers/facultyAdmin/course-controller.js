@@ -59,6 +59,8 @@ $(document).ready(function () {
 
     // Add new
     $('#addNewCourse').submit(function (event) {
+        var userName=$('#txtUserName').html();
+        getFacultyAdmin(userName);
         let courseID=$('#txtCourseID').val();
         let courseName=$('#txtCourseName').val();
         let semester=$('#txtSemester').val();
@@ -106,6 +108,8 @@ $(document).ready(function () {
 
 
     $('#updateCourse').submit(function (event) {
+        var userName=$('#txtUserName').html();
+        getFacultyAdmin(userName);
         let courseID=$('#txtEditCourseID').val();
         let courseName=$('#txtEditCourseName').val();
         let semester=$('#txtEditSemester').val();
@@ -336,6 +340,8 @@ function deleteCourse(courseID){
 }
 
 function getAllCourses(){
+    var userName=$('#txtUserName').html();
+    getFacultyAdmin(userName);
     let courseTable=$('#courseTable');
     courseTable.empty();
     $.ajax({
