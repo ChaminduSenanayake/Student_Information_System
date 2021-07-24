@@ -17,4 +17,7 @@ public interface ExamRepository extends JpaRepository<Exam,String> {
 
     @Query(value = "select * from Exam where course_id in (select course_id from course,department where course.department_id=department.department_id and faculty_id=:facultyID)",nativeQuery = true)
     List<Exam> findAllByFacultyID(@Param("facultyID") String facultyID);
+
+    @Query(value = "select * from Exam where course_id in (select course_id from Registration where registration_no=:regNo) and date>=:date",nativeQuery = true)
+    List<Exam> findAllByRegNo(@Param("regNo") String regNo,@Param("date") String date);
 }

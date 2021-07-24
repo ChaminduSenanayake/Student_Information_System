@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.text.NumberFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,6 +89,22 @@ public class ExamService {
         }
         return dtos;
     }
+
+    public List<ExamDTO> getExamsByRegNo(String regNo) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime now = LocalDateTime.now();
+        List<Exam> all = examRepository.findAllByRegNo(regNo,dtf.format(now));
+        ArrayList<ExamDTO> dtos = new ArrayList<>();
+        for (Exam exam : all) {
+            Course course=exam.getCourse();
+            if(course!=null) {
+                dtos.add(new ExamDTO(exam.getExam_id(),exam.getExam_name(),exam.getDate(),exam.getStartTime(),exam.getEndTime(),course.getCourse_id(),course.getCourse_name()));
+            }
+        }
+        return dtos;
+    }
+
+
 
     public ExamDTO getExam(String ExamID) {
         try {

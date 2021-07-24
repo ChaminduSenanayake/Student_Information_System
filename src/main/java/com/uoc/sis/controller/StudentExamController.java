@@ -1,20 +1,24 @@
 package com.uoc.sis.controller;
 
+import com.uoc.sis.dto.ExamDTO;
+import com.uoc.sis.service.ExamService;
 import com.uoc.sis.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/studentExam")
 public class StudentExamController {
         @Autowired
-        private StudentService studentService;
+        private ExamService examService;
 
         @GetMapping("/")
         public ModelAndView loadPage(HttpServletRequest request){
@@ -31,4 +35,10 @@ public class StudentExamController {
             }
 
         }
+
+    @GetMapping("/getExamsByRegNo/{regNo}")
+    public List<ExamDTO> getAllByFacultyID(@PathVariable("regNo") String regNo) {
+        return examService.getExamsByRegNo(regNo);
+    }
+
 }

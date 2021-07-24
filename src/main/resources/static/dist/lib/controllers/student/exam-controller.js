@@ -2,6 +2,7 @@ $(document).ready(function () {
     document.getElementById('examBtn').style.color = "#ffffff";
     var userName=$('#txtUserName').html();
     loadDetails(userName.split("@")[0]);
+    getExams();
 });
 
 function getExams(){
@@ -10,7 +11,7 @@ function getExams(){
     examTable.empty();
     $.ajax({
         type:"GET",
-        url:baseURL+"studentCourse/getCourses/"+regNo,
+        url:baseURL+"studentExam/getExamsByRegNo/"+regNo,
         dataType:'json',
         contentType: 'application/json; charset=utf-8',
         success:function (response){
@@ -28,11 +29,8 @@ function getExams(){
                     "<td class=\"p-3\">"+level+"</td>\n" +
                     "<td class=\"p-3\">"+semester+"</td>\n" +
                     "<td class=\"p-3\">"+credits+"</td>\n" +
-                    "<td>\n" +
-                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\""+courseID+"\" onclick=\"deleteCourseRegistration(this.id)\" name=\"btnDelete\"><i class=\"fas fa-trash-alt\"></i> Delete</button>\n" +
-                    "</td>\n" +
                     "</tr>";
-                registrationTable.append(row);
+                examTable.append(row);
             }
         }
     })

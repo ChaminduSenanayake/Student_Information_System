@@ -88,7 +88,6 @@ public class StudentService {
         return dtos;
     }
 
-
     public StudentDTO getStudentByRegNo(String regNo) {
         try {
             Student s= studentRepository.getById(regNo);
