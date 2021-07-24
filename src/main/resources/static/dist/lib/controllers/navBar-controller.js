@@ -31,7 +31,7 @@ function getFacultyAdmin(userName) {
         async:false,
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
-            $('#txtUserName').html(response['fName']+" "+response['lName']);
+            $('#txtAdminName').html(response['fName']+" "+response['lName']);
             facultyID=response['facultyID'];
             $.ajax({
                 type: "GET",

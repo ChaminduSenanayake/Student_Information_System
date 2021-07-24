@@ -4,7 +4,7 @@ var uniCode;
 var uniName;
 $(document).ready(function () {
     document.getElementById('courseBtn').style.color = "#ffffff";
-    var userName=$(txtUserName).html();
+    var userName=$('#txtUserName').html();
     getFacultyAdmin(userName);
     getAllCourses();
 
