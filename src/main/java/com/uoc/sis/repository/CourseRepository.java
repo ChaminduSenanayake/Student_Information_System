@@ -17,4 +17,9 @@ public interface CourseRepository extends JpaRepository<Course,String> {
 
     @Query(value = "select * from Course where department_id in (select department_id from department where faculty_id=:facultyID)",nativeQuery = true)
     List<Course> findAllByFacultyID(@Param("facultyID") String facultyID);
+
+    @Query(value = "select * from Course where course_id in (select course_id from Exam where exam_id=:examID)",nativeQuery = true)
+    Course getByExamId(@Param("examID") String examID);
+
+
 }

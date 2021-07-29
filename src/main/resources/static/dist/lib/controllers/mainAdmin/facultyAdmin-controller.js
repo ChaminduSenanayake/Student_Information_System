@@ -417,6 +417,7 @@ let telephone=document.getElementById('txtTelephone');
 let firstName=document.getElementById('txtFirstName');
 let lastName=document.getElementById('txtLastName');
 let password=document.getElementById('txtPassword');
+let confirmPassword=document.getElementById('txtConfirmPassword');
 
 email.addEventListener('input', function(){
     let regexEmail = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -464,6 +465,15 @@ password.addEventListener('input', function(){
     }
 });
 
+
+confirmPassword.addEventListener('input', function(){
+    let regex = /^[A-Za-z]\w{6,14}$/;
+    if (!regex.test(confirmPassword.value)) {
+        confirmPassword.setCustomValidity('Please choose a password with 6-14 characters');
+    }else {
+        confirmPassword.setCustomValidity('');
+    }
+});
 
 
 

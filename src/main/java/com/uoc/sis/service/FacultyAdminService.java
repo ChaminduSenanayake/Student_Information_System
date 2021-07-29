@@ -51,6 +51,23 @@ public class FacultyAdminService {
         return false;
     }
 
+    public boolean updateFacultyAdminPassword(FacultyAdminDTO dto) {
+        try {
+            FacultyAdmin admin = facultyAdminRepository.getById(dto.getFacultyAdminID());
+            if (admin != null) {
+                admin.setPassword(dto.getPassword());
+                facultyAdminRepository.save(admin);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (EntityNotFoundException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
     public boolean deleteFacultyAdmin(String facultyAdminID) {
         if (facultyAdminRepository.findById(facultyAdminID).isPresent()) {
             facultyAdminRepository.deleteById(facultyAdminID);

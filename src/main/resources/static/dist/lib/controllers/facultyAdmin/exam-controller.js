@@ -2,6 +2,7 @@ var facultyID;
 var facultyName;
 var uniCode;
 var uniName;
+var facultyAdminID;
 $(document).ready(function () {
     document.getElementById('examBtn').style.color = "#ffffff";
     var userName=$(txtUserName).html();
@@ -31,7 +32,7 @@ $(document).ready(function () {
     });
 
     // Table Search Exam Date
-    $("#txtSearchExamDate").on("change", function() {
+    $("#txtSearchExamDate").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $("#examTable tr").filter(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
@@ -64,8 +65,8 @@ $(document).ready(function () {
         let courseID=$('#selectCourseID').val();
         let courseName=$('#txtCourseName').val();
         let date=$('#txtExamDate').val();
-        let startTime=$('#txtExamStartTime').val();
-        let endTime=$('#txtExamEndTime').val();
+        let startTime=tConvert($('#txtExamStartTime').val());
+        let endTime=tConvert($('#txtExamEndTime').val());
 
         let dataObj=JSON.stringify({
             "examID":examID,
@@ -112,8 +113,8 @@ $(document).ready(function () {
         let courseID=$('#selectEditCourseID').val();
         let courseName=$('#txtEditCourseName').val();
         let date=$('#txtEditExamDate').val();
-        let startTime=$('#txtEditExamStartTime').val();
-        let endTime=$('#txtEditExamEndTime').val();
+        let startTime=tConvert($('#txtEditExamStartTime').val());
+        let endTime=tConvert($('#txtEditExamEndTime').val());
 
         let dataObj=JSON.stringify({
             "examID":examID,
@@ -157,6 +158,7 @@ $('#selectCourseID').change(function() {
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
             $('#txtCourseName').val(response['courseName']);
+            $('#txtExamName').val(courseID+" - Final Exam");
         },
         error: function (error) {
             console.log(error);
@@ -189,6 +191,7 @@ function openAddNewModal() {
         let modal = $(this);
         let selectCourseID=modal.find('#selectCourseID');
         let txtCourseName=modal.find('#txtCourseName');
+        let txtExamName=modal.find('#txtExamName');
 
         $.ajax({
             type:"GET",
@@ -205,7 +208,10 @@ function openAddNewModal() {
                     let courseID = course['courseID'];
                     let option = "<option>" + courseID + "</option>";
                     selectCourseID.append(option);
-                    if(i==0){txtCourseName.val(course['courseName'])}
+                    if(i==0){
+                        txtCourseName.val(course['courseName']);
+                        txtExamName.val(courseID+" - Final Exam");
+                    }
                 }
 
             },error(error) {
@@ -343,8 +349,8 @@ function getAllExams() {
                     "    <td class=\"p-3\">" + startTime+"-"+endTime + "</td>\n" +
                     "<div class=\"btn-group\" role=\"group\">\n" +
                     "<td>\n" +
-                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\"" + examID + "\" onclick=\"openUpdateModal(this.id)\"><i class=\"fas fa-edit\"></i>Edit</button>\n" +
-                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\"" + examID + "\" onclick=\"deleteExam(this.id)\"><i class=\"fas fa-trash-alt\"></i>Delete</button>\n" +
+                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\"" + examID + "\" onclick=\"openUpdateModal(this.id)\"><i class=\"fas fa-edit\"></i></button>\n" +
+                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\"" + examID + "\" onclick=\"deleteExam(this.id)\"><i class=\"fas fa-trash-alt\"></i></button>\n" +
                     "</div>\n" +
                     "</td>\n" +
                     "</tr>";
@@ -401,3 +407,17 @@ editExamName.addEventListener('input', function(){
         editExamName.setCustomValidity('');
     }
 });
+
+
+//Time Converter
+function tConvert(time) {
+    // Check correct time format and split into components
+    time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+    if (time.length > 1) { // If time format correct
+        time = time.slice(1); // Remove full string match value
+        time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+        time[0] = +time[0] % 12 || 12; // Adjust hours
+    }
+    return time.join(''); // return adjusted time or original string
+}

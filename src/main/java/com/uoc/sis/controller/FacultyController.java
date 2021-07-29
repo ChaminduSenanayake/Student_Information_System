@@ -32,13 +32,13 @@ public class FacultyController {
             model.addObject("sessionExpired","Session Expired...! Please sign in again");
             return model;
         }
-
     }
 
     @PostMapping("/save")
     public boolean addFaculty(@RequestBody FacultyDTO facultyDTO){
         return facultyService.addFaculty(facultyDTO);
     }
+
     @PutMapping ("/update")
     public boolean updateFaculty(@RequestBody FacultyDTO facultyDTO){
         return facultyService.updateFaculty(facultyDTO);

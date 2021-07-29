@@ -59,14 +59,8 @@
                 </div>
                 <div class="text-center mt-2">
                     <button name="btnAddNew" type="submit" class=" btn btn-primary px-5"><i class="fas fa-save"></i> Add</button>
-                    <button id="cancel" name="cancel" class="btn btn-danger px-5" data-bs-dismiss="modal"
-                            aria-label="Close"><i class="fas fa-window-close"></i> Close</button></br>
                 </div>
             </form>
-        </div>
-        <div class="container-fluid justify-content-center">
-
-
         </div>
 
         <div class="table-div container">
@@ -90,13 +84,14 @@
 
     </div>
 </div>
-<div th:insert="Student/navbar :: updateStudent"></div>
+<div th:insert="Student/profile :: updateStudent"></div>
 <script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
 <script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/dist/lib/controllers/baseURL.js}"></script>
 <script th:src="@{/dist/lib/js/sweetalert.js}"></script>
 <script th:src="@{/dist/lib/controllers/navBar-controller.js}"></script>
 <script th:src="@{/dist/lib/controllers/student/course-controller.js}"></script>
+<script th:src="@{/dist/lib/controllers/student/profile-controller.js}"></script>
 </body>
 
 </html>

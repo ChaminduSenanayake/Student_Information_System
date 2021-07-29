@@ -99,6 +99,19 @@ public class CourseService {
         return null;
     }
 
+    public CourseDTO getCourseByExamID(String examID) {
+        try {
+            Course course = courseRepository.getByExamId(examID);
+            Department department=course.getDepartment();
+            return new CourseDTO(course.getCourse_id(),course.getCourse_name(),course.getSemester(),course.getCourse_level(),course.getCredits(),department.getDepartment_id(),department.getName());
+        } catch (EntityNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+
     public String getNewID() {
         String prifix = "C";
         try {

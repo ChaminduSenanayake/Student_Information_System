@@ -96,5 +96,13 @@ public class CourseRegistrationService {
     }
 
 
-
+    public CourseRegistrationDTO getByCombineID(String registrationNo,String courseID) {
+        Registration registration = courseRegistrationRepository.getByCombineID(registrationNo,courseID);
+        if(registration!=null) {
+            Course course=registration.getCourse();
+            Student student=registration.getStudent();
+            return new CourseRegistrationDTO(student.getRegistration_no(),course.getCourse_id(),course.getCourse_name(),course.getCourse_level(),course.getSemester(),course.getCredits());
+        }
+        return null;
+    }
 }

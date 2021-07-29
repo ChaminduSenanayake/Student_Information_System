@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
@@ -17,10 +18,12 @@ public interface CourseRegistrationRepository extends JpaRepository<Registration
     Registration getByCombineID(@Param("regNo")String regNo, @Param("courseID")String courseID);
 
     @Modifying
+    @Transactional
     @Query(value = "delete from Registration where registration_no=:regNo and course_id=:courseID",nativeQuery = true)
     void deleteRegistration(@Param("regNo")String regNo,@Param("courseID")String courseID);
 
 
     @Query(value = "select * from Registration where registration_no=:regNo",nativeQuery = true)
     List<Registration> getByRegistrationNo(@Param("regNo")String regNo);
+
 }

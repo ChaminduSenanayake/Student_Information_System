@@ -39,6 +39,7 @@ $(document).ready(function () {
             "uniCode": uniCode,
             "uniName": uniName
         });
+
         $.ajax({
             type: "POST",
             url: baseURL + "faculty/save",

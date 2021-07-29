@@ -2,6 +2,7 @@ var facultyID;
 var facultyName;
 var uniCode;
 var uniName;
+var facultyAdminID;
 $(document).ready(function () {
     document.getElementById('degreeBtn').style.color = "#ffffff";
     var userName=$('#txtUserName').html();
@@ -263,8 +264,8 @@ function getAllDegrees(){
                     "    <td class=\"p-3\">"+degreeName+"</td>\n" +
                     "<div class=\"btn-group\" role=\"group\">\n" +
                     "<td>\n" +
-                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\""+degreeID+"\" onclick=\"openUpdateModal(this.id)\"><i class=\"fas fa-edit\"></i> Edit</button>\n" +
-                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\""+degreeID+"\" onclick=\"deleteDegree(this.id)\"><i class=\"fas fa-trash-alt\"></i> Delete</button>\n" +
+                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\""+degreeID+"\" onclick=\"openUpdateModal(this.id)\"><i class=\"fas fa-edit\"></i></button>\n" +
+                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\""+degreeID+"\" onclick=\"deleteDegree(this.id)\"><i class=\"fas fa-trash-alt\"></i></button>\n" +
                     "</div>\n" +
                     "</td>\n" +
                     "</tr>";

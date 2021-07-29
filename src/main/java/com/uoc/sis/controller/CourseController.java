@@ -65,6 +65,11 @@ public class CourseController {
         return courseService.getCourseByID(courseID);
     }
 
+    @GetMapping("/getCourseByExamID/{examID}")
+    public CourseDTO getByExamID(@PathVariable("examID") String examID) {
+        return courseService.getCourseByExamID(examID);
+    }
+
     @GetMapping("/getNewID")
     @ResponseBody
     public String getNewID() {

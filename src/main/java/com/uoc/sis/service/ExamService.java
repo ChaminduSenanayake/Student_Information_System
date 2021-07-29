@@ -101,6 +101,7 @@ public class ExamService {
                 dtos.add(new ExamDTO(exam.getExam_id(),exam.getExam_name(),exam.getDate(),exam.getStartTime(),exam.getEndTime(),course.getCourse_id(),course.getCourse_name()));
             }
         }
+        System.out.println(dtos.get(0).getExamID()+"---------"+dtos.get(1).getExamID());
         return dtos;
     }
 

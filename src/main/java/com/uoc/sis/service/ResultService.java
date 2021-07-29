@@ -1,5 +1,6 @@
 package com.uoc.sis.service;
 
+import com.uoc.sis.dto.CourseRegistrationDTO;
 import com.uoc.sis.dto.DegreeDTO;
 import com.uoc.sis.dto.ResultDTO;
 import com.uoc.sis.entity.*;
@@ -26,32 +27,56 @@ public class ResultService {
     @Autowired
     private CourseRepository courseRepository;
 
+    @Autowired
+    private CourseRegistrationService courseRegistrationService;
+
 
     public boolean addResult(ResultDTO dto) {
-        Exam exam = examRepository.getById(dto.getExamID());
-        Student student = studentRepository.getById(dto.getRegistrationNo());
-        Result_pk result_pk = new Result_pk(dto.getRegistrationNo(), dto.getExamID());
-        Result result = new Result(student, exam, result_pk, dto.getGrade());
-        resultRepository.save(result);
-        Result isPresent = resultRepository.getByCombineID(dto.getRegistrationNo(), dto.getExamID());
-        if (isPresent != null) {
-            return true;
-        } else {
+        CourseRegistrationDTO registration=courseRegistrationService.getByCombineID(dto.getRegistrationNo(),dto.getCourseID());
+        if(registration!=null){
+            Exam exam = examRepository.getById(dto.getExamID());
+            Student student = studentRepository.getById(dto.getRegistrationNo());
+            Result_pk result_pk = new Result_pk(dto.getRegistrationNo(), dto.getExamID());
+            Result result = new Result(student, exam, result_pk, dto.getGrade());
+            resultRepository.save(result);
+            Result isPresent = resultRepository.getByCombineID(dto.getRegistrationNo(), dto.getExamID());
+            if (isPresent != null) {
+                return true;
+            } else {
+                return false;
+            }
+        }else{
             return false;
         }
+
     }
-//    public boolean addResultList(List<ResultDTO> dto) {
-//        Exam exam = examRepository.getById(dto.getExamID());
-//        Student student=studentRepository.getById(dto.getRegistrationNo());
-//        Result result =new Result(student,exam,dto.getGrade());
-//        resultRepository.save(result);
-//        Result isPresent=resultRepository.getByCombineID(dto.getRegistrationNo(),dto.getExamID());
-//        if (isPresent!=null) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
+    public boolean addResultSheet(String examID,String courseID,MultipartFile resultSheet) {
+        String fileName=resultSheet.getOriginalFilename();
+        String[] arr=fileName.split("\\."); // Split file name into array
+        if(arr[arr.length-1].equals("csv")){
+//            CourseRegistrationDTO registration=courseRegistrationService.getByCombineID(dto.getRegistrationNo(),dto.getCourseID());
+//            if(registration!=null){
+//                Exam exam = examRepository.getById(dto.getExamID());
+//                Student student = studentRepository.getById(dto.getRegistrationNo());
+//                Result_pk result_pk = new Result_pk(dto.getRegistrationNo(), dto.getExamID());
+//                Result result = new Result(student, exam, result_pk, dto.getGrade());
+//                resultRepository.save(result);
+//                Result isPresent = resultRepository.getByCombineID(dto.getRegistrationNo(), dto.getExamID());
+//                if (isPresent != null) {
+//                    return true;
+//                } else {
+//                    return false;
+//                }
+//            }else{
+//                return false;
+//            }
+            return false;
+        }else {
+            return false;
+        }
+
+
+    }
 
 
     public boolean updateResult(ResultDTO dto) {

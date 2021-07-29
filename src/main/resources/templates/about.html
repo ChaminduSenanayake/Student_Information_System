@@ -2,203 +2,206 @@
 <html lang="en" xmlns:th="http://thymleaf.org">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>About</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <title>About</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link th:href="@{/dist/lib/images/homepage/favicon.png}" rel="icon">
-  <link th:href="@{/dist/lib/images/homepage/apple-touch-icon.png}" rel="apple-touch-icon">
+    <!-- Favicons -->
+    <link th:href="@{/dist/lib/images/homepage/favicon.png}" rel="icon">
+    <link th:href="@{/dist/lib/images/homepage/apple-touch-icon.png}" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  <link th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i}" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i}"
+          rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
+    <!-- Vendor CSS Files -->
 
-  <link th:href="@{/dist/lib/css/bootstrap/bootstrap.min.css}" rel="stylesheet">
-  <link th:href="@{/dist/lib/css/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+    <link th:href="@{/dist/lib/css/bootstrap/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/dist/lib/css/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link th:href="@{/dist/lib/css/homepage-style.css}" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link th:href="@{/dist/lib/css/homepage-style.css}" rel="stylesheet">
 
 </head>
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><img th:src="@{/dist/lib/images/logo.svg}" alt="LOGO"></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="uni-selector.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <h1 class="logo me-auto"><img th:src="@{/dist/lib/images/logo.svg}" alt="LOGO"></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="uni-selector.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
+        <nav id="navbar" class="navbar order-last order-lg-0">
 
-        <ul>
-          <li><a onclick="openWindow('home')" href="#">Home</a></li>
-          <li><a class="active" onclick="openWindow('about')" href="#">About</a></li>
-          <li><a onclick="openWindow('institutes')" href="#" >Institutes</a></li>
-          <li><a onclick="openWindow('contact')" href="#">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+            <ul>
+                <li><a onclick="openWindow('home')" href="#">Home</a></li>
+                <li><a class="active" onclick="openWindow('about')" href="#">About</a></li>
+                <li><a onclick="openWindow('institutes')" href="#">Institutes</a></li>
+                <li><a onclick="openWindow('contact')" href="#">Contact</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
 
-      <a onclick="openLoginWindow()" href="#" class="get-started-btn">Login</a>
+        <a onclick="openLoginWindow()" href="#" class="get-started-btn">Login</a>
 
     </div>
-  </header><!-- End Header -->
+</header><!-- End Header -->
 
-  <main id="main">
+<main id="main">
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
-      <div class="container">
-        <h2>About System</h2>
-        <p><i>Higher Education Institutional Student Information System (HESIS) is designed with intention of developing fast and reliable centralized students' database.<br>
-           HESIS – currently supports for University of Colombo, University of Moratuwa, University of Sri Jayawardanapura, University of Kelaniya,
-            University Of Peradeniya, University Of Ruhuna, Sri Lanka Institute of Information Technology(SLIIT) and Vocational Training Authority (VTA).<br>
-            ITSC staff working closely with respective Deans' offices, Exams branch and other administrative units of Universities and Institutes to provide reliable service to both students and staff members.</i> </p>
-      </div>
+        <div class="container">
+            <h2>About System</h2>
+            <p><i>Higher Education Institutional Student Information System (HESIS) is designed with intention of
+                developing fast and reliable centralized students' database.<br>
+                HESIS – currently supports for University of Colombo, University of Moratuwa, University of Sri
+                Jayawardanapura, University of Kelaniya,
+                University Of Peradeniya, University Of Ruhuna, Sri Lanka Institute of Information Technology(SLIIT) and
+                Vocational Training Authority (VTA).<br>
+                ITSC staff working closely with respective Deans' offices, Exams branch and other administrative units
+                of Universities and Institutes to provide reliable service to both students and staff members.</i></p>
+        </div>
     </div><!-- End Breadcrumbs -->
 
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
+        <div class="container" data-aos="fade-up">
 
-        <div class="row">
-          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img th:src="@{dist/lib/images/homepage/about.jpg}" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3>Higher Education Institutional Student Information System.</h3>
-            <p class="fst-italic">
-               " Providing a fast and reliable centralized students' database "
-            </p>
-            <ul>
-              <p>
-                The system provide many opportunities to both students and academic staff in differnt higher educational institutes to 
-                gain a better higher education experience. 
-              </p>
-              <li><i class="bi bi-check-circle"></i> View Student Information.</li>
-              <li><i class="bi bi-check-circle"></i> Register To The Academic Courses.</li>
-              <li><i class="bi bi-check-circle"></i> Register To The Exams.</li>
-              <li><i class="bi bi-check-circle"></i> View Exam Results.</li>
-              <li><i class="bi bi-check-circle"></i> View Course Details.</li>
-            </ul>
-            <p>
-              The system is based on HTML5 and CSS3 so you are kindly requested to use Google Chrome or Mozilla Firefox for better performance.
-            </p>
+            <div class="row">
+                <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                    <img th:src="@{dist/lib/images/homepage/about.jpg}" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+                    <h3>Higher Education Institutional Student Information System.</h3>
+                    <p class="fst-italic">
+                        " Providing a fast and reliable centralized students' database "
+                    </p>
+                    <ul>
+                        <p>
+                            The system provide many opportunities to both students and academic staff in differnt higher
+                            educational institutes to
+                            gain a better higher education experience.
+                        </p>
+                        <li><i class="bi bi-check-circle"></i> View Student Information.</li>
+                        <li><i class="bi bi-check-circle"></i> Register To The Academic Courses.</li>
+                        <li><i class="bi bi-check-circle"></i> Register To The Exams.</li>
+                        <li><i class="bi bi-check-circle"></i> View Exam Results.</li>
+                        <li><i class="bi bi-check-circle"></i> View Course Details.</li>
+                    </ul>
+                    <p>
+                        The system is based on HTML5 and CSS3 so you are kindly requested to use Google Chrome or
+                        Mozilla Firefox for better performance.
+                    </p>
 
-          </div>
+                </div>
+            </div>
+
         </div>
-
-      </div>
     </section><!-- End About Section -->
 
     <!-- ======= Counts Section ======= -->
     <section id="counts" class="counts section-bg">
-      <div class="container">
+        <div class="container">
 
-        <div class="row counters">
+          <div class="row counters">
+            <div class="col-lg-4 col-6 text-center">
+            <span data-purecounter-start="0" id="txtStudentCountAbout"  data-purecounter-duration="1"
+                  class="purecounter"></span>
+              <p>Students</p>
+            </div>
 
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="1232" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Students</p>
+            <div class="col-lg-4 col-6 text-center">
+            <span data-purecounter-start="0" id="txtCourseCountAbout" data-purecounter-duration="1"
+                  class="purecounter"></span>
+              <p>Courses</p>
+            </div>
+
+            <div class="col-lg-4 col-6 text-center">
+            <span data-purecounter-start="0" id="txtUniversityCountAbout" data-purecounter-duration="1"
+                  class="purecounter"></span>
+              <p>Universities</p>
+            </div>
           </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="64" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Courses</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="42" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Institutes</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Lecturers</p>
-          </div>
-
         </div>
-
-      </div>
     </section><!-- End Counts Section -->
 
 
-  </main><!-- End #main -->
+</main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
+<!-- ======= Footer ======= -->
+<footer id="footer">
 
     <div class="footer-top">
-      <div class="container" >
-        <div class="row ">
+        <div class="container">
+            <div class="row ">
 
-          <div class="col-lg-3 col-md-6 footer-contact text-md-start">
-            <h3><b>HEISIS</b></h3>
-            <p>
-              Orion Towers,<br>
-               Dr Danister De Silva Mawatha,<br>
-               Colombo 00900 <br>
-              Sri Lanka <br><br>
-              <strong>Phone:</strong> +94 772224194<br>
-              <strong>Email:</strong> HESIS@gmail.com<br>
-            </p>
-          </div>
+                <div class="col-lg-3 col-md-6 footer-contact text-md-start">
+                    <h3><b>HEISIS</b></h3>
+                    <p>
+                        Orion Towers,<br>
+                        Dr Danister De Silva Mawatha,<br>
+                        Colombo 00900 <br>
+                        Sri Lanka <br><br>
+                        <strong>Phone:</strong> +94 772224194<br>
+                        <strong>Email:</strong> HESIS@gmail.com<br>
+                    </p>
+                </div>
 
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
+                <div class="col-lg-2 col-md-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                    </ul>
+                </div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                    </ul>
+                </div>
 
+            </div>
         </div>
-      </div>
     </div>
 
     <div class="container d-md-flex py-4">
 
-      <div class="me-md-auto text-center text-md-start">
-        <div class="copyright">
-          &copy; Copyright <strong><span>HEISIS</span></strong>. All Rights Reserved
+        <div class="me-md-auto text-center text-md-start">
+            <div class="copyright">
+                &copy; Copyright <strong><span>HEISIS</span></strong>. All Rights Reserved
+            </div>
         </div>
-      </div>
     </div>
-  </footer><!-- End Footer -->
+</footer><!-- End Footer -->
 
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
 
 
-  <script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
-  <script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>
-  <script th:src="@{/dist/lib/js/homepage/purecounter.js}"></script>
+<script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
+<script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/dist/lib/js/homepage/purecounter.js}"></script>
 
-  <!-- Template Main JS File -->
-  <script th:src="@{/dist/lib/js/homepage/main.js}"></script>
-  <script th:src="@{/dist/lib/controllers/baseURL.js}"></script>
-  <script th:src="@{/dist/lib/controllers/homepage-controller.js}"></script>
+<!-- Template Main JS File -->
+<script th:src="@{/dist/lib/js/homepage/main.js}"></script>
+<script th:src="@{/dist/lib/controllers/baseURL.js}"></script>
+<script th:src="@{/dist/lib/controllers/homepage-controller.js}"></script>
 </body>
 
 </html>

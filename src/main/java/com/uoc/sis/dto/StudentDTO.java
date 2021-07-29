@@ -1,6 +1,8 @@
 package com.uoc.sis.dto;
 
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.List;
 
 public class StudentDTO {
@@ -11,19 +13,21 @@ public class StudentDTO {
     private String lName;
     private String address;
     private String email;
-    private String telephone;
+    private int telephone;
     private String NIC;
     private String gender;
-    private String level;
+    private int level;
     private String parentName;
     private int parentTelNo;
     private String password;
+    private String imagePath;
+    private String imageName;
     private String degreeID;
     private String degreeName;
     private String unicode;
     private List<ResultDTO> resultList;
 
-    public StudentDTO(String registrationNo, String indexNo, String fName, String mName, String lName, String address, String email, String telephone, String NIC, String gender, String level, String parentName, int parentTelNo, String password, String degreeID, String degreeName, String unicode) {
+    public StudentDTO(String registrationNo, String indexNo, String fName, String mName, String lName, String address, String email, int telephone, String NIC, String gender, int level, String parentName, int parentTelNo, String password, String imagePath, String imageName, String degreeID, String degreeName, String unicode) {
         this.registrationNo = registrationNo;
         this.indexNo = indexNo;
         this.fName = fName;
@@ -38,6 +42,8 @@ public class StudentDTO {
         this.parentName = parentName;
         this.parentTelNo = parentTelNo;
         this.password = password;
+        this.imagePath = imagePath;
+        this.imageName = imageName;
         this.degreeID = degreeID;
         this.degreeName = degreeName;
         this.unicode = unicode;
@@ -99,11 +105,11 @@ public class StudentDTO {
         this.email = email;
     }
 
-    public String getTelephone() {
+    public int getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(String telephone) {
+    public void setTelephone(int telephone) {
         this.telephone = telephone;
     }
 
@@ -123,11 +129,11 @@ public class StudentDTO {
         this.gender = gender;
     }
 
-    public String getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
@@ -153,6 +159,22 @@ public class StudentDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 
     public String getDegreeID() {

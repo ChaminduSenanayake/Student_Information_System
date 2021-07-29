@@ -59,7 +59,7 @@ nav{
 }
 
 #sidebar-wrapper {
-    min-height: 110vh;
+    min-height: 106vh;
     margin-left: -15rem;
     transition: margin 0.25s ease-out;
     background-color: #1F2E4E;
@@ -81,7 +81,10 @@ nav{
 
 #studentImage{
     width: 10rem;
+    height: 10rem;
     background:transparent;
+    border-radius: 50%;
+
 }
 
 @media (min-width: 768px) {
@@ -113,4 +116,11 @@ nav{
     padding-top: 30px;
     padding-bottom: 30px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.profile-div{
+    background-color: white;
+    padding-top:20px ;
+    padding-bottom: 20px;
+    border-radius: 10px;
 }

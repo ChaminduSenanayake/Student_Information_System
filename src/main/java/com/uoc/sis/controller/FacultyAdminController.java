@@ -42,6 +42,11 @@ public class FacultyAdminController {
     public boolean updateFacultyAdmin(@RequestBody FacultyAdminDTO dto){
         return adminService.updateFacultyAdmin(dto);
     }
+    @PutMapping ("/updatePassword")
+    public boolean updateFacultyAdminPassword(@RequestBody FacultyAdminDTO dto){
+        return adminService.updateFacultyAdminPassword(dto);
+    }
+
     @DeleteMapping("/delete/{facultyAdminID}")
     public boolean deleteFacultyAdmin(@PathVariable("facultyAdminID") String facultyAdminID){
         return adminService.deleteFacultyAdmin(facultyAdminID);

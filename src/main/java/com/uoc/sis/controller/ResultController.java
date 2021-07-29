@@ -6,6 +6,7 @@ import com.uoc.sis.service.FacultyService;
 import com.uoc.sis.service.ResultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +32,6 @@ public class ResultController {
             model.addObject("sessionExpired","Session Expired...! Please sign in again");
             return model;
         }
-
     }
 
     @PostMapping("/save")
@@ -39,10 +39,16 @@ public class ResultController {
         return resultService.addResult(resultDTO);
     }
 
+    @PostMapping("/saveResultSheet")
+    public boolean addResultSheet(@RequestParam("examID") String examID,@RequestParam("courseID") String courseID,@RequestParam("resultSheet") MultipartFile resultSheet){
+        return resultService.addResultSheet(examID,courseID,resultSheet);
+    }
+
     @PutMapping ("/update")
     public boolean updateResult(@RequestBody ResultDTO resultDTO){
         return resultService.updateResult(resultDTO);
     }
+
     @DeleteMapping("/delete/{registrationNo}/{examID}")
     public boolean deleteResult(@PathVariable("registrationNo") String registrationNo,@PathVariable("examID") String examID){
         return resultService.deleteResult(registrationNo,examID);

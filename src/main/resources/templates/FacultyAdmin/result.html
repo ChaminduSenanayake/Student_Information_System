@@ -37,9 +37,9 @@
                 <!-- column -->
                 <div class="col-lg-6">
                     <div class="card card-hover">
-                        <div class="card-body bg-green">
-                            <div class="d-flex">
-                                <div class="me-4" onclick="openAddNewSheetModal()">
+                        <div class="card-body bg-green" onclick="openAddNewSheetModal()">
+                            <div class="d-flex" >
+                                <div class="me-4">
                                     <h4 class="mb-0">Add Result Sheet</h4>
                                 </div>
                                 <div class="chart ms-auto">
@@ -134,28 +134,25 @@
                     <div class="form-group row mb-3 ">
                         <label class="col-sm-3 col-form-label">Course ID</label>
                         <div class="col-sm-9">
-                            <select id="selectCourseID" name="selectCourseID" class="form-select"
-                                    aria-label="Default select example">
-
-                            </select>
+                            <input class="form-control" id="txtCourseID" placeholder="Grade" readonly>
                         </div>
                     </div>
                     <div class="form-group row mb-3 ">
                         <label class="col-sm-3 col-form-label">Course Name</label>
                         <div class="col-sm-9">
-                            <input class="form-control" id="txtCourseName" placeholder="Course Name">
+                            <input class="form-control" id="txtCourseName" placeholder="Course Name" readonly>
                         </div>
                     </div>
                     <div class="form-group row mb-3 ">
                         <label class="col-sm-3 col-form-label">Level</label>
                         <div class="col-sm-9">
-                            <input class="form-control" id="txtLevel" placeholder="Grade">
+                            <input class="form-control" id="txtLevel" placeholder="Level" readonly>
                         </div>
                     </div>
                     <div class="form-group row mb-3 ">
                         <label class="col-sm-3 col-form-label">Credits</label>
                         <div class="col-sm-9">
-                            <input class="form-control" id="txtCredits" placeholder="Grade">
+                            <input class="form-control" id="txtCredits" placeholder="Credits" readonly>
                         </div>
                     </div>
                     <div class="form-group row mb-3 ">
@@ -189,6 +186,68 @@
     </div>
 </div>
 
+<!-- add new result Sheet -->
+<div class="modal fade" id="addNewResultSheetModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Add New Result Sheet</h5>
+                <button type="button " class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body mt-2 mx-3">
+                <form id="addNewResultSheet">
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Exam ID</label>
+                        <div class="col-sm-9">
+                            <select id="selectSheetExamID" name="selectExamID" class="form-select"
+                                    aria-label="Default select example">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Course ID</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtSheetCourseID" placeholder="Course ID" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Course Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtSheetCourseName" placeholder="Course Name" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Level</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtSheetLevel" placeholder="Level" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Credits</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="txtSheetCredits" placeholder="Credits" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label">Result Sheet</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="resultSheet" type="file" placeholder="Grade" required>
+                        </div>
+                    </div>
+                    <div class=" col-md-12 text-end mt-4">
+                        <button type="submit" class=" btn btn-primary mb-2 px-5">Save</button>
+                        <button name="cancel" class="btn btn-danger mb-2 px-5" data-bs-dismiss="modal"
+                                aria-label="Close">Close
+                        </button>
+                        </br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Update result -->
 <div class="modal fade" id="updateModal" tabindex="-1 " aria-hidden="true">
@@ -208,14 +267,14 @@
                         </div>
                     </div>
                     <div class="form-group row mb-3 ">
-                    <label class="col-sm-3 col-form-label">Exam ID</label>
-                    <div class="col-sm-9">
+                        <label class="col-sm-3 col-form-label">Exam ID</label>
                         <div class="col-sm-9">
-                            <input class="form-control" id="txtEditExamID" placeholder="Exam ID"
-                                   readonly>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="txtEditExamID" placeholder="Exam ID"
+                                       readonly>
+                            </div>
                         </div>
                     </div>
-                </div>
                     <div class="form-group row mb-3 ">
                         <label class="col-sm-3 col-form-label">Course ID</label>
                         <div class="col-sm-9">
@@ -273,11 +332,13 @@
         </div>
     </div>
 </div>
+<div th:insert="FacultyAdmin/navBar :: updateFacultyAdmin"></div>
 <script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
 <script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/dist/lib/controllers/baseURL.js}"></script>
 <script th:src="@{/dist/lib/js/sweetalert.js}"></script>
 <script th:src="@{/dist/lib/controllers/navBar-controller.js}"></script>
+<script th:src="@{/dist/lib/controllers/facultyAdmin/facultyAdmin-navBar-controller.js}"></script>
 <script th:src="@{/dist/lib/controllers/facultyAdmin/result-controller.js}"></script>
 </body>
 

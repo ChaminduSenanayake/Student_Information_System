@@ -15,6 +15,7 @@ public class University {
     private String image_path;
     private String image_name;
 
+
     public University() {
     }
 

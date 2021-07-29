@@ -7,6 +7,7 @@ import com.uoc.sis.service.FacultyService;
 import com.uoc.sis.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,13 +37,75 @@ public class StudentController {
     }
 //
     @PostMapping("/save")
-    public boolean addStudent(@RequestBody StudentDTO studentDTO){
-        return studentService.addStudent(studentDTO);
+    public boolean addStudent(
+            @RequestParam("registrationNo") String registrationNo,
+            @RequestParam("indexNo") String indexNo,
+            @RequestParam("fName") String fName,
+            @RequestParam("mName") String mName,
+            @RequestParam("lName") String lName,
+            @RequestParam("address") String address,
+            @RequestParam("email") String email,
+            @RequestParam("telephone") String telephone,
+            @RequestParam("NIC") String NIC,
+            @RequestParam("gender") String gender,
+            @RequestParam("level") String level,
+            @RequestParam("parentName") String parentName,
+            @RequestParam("parentTelNo") String parentTelNo,
+            @RequestParam("password") String password,
+            @RequestParam("degreeID") String degreeID,
+            @RequestParam("degreeName") String degreeName,
+            @RequestParam("unicode") String unicode,
+            @RequestParam("profileImage") MultipartFile profileImage){
+        StudentDTO studentDTO=new StudentDTO(registrationNo,indexNo,fName,mName,lName,address,email,Integer.parseInt(telephone),NIC,gender,Integer.parseInt(level),parentName,Integer.parseInt(parentTelNo),password,null,null,degreeID,degreeName,unicode);
+        return studentService.addStudent(studentDTO,profileImage);
     }
     @PutMapping ("/update")
-    public boolean updateStudent(@RequestBody StudentDTO studentDTO){
+    public boolean updateStudent(
+            @RequestParam("registrationNo") String registrationNo,
+            @RequestParam("indexNo") String indexNo,
+            @RequestParam("fName") String fName,
+            @RequestParam("mName") String mName,
+            @RequestParam("lName") String lName,
+            @RequestParam("address") String address,
+            @RequestParam("email") String email,
+            @RequestParam("telephone") String telephone,
+            @RequestParam("NIC") String NIC,
+            @RequestParam("gender") String gender,
+            @RequestParam("level") String level,
+            @RequestParam("parentName") String parentName,
+            @RequestParam("parentTelNo") String parentTelNo,
+            @RequestParam("password") String password,
+            @RequestParam("degreeID") String degreeID,
+            @RequestParam("degreeName") String degreeName,
+            @RequestParam("unicode") String unicode){
+        StudentDTO studentDTO=new StudentDTO(registrationNo,indexNo,fName,mName,lName,address,email,Integer.parseInt(telephone),NIC,gender,Integer.parseInt(level),parentName,Integer.parseInt(parentTelNo),password,null,null,degreeID,degreeName,unicode);
         return studentService.updateStudent(studentDTO);
     }
+
+    @PutMapping("/updateWithImage")
+    public boolean updateStudentWithImage(
+            @RequestParam("registrationNo") String registrationNo,
+            @RequestParam("indexNo") String indexNo,
+            @RequestParam("fName") String fName,
+            @RequestParam("mName") String mName,
+            @RequestParam("lName") String lName,
+            @RequestParam("address") String address,
+            @RequestParam("email") String email,
+            @RequestParam("telephone") String telephone,
+            @RequestParam("NIC") String NIC,
+            @RequestParam("gender") String gender,
+            @RequestParam("level") String level,
+            @RequestParam("parentName") String parentName,
+            @RequestParam("parentTelNo") String parentTelNo,
+            @RequestParam("password") String password,
+            @RequestParam("degreeID") String degreeID,
+            @RequestParam("degreeName") String degreeName,
+            @RequestParam("unicode") String unicode,
+            @RequestParam("profileImage") MultipartFile profileImage){
+        StudentDTO studentDTO=new StudentDTO(registrationNo,indexNo,fName,mName,lName,address,email,Integer.parseInt(telephone),NIC,gender,Integer.parseInt(level),parentName,Integer.parseInt(parentTelNo),password,null,null,degreeID,degreeName,unicode);
+        return studentService.updateStudentWithImage(studentDTO,profileImage);
+    }
+
     @DeleteMapping("/delete/{registrationNo}")
     public boolean deleteFaculty(@PathVariable("registrationNo") String registrationNo){
         return studentService.deleteStudent(registrationNo);

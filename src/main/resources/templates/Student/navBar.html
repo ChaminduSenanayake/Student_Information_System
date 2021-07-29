@@ -15,7 +15,7 @@
         </button>
         <div class="collapse navbar-collapse ms-5" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-                <li class="nav-item"><a class="nav-link" id="profileBtn" onclick="tabChange('studentProfile')">My Profile</a></li>
+                <li class="nav-item"><a class="nav-link" id="myProfileBtn" onclick="tabChange('studentProfile')">My Profile</a></li>
                 <li class="nav-item"><a class="nav-link" id="courseBtn" onclick="tabChange('studentCourse')">Course</a></li>
                 <li class="nav-item"><a class="nav-link" id="examBtn" onclick="tabChange('studentExam')">Exams</a></li>
                 <li class="nav-item"><a class="nav-link" id="resultBtn" onclick="tabChange('studentResult')">Results</a></li>
@@ -39,78 +39,5 @@
         </div>
     </div>
 </nav>
-
-
-
-<!-- Update Student Modal -->
-<div th:fragment="updateStudent" class="modal fade" id="updateStudentProfileModal" tabindex="-1 " aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content ">
-            <div class="modal-header">
-                <h5 class="modal-title">Update Student</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body mt-2 mx-3">
-                <form id="updateStudent">
-                    <div class="form-group row mb-3 text-center">
-                        <label class="col-sm-3 col-form-label"><b>Registration No</b></label>
-                        <div class="col-sm-9">
-                            <input class="form-control" id="txtEditRegistrationNo" placeholder="Registration No" readonly>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-3 text-center">
-                        <label class="col-sm-3 col-form-label"><b>Index No</b></label>
-                        <div class="col-sm-9">
-                            <input class="form-control" id="txtEditIndexNo" placeholder="Index No" readonly>
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-3 text-center">
-                        <label class="col-sm-3 col-form-label"><b>First Name</b></label>
-                        <div class="col-sm-9">
-                            <input class="form-control" id="txtEditFirstName" placeholder="First Name" readonly>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-3 text-center">
-                        <label class="col-sm-3 col-form-label"><b>Middle Name</b></label>
-                        <div class="col-sm-9">
-                            <input class="form-control" id="txtEditMiddleName" placeholder="Middle Name" readonly>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-3 text-center">
-                        <label class="col-sm-3 col-form-label"><b>Last Name</b></label>
-                        <div class="col-sm-9">
-                            <input class="form-control" id="txtEditLastName" placeholder="Last Name" readonly>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-3 text-center">
-                        <label class="col-sm-3 col-form-label"><b>Password</b></label>
-                        <div class="col-sm-9">
-                            <input type="password" class="form-control" id="txtEditPassword" placeholder="Password" required>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-3 text-center">
-                        <label class="col-sm-3 col-form-label"><b>Confirm Password</b></label>
-                        <div class="col-sm-9">
-                            <input type="password" class="form-control" id="txtEditConfirmPassword"
-                                   placeholder="Confirm Password" required>
-                        </div>
-                    </div>
-                    <div class=" col-md-12 text-end mt-4 ">
-                        <button id="btnUpdate" type="submit" class=" btn btn-primary mb-2 px-5"><i
-                                class="fas fa-edit"></i>&nbsp Change Password
-                        </button>
-                        <button class="btn btn-danger mb-2 px-5" data-bs-dismiss="modal"
-                                aria-label="Close"><i class="fas fa-window-close"></i>&nbsp Close
-                        </button>
-                        </br>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 </body>
 </html>

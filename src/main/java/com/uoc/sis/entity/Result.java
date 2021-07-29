@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 public class Result {
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade =  CascadeType.PERSIST)
     @JoinColumns(@JoinColumn(name = "registration_no",referencedColumnName = "registration_no",insertable = false,updatable = false))
     private Student student;
 

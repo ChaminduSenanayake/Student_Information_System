@@ -122,7 +122,7 @@ $('#txtCourseID').change(function () {
     let courseID = $(this).val();
     $.ajax({
         type: "GET",
-        url: baseURL + "studentCourse/getCourse/" + courseID,
+        url: baseURL + "course/getCourse/" + courseID,
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
@@ -196,7 +196,7 @@ function deleteCourseRegistration(courseID) {
                     success: function (response) {
                         if (response) {
                             swal("Poof! Your imaginary file has been deleted!", {icon: "success"});
-                            getAllFaculties();
+                            getAllRegistrations();
                         } else {
                             swal("Poof! Your imaginary file has not been deleted!", {
                                 icon: "error",

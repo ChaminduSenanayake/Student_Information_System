@@ -2,6 +2,7 @@ var facultyID;
 var facultyName;
 var uniCode;
 var uniName;
+var facultyAdminID;
 $(document).ready(function () {
 
     document.getElementById('studentBtn').style.color = "#ffffff";
@@ -59,50 +60,37 @@ $(document).ready(function () {
     $('#addNewSudent').submit(function (event) {
         var userName=$('#txtUserName').html();
         getFacultyAdmin(userName);
-        let regNo=$('#txtRegistrationNo').val();
-        let index=$('#txtIndexNo').val();
-        let fName=$('#txtFirstName').val();
-        let mName=$('#txtMiddleName').val();
-        let lName=$('#txtLastName').val();
-        let address=$('#txtAddress').val();
-        let email=$('#txtEmail').val();
-        let telephone=$('#txtTelephone').val();
-        let NIC=$('#txtNIC').val();
-        let gender=$("input[name='radioGender']:checked").val();
-        let level=$('#txtLevel').val();
-        let parentName=$('#txtParentName').val();
-        let parentTelephone=$('#txtParentTelephone').val();
-        let degreeID=$('#selectDegreeID').val();
-        let degreeName=$('#txtDegreeName').val();
         let password = $('#txtPassword').val();
         let confirmPassword = $('#txtConfirmPassword').val();
 
         if (password == confirmPassword) {
-            let dataObj = JSON.stringify({
-                "registrationNo":regNo,
-                "indexNo":index,
-                "fName":fName,
-                "mName":mName,
-                "lName":lName,
-                "address":address,
-                "email":email,
-                "telephone":telephone,
-                "NIC":NIC,
-                "gender":gender,
-                "level":level,
-                "parentName":parentName,
-                "parentTelNo":parentTelephone,
-                "password":password,
-                "degreeID":degreeID,
-                "degreeName":degreeName,
-                "unicode":uniCode
-            });
+            let formData = new FormData();
+            formData.append('registrationNo', $('#txtRegistrationNo').val());
+            formData.append('indexNo',$('#txtIndexNo').val());
+            formData.append('fName',$('#txtFirstName').val());
+            formData.append('mName',$('#txtMiddleName').val());
+            formData.append('lName',$('#txtLastName').val());
+            formData.append('address',$('#txtAddress').val());
+            formData.append('email',$('#txtEmail').val());
+            formData.append('telephone',$('#txtTelephone').val());
+            formData.append('NIC',$('#txtNIC').val());
+            formData.append('gender',$("input[name='radioGender']:checked").val());
+            formData.append('level',$('#txtLevel').val());
+            formData.append('parentName',$('#txtParentName').val());
+            formData.append('parentTelNo',$('#txtParentTelephone').val());
+            formData.append('password',password);
+            formData.append('profileImage', $('#profileImage')[0].files[0]);
+            formData.append('degreeID',$('#selectDegreeID').val());
+            formData.append('degreeName',$('#txtDegreeName').val());
+            formData.append('unicode',uniCode);
+
             $.ajax({
                 type: "POST",
+                enctype: 'multipart/form-data',
                 url: baseURL + "student/save",
-                data: dataObj,
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
+                data: formData,
+                processData: false,
+                contentType: false,
                 success: function (response) {
                     if (response) {
                         swal("Good job!", "Student has been saved succeessfully!", "success");
@@ -119,6 +107,7 @@ $(document).ready(function () {
                             modal.find('#txtParentTelephone').val("");
                             modal.find('#txtPassword').val("");
                             modal.find('#txtConfirmPassword').val("");
+                            modal.find('#profileImage').val("");
                         });
                         $("#addNewModal").modal('hide');
                         getAllStudents();
@@ -141,54 +130,41 @@ $(document).ready(function () {
     $('#updateStudent').submit(function (event) {
         var userName=$('#txtUserName').html();
         getFacultyAdmin(userName);
-        let regNo=$('#txtEditRegistrationNo').val();
-        let index=$('#txtEditIndexNo').val();
-        let fName=$('#txtEditFirstName').val();
-        let mName=$('#txtEditMiddleName').val();
-        let lName=$('#txtEditLastName').val();
-        let address=$('#txtEditAddress').val();
-        let email=$('#txtEditEmail').val();
-        let telephone=$('#txtEditTelephone').val();
-        let NIC=$('#txtNIC').val();
-        let gender=$("input[name='editRadioGender']:checked").val();
-        let level=$('#txtEditLevel').val();
-        let parentName=$('#txtEditParentName').val();
-        let parentTelephone=$('#txtEditParentTelephone').val();
-        let degreeID=$('#selectEditDegreeID').val();
-        let degreeName=$('#txtEditDegreeName').val();
         let password = $('#txtEditPassword').val();
         let confirmPassword = $('#txtEditConfirmPassword').val();
 
-        if (password == confirmPassword) {
-            let dataObj = JSON.stringify({
-                "registrationNo":regNo,
-                "indexNo":index,
-                "fName":fName,
-                "mName":mName,
-                "lName":lName,
-                "address":address,
-                "email":email,
-                "telephone":telephone,
-                "NIC":NIC,
-                "gender":gender,
-                "level":level,
-                "parentName":parentName,
-                "parentTelNo":parentTelephone,
-                "password":password,
-                "degreeID":degreeID,
-                "degreeName":degreeName,
-                "unicode":uniCode
-            });
+        let formData = new FormData();
+        formData.append('registrationNo', $('#txtEditRegistrationNo').val());
+        formData.append('indexNo',$('#txtEditIndexNo').val());
+        formData.append('fName',$('#txtEditFirstName').val());
+        formData.append('mName',$('#txtEditMiddleName').val());
+        formData.append('lName',$('#txtEditLastName').val());
+        formData.append('address',$('#txtEditAddress').val());
+        formData.append('email',$('#txtEditEmail').val());
+        formData.append('telephone',$('#txtEditTelephone').val());
+        formData.append('NIC',$('#txtEditNIC').val());
+        formData.append('gender',$("input[name='radioEditGender']:checked").val());
+        formData.append('level',$('#txtEditLevel').val());
+        formData.append('parentName',$('#txtEditParentName').val());
+        formData.append('parentTelNo',$('#txtEditParentTelephone').val());
+        formData.append('password',password);
+        formData.append('degreeID',$('#selectEditDegreeID').val());
+        formData.append('degreeName',$('#txtEditDegreeName').val());
+        formData.append('unicode',uniCode);
+
+        if (password == confirmPassword && $('input#editProfileImage')[0].files[0] != undefined) {
+            formData.append('profileImage', $('#editProfileImage')[0].files[0]);
             $.ajax({
                 type: "PUT",
-                url: baseURL + "student/update",
-                data: dataObj,
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
+                enctype: 'multipart/form-data',
+                url: baseURL + "student/updateWithImage",
+                data: formData,
+                processData: false,
+                contentType: false,
                 success: function (response) {
                     if (response) {
                         swal("Good job!", "Your changes have been saved succeessfully!", "success");
-                        $('#addNewModal').on('hidden.bs.modal', function (e) {
+                        $('#updateModal').on('hidden.bs.modal', function (e) {
                             let modal = $(this);
                             modal.find('#txtEditFirstName').val("");
                             modal.find('#txtEditMiddleName').val("");
@@ -201,6 +177,7 @@ $(document).ready(function () {
                             modal.find('#txtEditParentTelephone').val("");
                             modal.find('#txtEditPassword').val("");
                             modal.find('#txtEditConfirmPassword').val("");
+                            modal.find('#editProfileImage').val("");
                         });
                         $("#updateModal").modal('hide');
                         getAllStudents();
@@ -212,7 +189,43 @@ $(document).ready(function () {
                     console.log(error);
                 }
             })
-        } else {
+        } else if(password == confirmPassword && $('input#editProfileImage')[0].files[0] == undefined) {
+            $.ajax({
+                type: "PUT",
+                url: baseURL + "student/update",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response) {
+                        swal("Good job!", "Your changes have been saved succeessfully!", "success");
+                        $('#updateModal').on('hidden.bs.modal', function (e) {
+                            let modal = $(this);
+                            modal.find('#txtEditFirstName').val("");
+                            modal.find('#txtEditMiddleName').val("");
+                            modal.find('#txtEditLastName').val("");
+                            modal.find('#txtEditAddress').val("");
+                            modal.find('#txtEditTelephone').val("");
+                            modal.find('#txtEditNIC').val("");
+                            modal.find('#txtEditEmail').val("");
+                            modal.find('#txtEditParentName').val("");
+                            modal.find('#txtEditParentTelephone').val("");
+                            modal.find('#txtEditPassword').val("");
+                            modal.find('#txtEditConfirmPassword').val("");
+                            modal.find('#editProfileImage').val("");
+                        });
+                        $("#updateModal").modal('hide');
+                        getAllStudents();
+                    } else {
+                        swal("OOps!", "You clicked the button!", "error");
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            })
+
+        }else {
             swal("OOps!", "Input Passwords Correctly!", "error");
         }
         event.preventDefault();
@@ -401,6 +414,8 @@ function openViewModal(registrationNo) {
                 modal.find('#txtViewParentTelephone').val(response['parentTelNo']);
                 modal.find('#txtViewDegreeID').val(response['degreeID']);
                 modal.find('#txtViewDegreeName').val(response['degreeName']);
+                $('#viewProfileImage').attr('name',response['imagePath']);
+                $('#viewProfileImage').html(response['imageName']);
             },error(error) {
                 console.log(error);
             }
@@ -493,6 +508,10 @@ function getAllStudents(){
                 tableStudents.append(row);
             }
             $('#txtNumberOfBatches').html(batchCount);
+            var value = $('#txtYear').val();
+            $("#studentTable tr").filter(function() {
+                $('#txtYear').toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
         }
     })
 }
@@ -546,6 +565,20 @@ function deleteStudent(registrationNo){
         });
 }
 
+function openImageModal(imagePath) {
+    let imageModal = new bootstrap.Modal(document.getElementById('viewImageModal'));
+    let viewModal = new bootstrap.Modal(document.getElementById('viewModal'));
+    viewModal.hide();
+    $('#viewImageModal').on('show.bs.modal', function (event) {
+        let modal = $(this);
+        modal.find('#profileImageModal').attr("src", imagePath);
+    })
+    imageModal.show();
+}
+
+
+
+
 // Validation
 
 let telephone=document.getElementById('txtTelephone');
@@ -553,6 +586,7 @@ let firstName=document.getElementById('txtFirstName');
 let middleName=document.getElementById('txtMiddleName');
 let lastName=document.getElementById('txtLastName');
 let password=document.getElementById('txtPassword');
+let confirmPassword=document.getElementById('txtConfirmPassword');
 
 telephone.addEventListener('input', function(){
     let regexTelephone = /^[0-9]{10}$/;
@@ -597,5 +631,14 @@ password.addEventListener('input', function(){
         password.setCustomValidity('Please choose a password with 6-14 characters');
     }else {
         password.setCustomValidity('');
+    }
+});
+
+confirmPassword.addEventListener('input', function(){
+    let regex = /^[A-Za-z]\w{6,14}$/;
+    if (!regex.test(confirmPassword.value)) {
+        confirmPassword.setCustomValidity('Please choose a password with 6-14 characters');
+    }else {
+        confirmPassword.setCustomValidity('');
     }
 });

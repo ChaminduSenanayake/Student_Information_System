@@ -119,19 +119,20 @@
                     <div class="form-group row mb-3 ">
                         <label class="col-sm-3 col-form-label">Date</label>
                         <div class="col-sm-9">
-                            <input class="form-control" type="date" id="txtExamDate" placeholder="Date">
+                            <input class="form-control" type="date" id="txtExamDate" placeholder="Date" required>
                         </div>
                     </div>
                     <div class="form-group row mb-3">
                         <label class="col-sm-3 col-form-label">Start Time</label>
                         <div class="col-sm-3">
-                            <input class="form-control" type="time" id="txtExamStartTime" placeholder="Duration">
+                            <input class="form-control" type="time" id="txtExamStartTime" placeholder="Duration"
+                                   required>
                         </div>
                     </div>
                     <div class="form-group row mb-3">
                         <label class="col-sm-3 col-form-label">End Time</label>
                         <div class="col-sm-3">
-                            <input class="form-control" type="time" id="txtExamEndTime" placeholder="Duration">
+                            <input class="form-control" type="time" id="txtExamEndTime" placeholder="Duration" required>
                         </div>
                     </div>
                     <div class=" col-md-12 text-end mt-4">
@@ -213,12 +214,13 @@
         </div>
     </div>
 </div>
-</div>
+<div th:insert="FacultyAdmin/navBar :: updateFacultyAdmin"></div>
 <script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
 <script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/dist/lib/controllers/baseURL.js}"></script>
 <script th:src="@{/dist/lib/js/sweetalert.js}"></script>
 <script th:src="@{/dist/lib/controllers/navBar-controller.js}"></script>
+<script th:src="@{/dist/lib/controllers/facultyAdmin/facultyAdmin-navBar-controller.js}"></script>
 <script th:src="@{/dist/lib/controllers/facultyAdmin/exam-controller.js}"></script>
 </body>
 

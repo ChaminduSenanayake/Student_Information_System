@@ -2,6 +2,7 @@ var facultyID;
 var facultyName;
 var uniCode;
 var uniName;
+var facultyAdminID;
 $(document).ready(function () {
     document.getElementById('departmentBtn').style.color = "#ffffff";
     var userName=$('#txtUserName').html();
@@ -218,8 +219,8 @@ function getAllDepartments(){
                     "<td class=\"p-3\">"+depID+"</td>\n" +
                     "<td class=\"p-3\">"+depName+"</td>\n" +
                     "<td>\n" +
-                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\""+depID+"\" onclick=\"openUpdateModal(this.id)\"><i class=\"fas fa-edit\"></i> Edit</button>\n" +
-                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\""+depID+"\" onclick=\"deleteDepartment(this.id)\" name=\"btnDelete\"><i class=\"fas fa-trash-alt\"></i> Delete</button>\n" +
+                    "<button type=\"button\" class=\"btn btn-secondary rounded px-4 me-3\" id=\""+depID+"\" onclick=\"openUpdateModal(this.id)\"><i class=\"fas fa-edit\"></i></button>\n" +
+                    "<button type=\"button\" class=\"btn btn-danger rounded px-4\" id=\""+depID+"\" onclick=\"deleteDepartment(this.id)\" name=\"btnDelete\"><i class=\"fas fa-trash-alt\"></i></button>\n" +
                     "</div>\n" +
                     "</td>\n" +
                     "</tr>";

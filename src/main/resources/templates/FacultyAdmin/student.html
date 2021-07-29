@@ -245,6 +245,13 @@
                         </div>
                     </div>
                     <div class="form-group row mb-3 text-center">
+                        <label class="col-sm-3 col-form-label">Profile Image</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="file" id="profileImage"
+                                   placeholder="Profile Picture" required>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 text-center">
                         <label class="col-sm-3 col-form-label">Password</label>
                         <div class="col-sm-8">
                             <input type="password" class="form-control" id="txtPassword" placeholder="Password" required>
@@ -341,13 +348,13 @@
                         <label class="col-sm-3 col-form-label text-center">Gender</label>
                         <div class="col-sm-9">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="radioGender" id="editRadioMale" value="Male" checked>
+                                <input class="form-check-input" type="radio" name="radioEditGender" id="editRadioMale" value="Male" checked>
                                 <label class="form-check-label" for="radioMale">
                                     Male
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="radioGender" id="editRadioFemale" value="Female">
+                                <input class="form-check-input" type="radio" name="radioEditGender" id="editRadioFemale" value="Female">
                                 <label class="form-check-label" for="radioFemale">
                                     Female
                                 </label>
@@ -380,7 +387,7 @@
                     <div class="form-group row mb-3 text-center">
                         <label class="col-sm-3 col-form-label">Degree ID</label>
                         <div class="col-sm-9">
-                            <select id="selectEditDegreeID" name="selectDegreeID" class="form-select"
+                            <select id="selectEditDegreeID" name="selectEditDegreeID" class="form-select"
                                     aria-label="Default select example">
 
                             </select>
@@ -390,6 +397,13 @@
                         <label class="col-sm-3 col-form-label">Degree Name</label>
                         <div class="col-sm-9">
                             <input class="form-control" id="txtEditDegreeName" placeholder="Degree Name" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3 text-center">
+                        <label class="col-sm-3 col-form-label">Profile Image</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="file" id="editProfileImage"
+                                   placeholder="Profile Picture">
                         </div>
                     </div>
                     <div class="form-group row mb-3 text-center">
@@ -522,17 +536,38 @@
                             <input class="form-control" id="txtViewDegreeName" placeholder="Degree Name" readonly>
                         </div>
                     </div>
+                    <div class="form-group row mb-3 ">
+                        <label class="col-sm-3 col-form-label text-center">Profile Image</label>
+                        <div class="col-sm-8">
+                            <button id="viewProfileImage" type="button" class="btn btn-link" onclick="openImageModal(this.name)" ></button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
+<!--Image View modal -->
+<div class="modal fade" id="viewImageModal" tabindex="-1 " aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h5 class="modal-title">Profile Picture</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body mt-2 mx-3">
+                <img id="profileImageModal" class="rounded mx-auto d-block mb-3" width="200px">
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="FacultyAdmin/navBar :: updateFacultyAdmin"></div>
 <script th:src="@{/dist/lib/jquery/jquery.min.js}"></script>
 <script th:src="@{/dist/lib/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/dist/lib/controllers/baseURL.js}"></script>
 <script th:src="@{/dist/lib/js/sweetalert.js}"></script>
 <script th:src="@{/dist/lib/controllers/navBar-controller.js}"></script>
+<script th:src="@{/dist/lib/controllers/facultyAdmin/facultyAdmin-navBar-controller.js}"></script>
 <script th:src="@{/dist/lib/controllers/facultyAdmin/student-controller.js}"></script>
 
 
